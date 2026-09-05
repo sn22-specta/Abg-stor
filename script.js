@@ -5115,11 +5115,9 @@ Paiement : ${payment}
 Produits :
 
 ${productsMessage}
-TOTAL : ${formatPrice(total)} FCFA
 
 Bonjour ABG Store.
 Je souhaite confirmer ma commande.`;
-
 
     /* =========================
        COPIER LA COMMANDE
