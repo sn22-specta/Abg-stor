@@ -4602,7 +4602,8 @@ function renderProducts() {
 
 function createProductCard(product) {
 
-    const safeName = escapeHtml(product.name);
+    const safeName =
+        escapeHtml(product.name);
 
     return `
         <article class="product-card">
@@ -4612,21 +4613,15 @@ function createProductCard(product) {
                 class="product-name-button"
                 onclick="addToCart(${product.id})"
             >
-                <span class="product-number">
-                    #${product.id}
-                </span>
 
                 <span class="product-name">
                     ${safeName}
                 </span>
 
-                <span class="product-price">
-                    ${formatPrice(product.price)} FCFA
-                </span>
-
                 <span class="product-action">
                     🛒 Ajouter au panier
                 </span>
+
             </button>
 
         </article>
