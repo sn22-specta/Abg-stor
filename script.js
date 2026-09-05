@@ -3719,22 +3719,16 @@ function confirmOrder() {
     ========================== */
 
     const productsMessage =
-        cart.map(
-            function (item, index) {
+    cart.map(
+        function (item, index) {
 
-                const subtotal =
-                    Number(item.price) *
-                    Number(item.quantity);
+            return (
+                `${index + 1}. ${item.name}\n` +
+                `   Quantité : ${item.quantity}`
+            );
 
-                return (
-                    `${index + 1}. ${item.name}\n` +
-                    `   Quantité : ${item.quantity}\n` +
-                    `   Prix : ${formatPrice(item.price)} FCFA\n` +
-                    `   Sous-total : ${formatPrice(subtotal)} FCFA`
-                );
-
-            }
-        ).join("\n\n");
+        }
+    ).join("\n\n");
 
 
     /* =========================
