@@ -2774,14 +2774,13 @@ function createProductCard(product) {
             <div class="product-image-wrapper">
 
                 <div class="product-image-placeholder">
-    ${escapeHtml(product.name)}
-</div>
+                    ${safeName}
+                </div>
+
+            </div>
+
+
             <div class="product-info">
-
-                <p class="product-number">
-                    Produit #${product.id}
-                </p>
-
 
                 <h3>
                     ${safeName}
@@ -2797,13 +2796,13 @@ function createProductCard(product) {
                     </strong>
 
 
-<button
-    class="add-to-cart-btn"
-    type="button"
-    onclick="addToCart(${product.id})"
->
-    🛒 Ajouter au panier
-</button>
+                    <button
+                        class="add-to-cart-btn"
+                        type="button"
+                        onclick="addToCart(${product.id})"
+                    >
+                        🛒 Ajouter au panier
+                    </button>
 
                 </div>
 
@@ -2813,7 +2812,6 @@ function createProductCard(product) {
 
     `;
 }
-
 
 /* =========================================================
    ERREUR IMAGE
