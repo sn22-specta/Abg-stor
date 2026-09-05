@@ -3532,6 +3532,77 @@ function loginAdmin() {
 
 function confirmOrder() {
 
+    if (!cart.length) {
+        alert("Votre panier est vide.");
+        return;
+    }
+
+    const name =
+        document.getElementById("customerName")?.value.trim() || "";
+
+    const phone =
+        document.getElementById("customerPhone")?.value.trim() || "";
+
+    const address =
+        document.getElementById("customerAddress")?.value.trim() || "";
+
+    const payment =
+        document.getElementById("paymentMethod")?.value ||
+        "Non précisé";
+
+
+    if (!name || !phone || !address) {
+
+        alert(
+            "Veuillez remplir votre nom, téléphone et adresse."
+        );
+
+        return;
+    }
+
+
+    const productsMessage =
+        cart.map(
+            function (item, index) {
+
+                return (
+                    `${index + 1}. ${item.name} x ${item.quantity}`
+                );
+
+            }
+        ).join("\n");
+
+
+    const message =
+`COMMANDE ABG STORE
+
+Nom : ${name}
+Téléphone : ${phone}
+Adresse : ${address}
+Paiement : ${payment}
+
+Produits :
+
+${productsMessage}
+
+Bonjour ABG Store.
+Je souhaite confirmer ma commande.`;
+
+
+    const encodedMessage =
+        encodeURIComponent(message);
+
+
+    const whatsappUrl =
+        `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedMessage}`;
+
+
+    window.open(
+        whatsappUrl,
+        "_blank"
+    );
+}
+
     /* =========================
        VÉRIFIER LE PANIER
     ========================== */
@@ -5196,4 +5267,4 @@ function escapeHtml(text) {
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
 window.changeQuantity = changeQuantity;
-window.changePage = changePage;
+window.changePage = changePage;TOTAL
