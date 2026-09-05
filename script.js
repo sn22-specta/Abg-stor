@@ -3131,227 +3131,213 @@ function changeQuantity(
 
 function updateCart() {
 
-    const cartItems =
-        document.getElementById(
-            "cartItems"
-        );
+const cartItems =  
+    document.getElementById(  
+        "cartItems"  
+    );  
 
-    const emptyCart =
-        document.getElementById(
-            "emptyCart"
-        );
+const emptyCart =  
+    document.getElementById(  
+        "emptyCart"  
+    );  
 
-    const checkout =
-        document.getElementById(
-            "checkout"
-        );
+const checkout =  
+    document.getElementById(  
+        "checkout"  
+    );  
 
-    const cartCount =
-        document.getElementById(
-            "cartCount"
-        );
+const cartCount =  
+    document.getElementById(  
+        "cartCount"  
+    );  
 
-    const cartTotal =
-        document.getElementById(
-            "cartTotal"
-        );
+const cartTotal =  
+    document.getElementById(  
+        "cartTotal"  
+    );  
 
 
-    const totalQuantity =
-        cart.reduce(
-            function (sum, item) {
+const totalQuantity =  
+    cart.reduce(  
+        function (sum, item) {  
 
-                return sum +
-                    Number(
-                        item.quantity
-                    );
+            return sum +  
+                Number(  
+                    item.quantity  
+                );  
 
-            },
-            0
-        );
+        },  
+        0  
+    );  
 
 
-    const total =
-        cart.reduce(
-            function (sum, item) {
+const total =  
+    cart.reduce(  
+        function (sum, item) {  
 
-                return sum +
-                    (
-                        Number(item.price) *
-                        Number(item.quantity)
-                    );
+            return sum +  
+                (  
+                    Number(item.price) *  
+                    Number(item.quantity)  
+                );  
 
-            },
-            0
-        );
+        },  
+        0  
+    );  
 
 
-    if (cartCount) {
+if (cartCount) {  
 
-        cartCount.textContent =
-            totalQuantity;
+    cartCount.textContent =  
+        totalQuantity;  
 
-        cartCount.style.display =
-            totalQuantity > 0
-                ? "flex"
-                : "none";
+    cartCount.style.display =  
+        totalQuantity > 0  
+            ? "flex"  
+            : "none";  
 
-    }
+}  
 
 
-    if (cartTotal) {
+if (cartTotal) {  
 
-        cartTotal.textContent =
-            `${formatPrice(total)} FCFA`;
+    cartTotal.textContent =  
+        `${formatPrice(total)} FCFA`;  
 
-    }
+}  
 
 
-    if (!cart.length) {
+if (!cart.length) {  
 
-        if (cartItems) {
+    if (cartItems) {  
 
-            cartItems.innerHTML =
-                "";
+        cartItems.innerHTML =  
+            "";  
 
-        }
+    }  
 
+    if (emptyCart) {  
 
-        if (emptyCart) {
+        emptyCart.classList.remove(  
+            "hidden"  
+        );  
 
-            emptyCart.classList.remove(
-                "hidden"
-            );
+        emptyCart.style.display =  
+            "block";  
 
-            emptyCart.style.display =
-                "block";
+    }  
 
-        }
+    if (checkout) {  
 
+        checkout.classList.add(  
+            "hidden"  
+        );  
 
-        if (checkout) {
+    }  
 
-            checkout.classList.add(
-                "hidden"
-            );
+    return;  
 
-        }
+}  
 
-        return;
 
-    }
+if (emptyCart) {  
 
+    emptyCart.classList.add(  
+        "hidden"  
+    );  
 
-    if (emptyCart) {
+    emptyCart.style.display =  
+        "none";  
 
-        emptyCart.classList.add(
-            "hidden"
-        );
+}  
 
-        emptyCart.style.display =
-            "none";
 
-    }
+if (checkout) {  
 
+    checkout.classList.remove(  
+        "hidden"  
+    );  
 
-    if (checkout) {
+}  
 
-        checkout.classList.remove(
-            "hidden"
-        );
 
-    }
+if (!cartItems) return;  
 
 
-    if (!cartItems) return;
+cartItems.innerHTML =  
+    cart.map(  
+        function (item) {  
 
+            return `  
 
-    cartItems.innerHTML =
-        cart.map(
-            function (item) {
+                <div class="cart-item">  
 
-                return `
+                    <img  
+                        src="${escapeHtml(  
+                            item.image  
+                        )}"  
+                        alt="${escapeHtml(  
+                            item.name  
+                        )}"  
+                        onerror="productImageError(this)"  
+                    >  
 
-                    <div class="cart-item">
+                    <div class="cart-item-info">  
 
-                        <img
-                            src="${escapeHtml(
-                                item.image
-                            )}"
-                            alt="${escapeHtml(
-                                item.name
-                            )}"
-                            onerror="productImageError(this)"
-                        >
+                        <h4>  
+                            ${escapeHtml(  
+                                item.name  
+                            )}  
+                        </h4>  
 
+                        <div  
+                            class="quantity-controls"  
+                        >  
 
-                        <div class="cart-item-info">
+                            <button  
+                                type="button"  
+                                onclick="changeQuantity(  
+                                    ${item.id},  
+                                    -1  
+                                )"  
+                            >  
+                                −  
+                            </button>  
 
-                            <h4>
-                                ${escapeHtml(
-                                    item.name
-                                )}
-                            </h4>
+                            <span>  
+                                ${item.quantity}  
+                            </span>  
 
+                            <button  
+                                type="button"  
+                                onclick="changeQuantity(  
+                                    ${item.id},  
+                                    1  
+                                )"  
+                            >  
+                                +  
+                            </button>  
 
-                            <strong>
-                                ${formatPrice(
-                                    item.price
-                                )} FCFA
-                            </strong>
+                        </div>  
 
+                        <button  
+                            type="button"  
+                            class="remove-cart-button"  
+                            onclick="removeFromCart(  
+                                ${item.id}  
+                            )"  
+                        >  
+                            Supprimer  
+                        </button>  
 
-                            <div
-                                class="quantity-controls"
-                            >
+                    </div>  
 
-                                <button
-                                    type="button"
-                                    onclick="changeQuantity(
-                                        ${item.id},
-                                        -1
-                                    )"
-                                >
-                                    −
-                                </button>
+                </div>  
 
+            `;  
 
-                                <span>
-                                    ${item.quantity}
-                                </span>
-
-
-                                <button
-                                    type="button"
-                                    onclick="changeQuantity(
-                                        ${item.id},
-                                        1
-                                    )"
-                                >
-                                    +
-                                </button>
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                class="remove-cart-button"
-                                onclick="removeFromCart(
-                                    ${item.id}
-                                )"
-                            >
-                                Supprimer
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            }
-        ).join("");
+        }  
+    ).join("");
 
 }
 
@@ -4793,40 +4779,39 @@ function updateCart() {
     const cartCount =
         document.getElementById("cartCount");
 
-    const cartTotal =
-        document.getElementById("cartTotal");
 
-    // Quantité totale
+    // =========================
+    // QUANTITÉ TOTALE
+    // =========================
+
     const totalQuantity =
         cart.reduce(
             (sum, item) =>
-                sum + item.quantity,
+                sum + Number(item.quantity),
             0
         );
 
-    // Prix total
-    const total =
-        cart.reduce(
-            (sum, item) =>
-                sum +
-                item.price *
-                item.quantity,
-            0
-        );
 
-    // Nombre d'articles
+    // =========================
+    // COMPTEUR DU PANIER
+    // =========================
+
     if (cartCount) {
+
         cartCount.textContent =
             totalQuantity;
+
+        cartCount.style.display =
+            totalQuantity > 0
+                ? "flex"
+                : "none";
     }
 
-    // Total du panier
-    if (cartTotal) {
-        cartTotal.textContent =
-            formatPrice(total);
-    }
 
-    // Panier vide
+    // =========================
+    // PANIER VIDE
+    // =========================
+
     if (!cart.length) {
 
         if (cartItems) {
@@ -4834,80 +4819,123 @@ function updateCart() {
         }
 
         if (emptyCart) {
-            emptyCart.classList.remove("hidden");
+
+            emptyCart.classList.remove(
+                "hidden"
+            );
+
+            emptyCart.style.display =
+                "block";
         }
 
         if (checkout) {
-            checkout.classList.add("hidden");
+
+            checkout.classList.add(
+                "hidden"
+            );
         }
 
         return;
     }
 
-    // Panier rempli
+
+    // =========================
+    // PANIER REMPLI
+    // =========================
+
     if (emptyCart) {
-        emptyCart.classList.add("hidden");
+
+        emptyCart.classList.add(
+            "hidden"
+        );
+
+        emptyCart.style.display =
+            "none";
     }
+
 
     if (checkout) {
-        checkout.classList.remove("hidden");
+
+        checkout.classList.remove(
+            "hidden"
+        );
     }
 
-    // Affichage des produits
-    if (cartItems) {
 
-        cartItems.innerHTML =
-            cart.map(item => `
+    // =========================
+    // PRODUITS DU PANIER
+    // =========================
 
-                <div class="cart-item">
+    if (!cartItems) return;
 
-                    <div class="cart-item-info">
 
-                        <h4 class="cart-item-name">
-                            ${escapeHtml(item.name)}
-                        </h4>
+    cartItems.innerHTML =
+        cart.map(
+            function (item) {
 
-                        <strong class="cart-item-price">
-                            ${formatPrice(item.price)}
-                            FCFA
-                        </strong>
+                return `
 
-                        <div class="quantity-controls">
+                    <div class="cart-item">
+
+                        <div class="cart-item-info">
+
+                            <h4 class="cart-item-name">
+                                ${escapeHtml(
+                                    item.name
+                                )}
+                            </h4>
+
+
+                            <div class="quantity-controls">
+
+                                <button
+                                    type="button"
+                                    onclick="changeQuantity(
+                                        ${item.id},
+                                        -1
+                                    )"
+                                >
+                                    −
+                                </button>
+
+
+                                <span>
+                                    ${item.quantity}
+                                </span>
+
+
+                                <button
+                                    type="button"
+                                    onclick="changeQuantity(
+                                        ${item.id},
+                                        1
+                                    )"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
 
                             <button
                                 type="button"
-                                onclick="changeQuantity(${item.id}, -1)"
+                                class="remove-button"
+                                onclick="removeFromCart(
+                                    ${item.id}
+                                )"
                             >
-                                −
-                            </button>
-
-                            <span>
-                                ${item.quantity}
-                            </span>
-
-                            <button
-                                type="button"
-                                onclick="changeQuantity(${item.id}, 1)"
-                            >
-                                +
+                                🗑️ Supprimer
                             </button>
 
                         </div>
 
-                        <button
-                            type="button"
-                            class="remove-button"
-                            onclick="removeFromCart(${item.id})"
-                        >
-                            🗑️ Supprimer
-                        </button>
-
                     </div>
 
-                </div>
+                `;
 
-            `).join("");
-    }
+            }
+        ).join("");
+
 }
 
 /* =========================================================
