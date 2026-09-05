@@ -274,111 +274,91 @@
             ========================== -->
 
             <div
-                id="checkout"
-                class="checkout hidden"
-            >
+    id="checkout"
+    class="checkout hidden"
+>
 
-                <div class="total-line">
-
-                    <span>
-                        Total
-                    </span>
-
-                    <strong>
-
-                        <span id="cartTotal">
-                            0
-                        </span>
-
-                        FCFA
-
-                    </strong>
-
-                </div>
+    <h3>
+        Livraison
+    </h3>
 
 
-                <h3>
-                    Livraison
-                </h3>
+    <label>
+
+        Nom complet
+
+        <input
+            id="customerName"
+            type="text"
+            placeholder="Ex : Pape Moussa"
+            autocomplete="name"
+        >
+
+    </label>
 
 
-                <label>
+    <label>
 
-                    Nom complet
+        Téléphone
 
-                    <input
-                        id="customerName"
-                        type="text"
-                        placeholder="Ex : Pape Moussa"
-                        autocomplete="name"
-                    >
+        <input
+            id="customerPhone"
+            type="tel"
+            placeholder="Ex : 77 000 00 00"
+            autocomplete="tel"
+        >
 
-                </label>
-
-
-                <label>
-
-                    Téléphone
-
-                    <input
-                        id="customerPhone"
-                        type="tel"
-                        placeholder="Ex : 77 000 00 00"
-                        autocomplete="tel"
-                    >
-
-                </label>
+    </label>
 
 
-                <label>
+    <label>
 
-                    Adresse
+        Adresse
 
-                    <textarea
-                        id="customerAddress"
-                        placeholder="Adresse de livraison"
-                    ></textarea>
+        <textarea
+            id="customerAddress"
+            placeholder="Adresse de livraison"
+        ></textarea>
 
-                </label>
-
-
-                <label>
-
-                    Mode de paiement
-
-                    <select id="paymentMethod">
-
-                        <option value="Wave">
-                            Wave
-                        </option>
-
-                        <option value="Orange Money">
-                            Orange Money
-                        </option>
-
-                        <option value="Paiement à la livraison">
-                            Paiement à la livraison
-                        </option>
-
-                    </select>
-
-                </label>
+    </label>
 
 
-                <button
-                    id="orderButton"
-                    class="order-button"
-                    type="button"
-                >
-                    Confirmer la commande
-                </button>
+    <label>
 
-            </div>
+        Mode de paiement
 
-        </aside>
+        <select id="paymentMethod">
 
-    </div>
+            <option value="Wave">
+                Wave
+            </option>
 
+            <option value="Orange Money">
+                Orange Money
+            </option>
+
+            <option value="Paiement à la livraison">
+                Paiement à la livraison
+            </option>
+
+        </select>
+
+    </label>
+
+
+    <button
+        id="orderButton"
+        class="order-button"
+        type="button"
+    >
+        Confirmer la commande
+    </button>
+
+</div>
+
+</aside>
+
+</div>
 
     <!-- =========================
          ADMINISTRATION
