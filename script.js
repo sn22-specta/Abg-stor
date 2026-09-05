@@ -3782,7 +3782,6 @@ ${productsMessage}
 
 Articles : ${totalQuantity}
 
-💳 Paiement : ${payment}
 
 ━━━━━━━━━━━━━━━━━━
 
