@@ -2,8 +2,7 @@
 
 /* =========================================================
    ABG STORE
-   Catalogue 2 000 produits
-   Sans catégorisation
+   Catalogue produits — version corrigée
    ========================================================= */
 
 const WHATSAPP_NUMBER = "221775673182"; // À REMPLACER
@@ -18,7 +17,7 @@ let currentPage = 1;
 let searchTerm = "";
 
 /* =========================================================
-   LISTE DES 2 000 PRODUITS
+   LISTE DES PRODUITS
    ========================================================= */
 
 const productNames = `
@@ -322,7 +321,6 @@ Chaînette de porte
 Entretoise de porte
 Cale-porte
 Béquille de fenêtre
-
 Poignée cuvette
 Poignée coquille
 Poignée de tirage
@@ -423,7 +421,6 @@ Aimant télescopique
 Lampe d'inspection rechargeable
 Pistolet à air
 Élingue textile
-
 Élingue câble acier
 Élingue chaîne
 Crochet à émerillon
@@ -524,7 +521,6 @@ Profilé de jonction
 Treillis de façade
 Trame en fibre de verre
 Bande à joint pour plaque de plâtre
-
 Plaque de plâtre standard
 Plaque de plâtre hydrofuge
 Plaque de plâtre ignifuge
@@ -625,7 +621,6 @@ Loquet à ressort
 Loquet à bille
 Targette à ressort
 Gâche électrique
-
 Rail porte-étiquette
 Porte-étiquette adhésif
 Porte-étiquette magnétique
@@ -726,7 +721,6 @@ Mousqueton agricole
 Chaîne d'attache animale
 Anneau d'attache
 Piquet d'attache
-
 Filet anti-insectes
 Filet de protection des cultures
 Toile de paillage
@@ -827,7 +821,6 @@ Bouton de commande
 Plaque signalétique machine
 Passe-fil caoutchouc
 Profilé caoutchouc de protection
-
 Porte-verre mural
 Porte-brosse à dents
 Distributeur de savon mural
@@ -928,7 +921,6 @@ Tuyau arrivée d'eau machine
 Tuyau évacuation machine
 Anti-bélier plomberie
 Pelle à grain
-
 Fourche à foin
 Râteau à feuilles
 Houe maraîchère
@@ -1029,7 +1021,6 @@ Cornière acier
 Profilé carré acier
 Profilé rectangulaire acier
 Tube carré acier
-
 Grignoteuse à tôle
 Pince à sertir hydraulique
 Pince à expansion
@@ -1049,7 +1040,7 @@ Testeur de tension sans contact
 Multimètre numérique
 Pince ampèremétrique
 Testeur de prise
-Détecteur de fuite d’eau
+Détecteur de fuite d'eau
 Mandrin auto-serrant
 Mandrin à clé
 Clé de mandrin
@@ -1061,14 +1052,14 @@ Douille longue
 Douille à choc
 Douille à bougie
 Coffret de douilles
-Coffret d’embouts
+Coffret d'embouts
 Porte-outils magnétique
 Aimant de récupération
 Organiseur mural
-Porte-clés d’atelier
-Tapis d’établi antidérapant
+Porte-clés d'atelier
+Tapis d'établi antidérapant
 Tapis de découpe
-Plaque de protection d’établi
+Plaque de protection d'établi
 Support de perceuse
 Pince à décoffrer
 Arrache-clou
@@ -1112,7 +1103,7 @@ Joint silicone coloré
 Nettoyant voile de ciment
 Radiateur électrique
 Convecteur électrique
-Thermostat d’ambiance
+Thermostat d'ambiance
 Programmateur de chauffage
 Robinet thermostatique
 Tête thermostatique
@@ -1128,9 +1119,8 @@ Détecteur CO
 Détecteur de fumée
 Extincteur à poudre
 Extincteur CO₂
-Support d’extincteur
-Housse d’extincteur
-
+Support d'extincteur
+Housse d'extincteur
 Coupe-tube PVC
 Coupe-tube multicouche
 Coupe-tube cuivre
@@ -1158,17 +1148,11 @@ Ventouse professionnelle
 Nettoyeur de canalisation manuel
 Grille de sol inox
 Grille de sol PVC
-Siphon de sol
 Siphon de machine à laver
 Siphon double évier
 Siphon gain de place
-Bonde clic-clac
 Bonde à grille
 Bonde panier
-Trop-plein d'évier
-Trop-plein lavabo
-Flexible de vidange
-Tube de vidange
 Manchon de réparation PVC
 Manchon coulissant PVC
 Bouchon de visite PVC
@@ -1191,11 +1175,9 @@ Cartouche bobinée
 Cartouche plissée
 Clé porte-filtre
 Régulateur de pression
-Manomètre hydraulique
 Pressostat eau
 Contrôleur de débit
 Débitmètre à eau
-Compteur d'eau
 Raccord diélectrique
 Raccord union laiton
 Raccord union inox
@@ -1204,7 +1186,6 @@ Raccord compression
 Raccord à olive
 Raccord instantané
 Raccord push-fit
-Raccord cannelé
 Raccord multicouche
 Raccord PER
 Raccord PEX
@@ -1231,7 +1212,6 @@ Bride taraudée
 Bride à collerette
 Joint de bride
 Kit de raccordement hydraulique
-
 Panneau solaire photovoltaïque
 Micro-onduleur solaire
 Onduleur solaire hybride
@@ -1260,7 +1240,6 @@ Batterie lithium solaire
 Boîtier batterie
 Moniteur de batterie
 Shunt batterie
-Coupe-batterie
 Fusible solaire
 Porte-fusible solaire
 Sectionneur DC
@@ -1268,10 +1247,9 @@ Interrupteur DC
 Connecteur batterie
 Cosse batterie cuivre
 Câble batterie
-Chargeur de batterie
 Convertisseur 12/24 V
 Convertisseur 24/230 V
-Transformateur d’isolement
+Transformateur d'isolement
 Stabilisateur de tension
 Parasurtenseur domestique
 Bloc parafoudre multiprise
@@ -1301,7 +1279,7 @@ Répartiteur coaxial
 Connecteur coaxial F
 Connecteur coaxial BNC
 Prise antenne TV
-Amplificateur d’antenne
+Amplificateur d'antenne
 Répartiteur TV
 Câble coaxial
 Gaine annelée télécom
@@ -1318,10 +1296,9 @@ Kit mise à la terre rack
 Goulotte réseau
 Gaine textile câble
 Spirale range-câble
-Passe-fil caoutchouc
 Passe-câble métallique
 Étiquette de câble
-Imprimante d’étiquettes câbles
+Imprimante d'étiquettes câbles
 Repère de fil
 Numéro de fil
 Manchon thermorétractable
@@ -1332,10 +1309,7 @@ Ruban auto-amalgamant
 Ruban isolant haute tension
 Ruban aluminium adhésif
 Ruban cuivre adhésif
-
-Charnière invisible meuble
 Charnière piano inox
-Charnière à ressort
 Charnière à double action
 Charnière de portail
 Charnière réglable portail
@@ -1353,39 +1327,27 @@ Ferme-porte à compas
 Ferme-porte encastrable
 Ferme-portail hydraulique
 Sélecteur de fermeture
-Serrure à crochet
-Serrure à larder
 Serrure à appliquer
 Serrure à rouleau
 Serrure multipoint
 Serrure électrique
 Serrure magnétique
-Gâche électrique
 Gâche mécanique
 Cylindre demi
 Cylindre bouton
-Cylindre double entrée
 Cylindre à bouton moleté
 Cylindre européen
 Cylindre rond
 Cylindre haute sécurité
 Rosace de sécurité
-Plaque de propreté
-Plaque de poussée
-Poignée cuvette
-Poignée coquille
 Poignée bouton
 Poignée béquille
 Poignée palière
-Poignée de tirage
 Poignée de fenêtre
 Crémone de fenêtre
 Espagnolette
-Verrou de fenêtre
 Compas de fenêtre
 Loqueteau à bille
-Loqueteau magnétique
-Loquet à ressort
 Targette à plat
 Targette verticale
 Verrou à bouton
@@ -1399,7 +1361,6 @@ Barre de sécurité
 Barre anti-panique
 Judas optique
 Judas numérique
-Chaînette de porte
 Entretoise de poignée
 Carré de poignée
 Rosace ronde
@@ -1413,30 +1374,25 @@ Kit serrure portail
 Kit poignée porte
 Kit cylindre serrure
 Kit réparation serrure
-Lubrifiant serrure
 Nettoyant serrure
 Clé vierge profil européen
 Clé vierge à gorge
 Clé vierge automobile
-Boîte à clés murale
 Coffret à clés
 Armoire à clés
 Porte-clés numéroté
 Étiquette porte-clés
-Crochet mural double
 Crochet mural triple
 Patère simple
 Patère double
 Patère rabattable
-Console d’étagère lourde
+Console d'étagère lourde
 Équerre renforcée
 Équerre décorative
 Support de tablette invisible
-Crémaillère d’étagère
-
-Rail d’étagère
+Crémaillère d'étagère
+Rail d'étagère
 Console réglable
-Taquet d’étagère
 Taquet métallique
 Taquet plastique
 Insert fileté bois
@@ -1444,14 +1400,11 @@ Insert fileté bois
 Écrou à griffes
 Douille filetée bois
 Vis confirmat
-Vis d’assemblage meuble
 Boulon de meuble
-Tourillon bois
 Tourillon cannelé
-Lamelle d’assemblage
+Lamelle d'assemblage
 Connecteur excentrique
-Excentrique de meuble
-Goujon d’assemblage
+Goujon d'assemblage
 Patin feutre rond
 Patin feutre carré
 Patin glisseur
@@ -1462,13 +1415,9 @@ Roulette double
 Roulette à platine
 Roulette à tige
 Rouleau de meuble
-Pied réglable
 Pied métallique meuble
 Pied plastique meuble
 Pied inclinable
-Vérin de meuble
-Vérin à gaz
-Compas de meuble
 Compas à friction
 Charnière de meuble 90°
 Charnière de meuble 110°
@@ -1477,25 +1426,19 @@ Charnière à fermeture automatique
 Charnière verre-verre
 Charnière verre-bois
 Support tablette verre
-Pince à verre
 Profilé porte-verre
-Joint de vitrage
 Joint EPDM vitrage
-Cale de vitrage
 Ventouse double
 Ventouse triple
 Coupe-verre diamant
 Coupe-verre à molette
 Pince à gruger verre
-Pince à verre
 Pierre à affûter verre
-Mastic vitrier
 Couteau à mastic
 Spatule vitrier
 Ruban de vitrage
 Profilé aluminium vitrage
 Profilé PVC vitrage
-Parclose aluminium
 Parclose PVC
 Joint parclose
 Mousse de vitrage
@@ -1515,18 +1458,12 @@ Ressort moustiquaire
 Kit moustiquaire fenêtre
 Kit moustiquaire porte
 Rail rideau
-Tringle à rideau
-Support de tringle
-Embout de tringle
-Anneau de rideau
-Crochet de rideau
-Roulette de rideau
 Cordon de store
 Chaînette de store
 Mécanisme de store
 Support de store
 Embout de store
-Tube d’enroulement store
+Tube d'enroulement store
 Treuil de volet
 Manivelle de volet
 Attache tablier volet
@@ -1534,8 +1471,6 @@ Verrou automatique volet
 Butée de volet
 Sangle de volet
 Enrouleur de sangle
-
-Échelle télescopique
 Échelle articulée
 Escabeau professionnel
 Marchepied pliant
@@ -1543,17 +1478,17 @@ Plateforme roulante
 Plateforme individuelle
 Échafaudage roulant
 Échafaudage pliant
-Roue d’échafaudage
-Stabilisateur d’échafaudage
-Vérin d’échafaudage
-Collier d’échafaudage
-Rosette d’échafaudage
-Plancher d’échafaudage
-Garde-corps d’échafaudage
+Roue d'échafaudage
+Stabilisateur d'échafaudage
+Vérin d'échafaudage
+Collier d'échafaudage
+Rosette d'échafaudage
+Plancher d'échafaudage
+Garde-corps d'échafaudage
 Échelle de toit
-Crochet d’échelle
-Pied d’échelle antidérapant
-Sangle d’échelle
+Crochet d'échelle
+Pied d'échelle antidérapant
+Sangle d'échelle
 Porte-échelle mural
 Diable pliant
 Diable à bavette
@@ -1572,13 +1507,11 @@ Roue pneumatique
 Roue increvable
 Galet de manutention
 Rouleau transporteur
-Sangle d’arrimage
 Tendeur à cliquet
-Crochet d’arrimage
-Anneau d’arrimage
-Filet d’arrimage
-Corde d’arrimage
-Tendeur élastique
+Crochet d'arrimage
+Anneau d'arrimage
+Filet d'arrimage
+Corde d'arrimage
 Sandow à crochet
 Sandow plat
 Sangle à boucle
@@ -1592,16 +1525,13 @@ Caisse plastique empilable
 Caisse métallique
 Coffre de chantier
 Coffre métallique
-Armoire métallique
 Vestiaire métallique
-Étagère métallique
 Étagère galvanisée
 Étagère modulable
 Étagère à pneus
 Étagère lourde
 Étagère à bacs
 Panneau perforé atelier
-Crochet panneau perforé
 Support tournevis mural
 Support clés plates
 Support pinces
@@ -1616,26 +1546,23 @@ Support aérosols
 Bac à outils
 Plateau magnétique
 Plateau de rangement
-Servante d’atelier
+Servante d'atelier
 Établi pliant
 Établi métallique
 Établi bois
-Étau d’établi
 Étau de machine
 Étau à mors doux
 Mors de rechange étau
-Enclume d’atelier
-Bloc d’étau
-Plateau tournant d’établi
-Lampe d’établi
-Loupe d’établi
+Enclume d'atelier
+Bloc d'étau
+Plateau tournant d'établi
+Lampe d'établi
+Loupe d'établi
 Tapis magnétique
 Bac de récupération huile
 Entonnoir industriel
 Pompe manuelle de transfert
-Jerrican homologué
 Bidon de stockage
-
 Marteau de couvreur
 Marteau de charpentier
 Maillet nylon
@@ -1645,7 +1572,6 @@ Massette sans rebond
 Massette à manche fibre
 Burin large
 Burin pointu
-Burin plat
 Pointeau automatique
 Pointeau de précision
 Chasse-goupille
@@ -1660,7 +1586,6 @@ Râpe à bois plate
 Râpe à bois ronde
 Râpe demi-ronde
 Râpe de précision
-Grattoir triangulaire
 Grattoir carbure
 Grattoir peinture
 Racloir de sol
@@ -1714,13 +1639,7 @@ Foret SDS long
 Burin SDS plat
 Burin SDS pointu
 Burin SDS large
-Fraise à chanfreiner
 Fraise à lamer
-Fraise à rainurer
-Fraise cylindrique
-Fraise conique
-Fraise boule
-Fraise rotative carbure
 Meule sur tige
 Roue à lamelles
 Brosse sur tige
@@ -1736,7 +1655,6 @@ Disque diamant marbre
 Disque diamant granit
 Disque diamant coupe à sec
 Disque diamant coupe à eau
-
 Brosse métallique ronde
 Brosse métallique boisseau
 Brosse métallique pinceau
@@ -1768,8 +1686,6 @@ Brosse radiateur
 Brosse cheminée
 Brosse barbecue
 Balayette industrielle
-Balai cantonnier
-Balai coco
 Balai nylon dur
 Balai à pousser
 Raclette de sol mousse
@@ -1786,58 +1702,41 @@ Houe de chantier
 Houe agricole
 Serfouette
 Binette
-Griffe de jardin
-Fourche à fumier
-Fourche à foin
 Fourche à bêcher
 Râteau métallique
 Râteau plastique
-Rateau à feuilles
 Croc de jardin
 Sécateur à enclume
 Sécateur à lame franche
 Ébrancheur
-Scie d’élagage
-Scie arboricole
-Taille-haie manuel
 Cisaille à haies
 Cisaille à gazon
-Coupe-branches
-Coupe-tuyau d’arrosage
+Coupe-tuyau d'arrosage
 Dévidoir de tuyau
 Enrouleur de tuyau
-Pistolet d’arrosage
-Lance d’arrosage
 Tuyau microporeux
-Tuyau d’arrosage renforcé
-Tuyau spiralé d’arrosage
+Tuyau d'arrosage renforcé
+Tuyau spiralé d'arrosage
 Raccord rapide femelle
 Raccord rapide mâle
-Nez de robinet
-Répartiteur d’arrosage
-Programmateur d’arrosage
-Minuteur d’arrosage
+Répartiteur d'arrosage
+Minuteur d'arrosage
 Asperseur rotatif
 Asperseur oscillant
 Asperseur escamotable
-Micro-asperseur
 Brumisateur de jardin
-Goutteur réglable
-Goutteur autorégulant
 Ligne goutte-à-goutte
-Filtre d’irrigation à disque
-Filtre d’irrigation à tamis
-Injecteur d’engrais
-Venturi d’irrigation
-Vanne d’irrigation
-Électrovanne d’arrosage
+Filtre d'irrigation à disque
+Filtre d'irrigation à tamis
+Injecteur d'engrais
+Venturi d'irrigation
+Électrovanne d'arrosage
 Coffret irrigation
 Tuyau PE irrigation
 Raccord PE à compression
 Bouchon fin de ligne
-Purgeur d’irrigation
+Purgeur d'irrigation
 Manomètre irrigation
-
 Électrode rutile 2,0 mm
 Électrode rutile 2,5 mm
 Électrode rutile 3,2 mm
@@ -1851,19 +1750,12 @@ Fil MIG inox
 Fil MIG aluminium
 Fil fourré soudage
 Bobine fil soudage
-Buse MIG
-Diffuseur MIG
 Tube contact MIG
 Galet entraîneur MIG
 Gaine torche MIG
 Torche MIG
-Torche TIG
-Électrode tungstène
-Pince porte-électrode
-Pince de masse soudage
-Câble de soudage
+Métal d'apport TIG
 Connecteur DINSE
-Détendeur argon
 Débitmètre argon
 Tuyau gaz soudage
 Anti-retour gaz
@@ -1875,9 +1767,7 @@ Flux de brasage
 Décapant cuivre
 Pâte décapante soudage
 Brosse inox soudage
-Marteau à piquer
 Brosse à souder
-Écran de soudage
 Masque automatique soudage
 Verre de soudage
 Porte-verre masque
@@ -1886,8 +1776,6 @@ Manchettes soudage
 Tablier cuir soudage
 Guêtres soudage
 Couverture anti-projection
-Rideau de soudage
-Aimant de soudage
 Équerre magnétique soudage
 Pince de positionnement soudage
 Serre-joint de soudage
@@ -1897,7 +1785,7 @@ Support de torche
 Brosse de décapage inox
 Disque à lamelles soudage
 Disque décapage soudure
-Meule d’affûtage
+Meule d'affûtage
 Meule verte carbure
 Meule blanche affûtage
 Meule boisseau
@@ -1914,31 +1802,24 @@ Spray de coupe
 Pâte de coupe
 Lubrifiant taraudage
 Taraud machine
-Taraud manuel
 Filière ronde
-Porte-filière
-Porte-taraud
 Tourne-à-gauche
 Extracteur de goujon
-Extracteur de vis cassée
-Jeu d’extracteurs
+Jeu d'extracteurs
 Pointeau de centrage
 Centreur de perçage
 Guide de perçage
 Gabarit de perçage
-Gabarit d’assemblage
-Rapporteur d’angle
-Jauge d’épaisseur
+Gabarit d'assemblage
+Rapporteur d'angle
+Jauge d'épaisseur
 Jauge de filetage
 Jauge de rayon
-Pied à coulisse digital
 Pied à coulisse inox
-Micromètre extérieur
 Micromètre intérieur
 Comparateur mécanique
 Base magnétique comparateur
 Trusquin de mécanicien
-
 Niveau laser rotatif
 Niveau laser lignes
 Récepteur laser
@@ -1958,7 +1839,7 @@ Luxmètre
 Sonomètre
 Tachymètre laser
 Endoscope caméra
-Caméra d’inspection
+Caméra d'inspection
 Pompe à vide manuelle
 Pompe à vide électrique
 Vacuomètre
@@ -1980,8 +1861,6 @@ Pompe de relevage condensats
 Bac condensats
 Ruban isolant frigorifique
 Mousse isolante climatisation
-Support mural climatiseur
-Silentbloc climatiseur
 Pied support groupe extérieur
 Cache-goulotte climatisation
 Goulotte climatisation
@@ -1992,8 +1871,6 @@ Embout goulotte
 Grille de ventilation ronde
 Grille de ventilation carrée
 Grille réglable
-Bouche d'extraction
-Bouche d'insufflation
 Clapet coupe-feu
 Clapet anti-retour ventilation
 Registre de ventilation
@@ -2001,7 +1878,6 @@ Manchette souple ventilation
 Gaine flexible aluminium
 Gaine flexible PVC
 Gaine isolée ventilation
-Collier de gaine
 Bande perforée ventilation
 Silentbloc ventilateur
 Extracteur mural
@@ -2010,7 +1886,6 @@ Extracteur industriel
 Ventilateur axial
 Ventilateur centrifuge
 Ventilateur de gaine
-Ventilateur de plafond
 Hélice ventilateur
 Grille de protection ventilateur
 Moteur ventilateur
@@ -2026,8 +1901,7 @@ Préfiltre mousse
 Filtre métallique lavable
 Cadre filtre ventilation
 Joint filtre
-Ruban aluminium HVAC
-Mastic d’étanchéité ventilation
+Mastic d'étanchéité ventilation
 Colle isolant thermique
 Bande isolante thermique
 Plaque isolante thermique
@@ -2042,2216 +1916,77 @@ Kit installation climatisation
 `.trim();
 
 /* =========================================================
-   CRÉATION DES PRODUITS
+   UTILITAIRES TEXTE
    ========================================================= */
 
-function createProducts() {
-
-    const names = productNames
-        .split("\n")
-        .map(name => name.trim())
-        .filter(name => name.length > 0);
-
-    products = names.map((name, index) => ({
-        id: index + 1,
-        name: name,
-        price: generatePrice(index, name)
-    }));
-
-    console.log(
-        "ABG STORE :",
-        products.length,
-        "produits chargés"
-    );
-
-    localStorage.setItem(
-        "abg_products_v5",
-        JSON.stringify(products)
-    );
+function stripAccents(str) {
+    return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 }
-
 
 /* =========================================================
    PRIX AUTOMATIQUES
    ========================================================= */
 
 function generatePrice(index, name) {
+    const n = stripAccents(name);
 
-    const n = name
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-
-    if (
-        n.includes("vis") ||
-        n.includes("rondelle") ||
-        n.includes("ecrou") ||
-        n.includes("cheville") ||
-        n.includes("rivet")
-    ) {
+    if (n.includes("vis") || n.includes("rondelle") || n.includes("ecrou") || n.includes("cheville") || n.includes("rivet")) {
         return 100 + ((index * 37) % 1900);
     }
-
-    if (
-        n.includes("marteau") ||
-        n.includes("pince") ||
-        n.includes("tournevis") ||
-        n.includes("cle ") ||
-        n.includes("scie")
-    ) {
+    if (n.includes("marteau") || n.includes("pince") || n.includes("tournevis") || n.includes("cle ") || n.includes("scie")) {
         return 1500 + ((index * 113) % 13500);
     }
-
-    if (
-        n.includes("pompe") ||
-        n.includes("moteur") ||
-        n.includes("poste") ||
-        n.includes("compresseur") ||
-        n.includes("echelle")
-    ) {
+    if (n.includes("pompe") || n.includes("moteur") || n.includes("poste") || n.includes("compresseur") || n.includes("echelle")) {
         return 15000 + ((index * 733) % 185000);
     }
-
-    if (
-        n.includes("perceuse") ||
-        n.includes("meuleuse") ||
-        n.includes("ponceuse") ||
-        n.includes("souffleur")
-    ) {
+    if (n.includes("perceuse") || n.includes("meuleuse") || n.includes("ponceuse") || n.includes("souffleur")) {
         return 15000 + ((index * 521) % 150000);
     }
-
-    if (
-        n.includes("serrure") ||
-        n.includes("cadenas") ||
-        n.includes("poignee")
-    ) {
+    if (n.includes("serrure") || n.includes("cadenas") || n.includes("poignee")) {
         return 2500 + ((index * 83) % 30000);
     }
-
-    if (
-        n.includes("robinet") ||
-        n.includes("raccord") ||
-        n.includes("vanne") ||
-        n.includes("tuyau")
-    ) {
+    if (n.includes("robinet") || n.includes("raccord") || n.includes("vanne") || n.includes("tuyau")) {
         return 1000 + ((index * 71) % 30000);
     }
-
-    if (
-        n.includes("cable") ||
-        n.includes("interrupteur") ||
-        n.includes("prise") ||
-        n.includes("disjoncteur") ||
-        n.includes("electrique")
-    ) {
+    if (n.includes("cable") || n.includes("interrupteur") || n.includes("prise") || n.includes("disjoncteur") || n.includes("electrique")) {
         return 1000 + ((index * 97) % 50000);
     }
-
-    if (
-        n.includes("peinture") ||
-        n.includes("silicone") ||
-        n.includes("colle") ||
-        n.includes("mastic") ||
-        n.includes("enduit")
-    ) {
+    if (n.includes("peinture") || n.includes("silicone") || n.includes("colle") || n.includes("mastic") || n.includes("enduit")) {
         return 1500 + ((index * 107) % 35000);
     }
 
     return 1000 + ((index * 97) % 29000);
 }
 
-
 /* =========================================================
-   PHOTOS PRODUITS
+   CRÉATION DES PRODUITS
    ========================================================= */
 
-function getRealProductImage(name, id) {
-
-    const n = name
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-
-    let tags = "hardware,tools";
-
-    if (
-        n.includes("vis") ||
-        n.includes("boulon") ||
-        n.includes("ecrou") ||
-        n.includes("rondelle") ||
-        n.includes("rivet")
-    ) {
-        tags = "screws,bolts,hardware";
-    }
-
-    else if (
-        n.includes("marteau") ||
-        n.includes("massette") ||
-        n.includes("burin")
-    ) {
-        tags = "hammer,handtools";
-    }
-
-    else if (
-        n.includes("tournevis") ||
-        n.includes("pince") ||
-        n.includes("cle ") ||
-        n.includes("cutter")
-    ) {
-        tags = "handtools,workshop";
-    }
-
-    else if (
-        n.includes("tube") ||
-        n.includes("raccord") ||
-        n.includes("coude") ||
-        n.includes("vanne") ||
-        n.includes("robinet") ||
-        n.includes("siphon")
-    ) {
-        tags = "plumbing,pipes";
-    }
-
-    else if (
-        n.includes("cable") ||
-        n.includes("fil electrique") ||
-        n.includes("disjoncteur") ||
-        n.includes("interrupteur") ||
-        n.includes("prise") ||
-        n.includes("ampoule") ||
-        n.includes("led")
-    ) {
-        tags = "electrical,electrician";
-    }
-
-    else if (
-        n.includes("peinture") ||
-        n.includes("enduit") ||
-        n.includes("mastic") ||
-        n.includes("silicone") ||
-        n.includes("colle")
-    ) {
-        tags = "paint,construction";
-    }
-
-    else if (
-        n.includes("soudage") ||
-        n.includes("soudure") ||
-        n.includes("electrode") ||
-        n.includes("torche mig") ||
-        n.includes("torche tig")
-    ) {
-        tags = "welding,weldingmachine";
-    }
-
-    else if (
-        n.includes("jardin") ||
-        n.includes("arrosage") ||
-        n.includes("irrigation") ||
-        n.includes("secateur") ||
-        n.includes("rateau") ||
-        n.includes("pelle")
-    ) {
-        tags = "gardening,gardentools";
-    }
-
-    else if (
-        n.includes("agricole") ||
-        n.includes("agriculture") ||
-        n.includes("serre") ||
-        n.includes("culture")
-    ) {
-        tags = "agriculture,farming";
-    }
-
-    else if (
-        n.includes("automobile") ||
-        n.includes("moteur") ||
-        n.includes("pneu") ||
-        n.includes("frein") ||
-        n.includes("radiateur")
-    ) {
-        tags = "automotive,mechanic";
-    }
-
-    else if (
-        n.includes("solaire") ||
-        n.includes("photovoltaique") ||
-        n.includes("panneau solaire")
-    ) {
-        tags = "solar,panel";
-    }
-
-    else if (
-        n.includes("climatisation") ||
-        n.includes("climatiseur") ||
-        n.includes("ventilation") ||
-        n.includes("ventilateur")
-    ) {
-        tags = "hvac,ventilation";
-    }
-
-    else if (
-        n.includes("meuble") ||
-        n.includes("charniere") ||
-        n.includes("poignee") ||
-        n.includes("tiroir")
-    ) {
-        tags = "furniture,hardware";
-    }
-
-    else if (
-        n.includes("toiture") ||
-        n.includes("tuile") ||
-        n.includes("gouttiere")
-    ) {
-        tags = "roofing,construction";
-    }
-
-    else if (
-        n.includes("echelle") ||
-        n.includes("echafaudage") ||
-        n.includes("chantier")
-    ) {
-        tags = "construction,worksite";
-    }
-
-    else if (
-        n.includes("transformateur") ||
-        n.includes("batterie")
-    ) {
-        tags = "electrical,equipment";
-    }
-
-    const encodedTags =
-        encodeURIComponent(tags);
-
-    return `https://loremflickr.com/700/500/${encodedTags}?lock=${id}`;
-}
-
-
-/* =========================================================
-   INITIALISATION
-   ========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        createProducts();
-
-        loadCart();
-
-        hideCategoryFilter();
-
-        setupButtons();
-
-        updateCart();
-
-        renderProducts();
-
-        updateWhatsApp();
-
-    }
-);
-
-
-/* =========================================================
-   CACHER CATÉGORIE
-   ========================================================= */
-
-function hideCategoryFilter() {
-
-    const filter =
-        document.getElementById(
-            "categoryFilter"
-        );
-
-    if (filter) {
-
-        filter.style.display = "none";
-
-        filter.value = "";
-
-    }
-}
-
-
-/* =========================================================
-   BOUTONS
-   ========================================================= */
-
-function setupButtons() {
-
-    const catalogButton =
-        document.getElementById("catalogButton");
-
-    const cartButton =
-        document.getElementById("cartButton");
-
-    const closeCart =
-        document.getElementById("closeCart");
-
-    const cartOverlay =
-        document.getElementById("cartOverlay");
-
-    const adminButton =
-        document.getElementById("adminButton");
-
-    const closeAdmin =
-        document.getElementById("closeAdmin");
-
-    const loginButton =
-        document.getElementById("loginButton");
-
-    const orderButton =
-        document.getElementById("orderButton");
-
-    const whatsappButton =
-        document.getElementById("whatsappButton");
-
-    const searchInput =
-        document.getElementById("searchInput");
-
-
-    /* =========================
-       CATALOGUE
-    ========================== */
-
-    if (catalogButton) {
-
-        catalogButton.addEventListener(
-            "click",
-            () => {
-
-                const catalog =
-                    document.getElementById("catalog");
-
-                if (catalog) {
-
-                    catalog.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =========================
-       PANIER
-    ========================== */
-
-    if (cartButton) {
-
-        cartButton.addEventListener(
-            "click",
-            openCart
-        );
-
-    }
-
-    if (closeCart) {
-
-        closeCart.addEventListener(
-            "click",
-            closeCartPanel
-        );
-
-    }
-
-    if (cartOverlay) {
-
-        cartOverlay.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target === cartOverlay
-                ) {
-
-                    closeCartPanel();
-
-                }
-
-            }
-        );
-
-    }
-
-
-    /* =========================
-       ADMIN
-    ========================== */
-
-    if (adminButton) {
-
-        adminButton.addEventListener(
-            "click",
-            openAdmin
-        );
-
-    }
-
-    if (closeAdmin) {
-
-        closeAdmin.addEventListener(
-            "click",
-            closeAdminModal
-        );
-
-    }
-
-    if (loginButton) {
-
-        loginButton.addEventListener(
-            "click",
-            loginAdmin
-        );
-
-    }
-
-
-    /* =========================
-       COMMANDE
-    ========================== */
-
-    if (orderButton) {
-
-        orderButton.addEventListener(
-            "click",
-            confirmOrder
-        );
-
-    }
-
-
-    /* =========================
-       WHATSAPP PRINCIPAL
-    ========================== */
-
-    if (whatsappButton) {
-
-        const whatsappMessage =
-            "Bonjour ABG Store 👋 Je souhaite avoir des informations sur vos produits.";
-
-        whatsappButton.href =
-            `https://wa.me/${WHATSAPP_NUMBER}?text=${
-                encodeURIComponent(whatsappMessage)
-            }`;
-
-        whatsappButton.target =
-            "_blank";
-
-        whatsappButton.rel =
-            "noopener noreferrer";
-
-    }
-
-
-    /* =========================
-       RECHERCHE
-    ========================== */
-
-    if (searchInput) {
-
-        searchInput.addEventListener(
-            "input",
-            event => {
-
-                searchTerm =
-                    event.target.value
-                        .trim()
-                        .toLowerCase();
-
-                currentPage = 1;
-
-                renderProducts();
-
-            }
-        );
-
-    }
-
-
-    /* =========================
-       TOUCHE ÉCHAP
-    ========================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key === "Escape") {
-
-                closeCartPanel();
-
-                closeAdminModal();
-
-            }
-
-        }
-    );
-
-}
-
-/* =========================================================
-   RECHERCHE
-   ========================================================= */
-
-function getFilteredProducts() {
-
-    if (!searchTerm) {
-
-        return products;
-
-    }
-
-    return products.filter(
-        function (product) {
-
-            return product.name
-                .toLowerCase()
-                .includes(searchTerm);
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   AFFICHAGE PRODUITS
-   ========================================================= */
-
-function renderProducts() {
-
-    const grid =
-        document.getElementById(
-            "productsGrid"
-        );
-
-    const noProducts =
-        document.getElementById(
-            "noProducts"
-        );
-
-    const productCount =
-        document.getElementById(
-            "productCount"
-        );
-
-    if (!grid) return;
-
-
-    const oldPagination =
-        document.querySelector(
-            ".products-pagination"
-        );
-
-    if (oldPagination) {
-
-        oldPagination.remove();
-
-    }
-
-
-    const filtered =
-        getFilteredProducts();
-
-
-    if (productCount) {
-
-        productCount.textContent =
-            `${filtered.length} produit${
-                filtered.length > 1
-                    ? "s"
-                    : ""
-            }`;
-
-    }
-
-
-    if (!filtered.length) {
-
-        grid.innerHTML = "";
-
-        if (noProducts) {
-
-            noProducts.classList.remove(
-                "hidden"
-            );
-
-            noProducts.style.display =
-                "block";
-
-        }
-
-        return;
-
-    }
-
-
-    if (noProducts) {
-
-        noProducts.classList.add(
-            "hidden"
-        );
-
-        noProducts.style.display =
-            "none";
-
-    }
-
-
-    const totalPages =
-        Math.max(
-            1,
-            Math.ceil(
-                filtered.length /
-                PRODUCTS_PER_PAGE
-            )
-        );
-
-
-    if (currentPage > totalPages) {
-
-        currentPage =
-            totalPages;
-
-    }
-
-
-    const start =
-        (currentPage - 1) *
-        PRODUCTS_PER_PAGE;
-
-
-    const visible =
-        filtered.slice(
-            start,
-            start + PRODUCTS_PER_PAGE
-        );
-
-
-    grid.innerHTML =
-        visible
-            .map(createProductCard)
-            .join("");
-
-
-    createPagination(
-        totalPages
-    );
-
-}
-
-
-/* =========================================================
-   CARTE PRODUIT
-   ========================================================= */
-
-function createProductCard(product) {
-
-    const safeName =
-        escapeHtml(product.name);
-
-    return `
-        <article class="product-card">
-
-            <div class="product-image-wrapper">
-
-                <div class="product-image-placeholder">
-                    ${safeName}
-                </div>
-
-            </div>
-
-            <div class="product-info">
-
-                <h3 class="product-title">
-                    ${safeName}
-                </h3>
-
-                <div class="product-actions">
-
-                    <button
-                        type="button"
-                        class="preview-btn"
-                        onclick="searchProductImage(
-                            '${encodeURIComponent(product.name)}'
-                        )"
-                    >
-                        👁️ Aperçu
-                    </button>
-
-                    <button
-                        type="button"
-                        class="add-to-cart-btn"
-                        onclick="addToCart(${product.id})"
-                    >
-                        🛒 Ajouter au panier
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-    `;
-}
-
-
-function searchProductImage(productName) {
-
-    const url =
-        "https://www.google.com/search?tbm=isch&q=" +
-        productName;
-
-    window.open(
-        url,
-        "_blank"
-    );
-}
-
-/* =========================================================
-   ERREUR IMAGE
-   ========================================================= */
-
-function productImageError(img) {
-
-    if (!img) return;
-
-    if (
-        img.dataset.fallback === "1"
-    ) {
+function createProducts() {
+    if (typeof productNames !== "string") {
+        console.error("ABG STORE : productNames est introuvable ou invalide.");
+        products = [];
         return;
     }
 
-    img.dataset.fallback = "1";
-
-    img.src =
-        "https://placehold.co/700x500?text=ABG+STORE";
-
-}
-
-
-/* =========================================================
-   PAGINATION
-   ========================================================= */
-
-function createPagination(totalPages) {
-
-    const grid =
-        document.getElementById(
-            "productsGrid"
-        );
-
-    if (
-        !grid ||
-        totalPages <= 1
-    ) {
-        return;
-    }
-
-
-    const pagination =
-        document.createElement(
-            "div"
-        );
-
-    pagination.className =
-        "products-pagination";
-
-
-    let html = "";
-
-
-    if (currentPage > 1) {
-
-        html += `
-
-            <button
-                type="button"
-                onclick="changePage(${
-                    currentPage - 1
-                })"
-            >
-                ← Précédent
-            </button>
-
-        `;
-
-    }
-
-
-    html += `
-
-        <span>
-            Page ${currentPage} / ${totalPages}
-        </span>
-
-    `;
-
-
-    if (
-        currentPage <
-        totalPages
-    ) {
-
-        html += `
-
-            <button
-                type="button"
-                onclick="changePage(${
-                    currentPage + 1
-                })"
-            >
-                Suivant →
-            </button>
-
-        `;
-
-    }
-
-
-    pagination.innerHTML =
-        html;
-
-
-    if (grid.parentNode) {
-
-        grid.parentNode.appendChild(
-            pagination
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   CHANGER DE PAGE
-   ========================================================= */
-
-function changePage(page) {
-
-    const filtered =
-        getFilteredProducts();
-
-    const totalPages =
-        Math.max(
-            1,
-            Math.ceil(
-                filtered.length /
-                PRODUCTS_PER_PAGE
-            )
-        );
-
-
-    currentPage =
-        Math.max(
-            1,
-            Math.min(
-                Number(page),
-                totalPages
-            )
-        );
-
-
-    renderProducts();
-
-
-    const catalog =
-        document.getElementById(
-            "catalog"
-        );
-
-    if (catalog) {
-
-        catalog.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    }
-
-}
-
-
-/* =========================================================
-   AJOUT PANIER
-   ========================================================= */
-
-function addToCart(productId) {
-
-    const id =
-        Number(productId);
-
-
-    const product =
-        products.find(
-            function (item) {
-
-                return item.id === id;
-
-            }
-        );
-
-
-    if (!product) {
-
-        console.error(
-            "Produit introuvable :",
-            id
-        );
-
-        return;
-
-    }
-
-
-    const existing =
-        cart.find(
-            function (item) {
-
-                return item.id === id;
-
-            }
-        );
-
-
-    if (existing) {
-
-        existing.quantity += 1;
-
-    } else {
-
-        cart.push({
-
-            id: product.id,
-
-            name: product.name,
-
-            price: product.price,
-
-            image: product.image,
-
-            quantity: 1
-
-        });
-
-    }
-
-
-    saveCart();
-
-    updateCart();
-
-    openCart();
-
-}
-
-
-/* =========================================================
-   SUPPRIMER DU PANIER
-   ========================================================= */
-
-function removeFromCart(productId) {
-
-    const id =
-        Number(productId);
-
-
-    cart =
-        cart.filter(
-            function (item) {
-
-                return item.id !== id;
-
-            }
-        );
-
-
-    saveCart();
-
-    updateCart();
-
-}
-
-
-/* =========================================================
-   MODIFIER QUANTITÉ
-   ========================================================= */
-
-function changeQuantity(
-    productId,
-    amount
-) {
-
-    const id =
-        Number(productId);
-
-
-    const item =
-        cart.find(
-            function (product) {
-
-                return product.id === id;
-
-            }
-        );
-
-
-    if (!item) return;
-
-
-    item.quantity +=
-        Number(amount);
-
-
-    if (item.quantity <= 0) {
-
-        removeFromCart(id);
-
-        return;
-
-    }
-
-
-    saveCart();
-
-    updateCart();
-
-}
-
-
-/* =========================================================
-   AFFICHAGE PANIER
-   ========================================================= */
-
-function updateCart() {
-
-    const cartItems =
-        document.getElementById("cartItems");
-
-    const emptyCart =
-        document.getElementById("emptyCart");
-
-    const checkout =
-        document.getElementById("checkout");
-
-    const cartCount =
-        document.getElementById("cartCount");
-
-
-    const totalQuantity =
-        cart.reduce(
-            function (sum, item) {
-
-                return sum +
-                    Number(item.quantity);
-
-            },
-            0
-        );
-
-
-    if (cartCount) {
-
-        cartCount.textContent =
-            totalQuantity;
-
-        cartCount.style.display =
-            totalQuantity > 0
-                ? "flex"
-                : "none";
-    }
-
-
-    if (!cart.length) {
-
-        if (cartItems) {
-
-            cartItems.innerHTML =
-                "";
-        }
-
-        if (emptyCart) {
-
-            emptyCart.classList.remove(
-                "hidden"
-            );
-
-            emptyCart.style.display =
-                "block";
-        }
-
-        if (checkout) {
-
-            checkout.classList.add(
-                "hidden"
-            );
-        }
-
-        return;
-    }
-
-
-    if (emptyCart) {
-
-        emptyCart.classList.add(
-            "hidden"
-        );
-
-        emptyCart.style.display =
-            "none";
-    }
-
-
-    if (checkout) {
-
-        checkout.classList.remove(
-            "hidden"
-        );
-    }
-
-
-    if (!cartItems) return;
-
-
-    cartItems.innerHTML =
-        cart.map(
-            function (item) {
-
-                return `
-
-                    <div class="cart-item">
-
-                        <img
-                            src="${escapeHtml(
-                                item.image
-                            )}"
-                            alt="${escapeHtml(
-                                item.name
-                            )}"
-                            onerror="productImageError(this)"
-                        >
-
-                        <div class="cart-item-info">
-
-                            <h4>
-                                ${escapeHtml(
-                                    item.name
-                                )}
-                            </h4>
-
-                            <div
-                                class="quantity-controls"
-                            >
-
-                                <button
-                                    type="button"
-                                    onclick="changeQuantity(
-                                        ${item.id},
-                                        -1
-                                    )"
-                                >
-                                    −
-                                </button>
-
-                                <span>
-                                    ${item.quantity}
-                                </span>
-
-                                <button
-                                    type="button"
-                                    onclick="changeQuantity(
-                                        ${item.id},
-                                        1
-                                    )"
-                                >
-                                    +
-                                </button>
-
-                            </div>
-
-                            <button
-                                type="button"
-                                class="remove-cart-button"
-                                onclick="removeFromCart(
-                                    ${item.id}
-                                )"
-                            >
-                                Supprimer
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            }
-        ).join("");
-}
-
-/* =========================================================
-   OUVRIR PANIER
-   ========================================================= */
-
-function openCart() {
-
-    const panel =
-        document.getElementById(
-            "cartPanel"
-        );
-
-    const overlay =
-        document.getElementById(
-            "cartOverlay"
-        );
-
-
-    if (overlay) {
-
-        overlay.classList.add(
-            "open"
-        );
-
-        overlay.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-    }
-
-
-    if (panel) {
-
-        panel.classList.add(
-            "open"
-        );
-
-        panel.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
-    }
-
-
-    document.body.classList.add(
-        "cart-open"
-    );
-
-}
-
-
-/* =========================================================
-   FERMER PANIER
-   ========================================================= */
-
-function closeCartPanel() {
-
-    const panel =
-        document.getElementById("cartPanel");
-
-    const overlay =
-        document.getElementById("cartOverlay");
-
-    if (panel) {
-
-        panel.classList.remove("active");
-
-        panel.setAttribute(
-            "aria-hidden",
-            "true"
-        );
-
-    }
-
-    if (overlay) {
-        overlay.classList.remove("active");
-    }
-}
-
-/* =========================================================
-   ADMIN
-   ========================================================= */
-
-function openAdmin() {
-
-    const modal =
-        document.getElementById(
-            "adminModal"
-        );
-
-    const username =
-        document.getElementById(
-            "adminUsername"
-        );
-
-
-    if (!modal) return;
-
-
-    modal.classList.add(
-        "open"
-    );
-
-    modal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-
-    if (username) {
-
-        setTimeout(
-            function () {
-
-                username.focus();
-
-            },
-            100
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   FERMER ADMIN
-   ========================================================= */
-
-function closeAdminModal() {
-
-    const modal =
-        document.getElementById(
-            "adminModal"
-        );
-
-
-    if (!modal) return;
-
-
-    modal.classList.remove(
-        "open"
-    );
-
-    modal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-}
-
-
-/* =========================================================
-   CONNEXION ADMIN
-   ========================================================= */
-
-function loginAdmin() {
-
-    const username =
-        document.getElementById(
-            "adminUsername"
-        );
-
-    const password =
-        document.getElementById(
-            "adminPassword"
-        );
-
-    const error =
-        document.getElementById(
-            "adminError"
-        );
-
-
-    if (
-        !username ||
-        !password
-    ) {
-        return;
-    }
-
-
-    if (
-        username.value.trim() ===
-            ADMIN_USERNAME &&
-        password.value ===
-            ADMIN_PASSWORD
-    ) {
-
-        localStorage.setItem(
-            "abg_admin_logged",
-            "true"
-        );
-
-
-        if (error) {
-
-            error.textContent =
-                "";
-
-        }
-
-
-        closeAdminModal();
-
-
-        alert(
-            "Connexion administrateur réussie."
-        );
-
-
-    } else {
-
-        if (error) {
-
-            error.textContent =
-                "Identifiant ou mot de passe incorrect.";
-
-        }
-
-    }
-
-}
-
-
-/* =========================================================
-   COMMANDE WHATSAPP
-   ========================================================= */
-
-function confirmOrder() {
-
-    if (!cart.length) {
-        alert("Votre panier est vide.");
-        return;
-    }
-
-    const name =
-        document.getElementById("customerName")?.value.trim() || "";
-
-    const phone =
-        document.getElementById("customerPhone")?.value.trim() || "";
-
-    const address =
-        document.getElementById("customerAddress")?.value.trim() || "";
-
-    const payment =
-        document.getElementById("paymentMethod")?.value ||
-        "Non précisé";
-
-
-    if (!name || !phone || !address) {
-
-        alert(
-            "Veuillez remplir votre nom, téléphone et adresse."
-        );
-
-        return;
-    }
-
-
-    const productsMessage =
-        cart.map(
-            function (item, index) {
-
-                return (
-                    `${index + 1}. ${item.name} x ${item.quantity}`
-                );
-
-            }
-        ).join("\n");
-
-
-    const message =
-`COMMANDE ABG STORE
-
-Nom : ${name}
-Téléphone : ${phone}
-Adresse : ${address}
-Paiement : ${payment}
-
-Produits :
-
-${productsMessage}
-
-Bonjour ABG Store.
-Je souhaite confirmer ma commande.`;
-
-
-    const encodedMessage =
-        encodeURIComponent(message);
-
-
-    const whatsappUrl =
-        `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedMessage}`;
-
-
-    window.open(
-        whatsappUrl,
-        "_blank"
-    );
-}
-
-    /* =========================
-       VÉRIFIER LE PANIER
-    ========================== */
-
-    if (!cart.length) {
-
-        alert(
-            "Votre panier est vide."
-        );
-
-        return;
-    }
-
-
-    /* =========================
-       RÉCUPÉRER LES INFORMATIONS
-    ========================== */
-
-    const nameInput =
-        document.getElementById(
-            "customerName"
-        );
-
-    const phoneInput =
-        document.getElementById(
-            "customerPhone"
-        );
-
-    const addressInput =
-        document.getElementById(
-            "customerAddress"
-        );
-
-    const paymentInput =
-        document.getElementById(
-            "paymentMethod"
-        );
-
-
-    const name =
-        nameInput
-            ? nameInput.value.trim()
-            : "";
-
-    const phone =
-        phoneInput
-            ? phoneInput.value.trim()
-            : "";
-
-    const address =
-        addressInput
-            ? addressInput.value.trim()
-            : "";
-
-    const payment =
-        paymentInput
-            ? paymentInput.value
-            : "Non précisé";
-
-
-    /* =========================
-       VÉRIFICATIONS
-    ========================== */
-
-    if (!name) {
-
-        alert(
-            "Veuillez entrer votre nom complet."
-        );
-
-        if (nameInput) {
-            nameInput.focus();
-        }
-
-        return;
-    }
-
-
-    if (!phone) {
-
-        alert(
-            "Veuillez entrer votre numéro de téléphone."
-        );
-
-        if (phoneInput) {
-            phoneInput.focus();
-        }
-
-        return;
-    }
-
-
-    if (!address) {
-
-        alert(
-            "Veuillez entrer votre adresse de livraison."
-        );
-
-        if (addressInput) {
-            addressInput.focus();
-        }
-
-        return;
-    }
-
-
-    /* =========================
-       CALCULS
-    ========================== */
-
-    const total =
-        cart.reduce(
-            function (sum, item) {
-
-                return sum +
-                    Number(item.price) *
-                    Number(item.quantity);
-
-            },
-            0
-        );
-
-
-    const totalQuantity =
-        cart.reduce(
-            function (sum, item) {
-
-                return sum +
-                    Number(item.quantity);
-
-            },
-            0
-        );
-
-
-    /* =========================
-       PRODUITS
-    ========================== */
-
-    const productsMessage =
-    cart.map(
-        function (item, index) {
-
-            return (
-                `${index + 1}. ${item.name}\n` +
-                `   Quantité : ${item.quantity}`
-            );
-
-        }
-    ).join("\n\n");
-
-
-    /* =========================
-       MESSAGE WHATSAPP
-    ========================== */
-
-    const message =
-`🛒 NOUVELLE COMMANDE — ABG STORE
-
-━━━━━━━━━━━━━━━━━━
-
-👤 INFORMATIONS CLIENT
-
-Nom : ${name}
-Téléphone : ${phone}
-Adresse : ${address}
-
-━━━━━━━━━━━━━━━━━━
-
-📦 DÉTAIL DE LA COMMANDE
-
-${productsMessage}
-
-━━━━━━━━━━━━━━━━━━
-
-📊 RÉSUMÉ
-
-Articles : ${totalQuantity}
-
-💳 Paiement : ${payment}
-
-━━━━━━━━━━━━━━━━━━
-
-Bonjour ABG Store 👋
-
-Je souhaite confirmer ma commande.
-
-Merci.`;
-
-    /* =========================
-       LIEN WHATSAPP
-    ========================== */
-
-    const url =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${
-            encodeURIComponent(message)
-        }`;
-
-
-    /* =========================
-       OUVRIR WHATSAPP
-    ========================== */
-
-    window.open(
-        url,
-        "_blank",
-        "noopener,noreferrer"
-    );
-
-}
-
-/* =========================================================
-   WHATSAPP
-   ========================================================= */
-
-function updateWhatsApp() {
-
-    const button =
-        document.getElementById(
-            "whatsappButton"
-        );
-
-
-    if (!button) return;
-
-
-    button.href =
-        `https://wa.me/${WHATSAPP_NUMBER}`;
-
-
-    button.target =
-        "_blank";
-
-
-    button.rel =
-        "noopener noreferrer";
-
-}
-
-
-/* =========================================================
-   LOCAL STORAGE
-   ========================================================= */
-
-function saveCart() {
-
-    localStorage.setItem(
-        "abg_cart",
-        JSON.stringify(cart)
-    );
-
-}
-
-
-function loadCart() {
-
-    try {
-
-        const saved =
-            localStorage.getItem(
-                "abg_cart"
-            );
-
-
-        if (!saved) {
-
-            cart = [];
-
-            return;
-
-        }
-
-
-        const parsed =
-            JSON.parse(saved);
-
-
-        if (!Array.isArray(parsed)) {
-
-            cart = [];
-
-            return;
-
-        }
-
-
-        cart =
-            parsed
-                .filter(
-                    function (item) {
-
-                        return (
-                            item &&
-                            Number.isFinite(
-                                Number(item.id)
-                            ) &&
-                            Number(item.quantity) > 0
-                        );
-
-                    }
-                )
-                .map(
-                    function (item) {
-
-                        return {
-
-                            id:
-                                Number(
-                                    item.id
-                                ),
-
-                            name:
-                                String(
-                                    item.name || ""
-                                ),
-
-                            price:
-                                Number(
-                                    item.price || 0
-                                ),
-
-                            image:
-                                String(
-                                    item.image || ""
-                                ),
-
-                            quantity:
-                                Math.max(
-                                    1,
-                                    Math.floor(
-                                        Number(
-                                            item.quantity
-                                        )
-                                    )
-                                )
-
-                        };
-
-                    }
-                );
-
-
-    } catch (error) {
-
-        console.error(
-            "Erreur chargement panier :",
-            error
-        );
-
-        cart = [];
-
-    }
-
-}
-
-
-/* =========================================================
-   FORMAT PRIX
-   ========================================================= */
-
-function formatPrice(number) {
-
-    return Number(
-        number || 0
-    ).toLocaleString(
-        "fr-FR"
-    );
-
-}
-
-
-/* =========================================================
-   SÉCURISATION HTML
-   ========================================================= */
-
-function escapeHtml(text) {
-
-    return String(text)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* =========================================================
-   FONCTIONS ACCESSIBLES DEPUIS HTML
-   ========================================================= */
-
-window.addToCart =
-    addToCart;
-
-window.removeFromCart =
-    removeFromCart;
-
-window.changeQuantity =
-    changeQuantity;
-
-window.changePage =
-    changePage;
-
-window.openCart =
-    openCart;
-
-window.closeCartPanel =
-    closeCartPanel;
-
-window.openAdmin =
-    openAdmin;
-
-window.closeAdminModal =
-    closeAdminModal;
-
-window.loginAdmin =
-    loginAdmin;
-
-window.confirmOrder =
-    confirmOrder;
-
-window.productImageError =
-    productImageError;
-    
-/* =========================================================
-   PRIX AUTOMATIQUE
-   ========================================================= */
-
-function generatePrice(index, name) {
-
-    const lower = name.toLowerCase();
-
-    if (
-        lower.includes("vis") ||
-        lower.includes("rondelle") ||
-        lower.includes("écrou") ||
-        lower.includes("cheville") ||
-        lower.includes("rivet")
-    ) {
-        return 100 + ((index * 37) % 1900);
-    }
-
-    if (
-        lower.includes("marteau") ||
-        lower.includes("pince") ||
-        lower.includes("tournevis") ||
-        lower.includes("clé") ||
-        lower.includes("scie")
-    ) {
-        return 1500 + ((index * 113) % 13500);
-    }
-
-    if (
-        lower.includes("pompe") ||
-        lower.includes("moteur") ||
-        lower.includes("poste") ||
-        lower.includes("compresseur") ||
-        lower.includes("échelle")
-    ) {
-        return 15000 + ((index * 733) % 185000);
-    }
-
-    return 1000 + ((index * 97) % 29000);
-}
-
-/* =========================================================
-   PHOTOS RÉELLES
-   ========================================================= */
-
-function getRealProductImage(name, id) {
-
-    let tags = "hardware,tools";
-
-    const n = name.toLowerCase();
-
-    if (
-        n.includes("vis") ||
-        n.includes("écrou") ||
-        n.includes("boulon") ||
-        n.includes("rondelle") ||
-        n.includes("tige filetée") ||
-        n.includes("rivet")
-    ) {
-        tags = "screws,bolts,hardware";
-    }
-
-    else if (
-        n.includes("marteau") ||
-        n.includes("massette") ||
-        n.includes("burin")
-    ) {
-        tags = "hammer,handtools";
-    }
-
-    else if (
-        n.includes("tournevis") ||
-        n.includes("pince") ||
-        n.includes("clé") ||
-        n.includes("cutter")
-    ) {
-        tags = "handtools,workshop";
-    }
-
-    else if (
-        n.includes("tube") ||
-        n.includes("raccord") ||
-        n.includes("coude") ||
-        n.includes("vanne") ||
-        n.includes("robinet") ||
-        n.includes("siphon")
-    ) {
-        tags = "plumbing,pipes";
-    }
-
-    else if (
-        n.includes("câble") ||
-        n.includes("fil électrique") ||
-        n.includes("disjoncteur") ||
-        n.includes("interrupteur") ||
-        n.includes("prise") ||
-        n.includes("ampoule") ||
-        n.includes("led")
-    ) {
-        tags = "electrical,electrician";
-    }
-
-    else if (
-        n.includes("peinture") ||
-        n.includes("enduit") ||
-        n.includes("mastic") ||
-        n.includes("silicone") ||
-        n.includes("colle")
-    ) {
-        tags = "paint,construction";
-    }
-
-    else if (
-        n.includes("soudage") ||
-        n.includes("soudure") ||
-        n.includes("électrode") ||
-        n.includes("torche mig") ||
-        n.includes("torche tig")
-    ) {
-        tags = "welding,weldingmachine";
-    }
-
-    else if (
-        n.includes("jardin") ||
-        n.includes("arrosage") ||
-        n.includes("irrigation") ||
-        n.includes("sécateur") ||
-        n.includes("râteau") ||
-        n.includes("pelle")
-    ) {
-        tags = "gardening,gardentools";
-    }
-
-    else if (
-        n.includes("agricole") ||
-        n.includes("agriculture") ||
-        n.includes("serre") ||
-        n.includes("culture")
-    ) {
-        tags = "agriculture,farming";
-    }
-
-    else if (
-        n.includes("automobile") ||
-        n.includes("moteur") ||
-        n.includes("pneu") ||
-        n.includes("frein") ||
-        n.includes("radiateur")
-    ) {
-        tags = "automotive,mechanic";
-    }
-
-    else if (
-        n.includes("solaire") ||
-        n.includes("photovoltaïque") ||
-        n.includes("panneau solaire")
-    ) {
-        tags = "solar,panel";
-    }
-
-    else if (
-        n.includes("climatisation") ||
-        n.includes("climatiseur") ||
-        n.includes("ventilation") ||
-        n.includes("ventilateur")
-    ) {
-        tags = "hvac,ventilation";
-    }
-
-    else if (
-        n.includes("meuble") ||
-        n.includes("charnière") ||
-        n.includes("poignée") ||
-        n.includes("tiroir")
-    ) {
-        tags = "furniture,hardware";
-    }
-
-    else if (
-        n.includes("toiture") ||
-        n.includes("tuile") ||
-        n.includes("gouttière")
-    ) {
-        tags = "roofing,construction";
-    }
-
-    else if (
-        n.includes("échelle") ||
-        n.includes("échafaudage") ||
-        n.includes("chantier")
-    ) {
-        tags = "construction,worksite";
-    }
-
-    else if (
-        n.includes("électrique") ||
-        n.includes("transformateur") ||
-        n.includes("batterie")
-    ) {
-        tags = "electrical,equipment";
-    }
-
-    const encodedTags = encodeURIComponent(tags);
-
-    return `https://loremflickr.com/700/500/${encodedTags}?lock=${id}`;
+    const names = productNames
+        .split("\n")
+        .map(name => name.trim())
+        .filter(name => name.length > 0);
+
+    products = names.map((name, index) => {
+        const id = index + 1;
+        return {
+            id,
+            name,
+            price: generatePrice(index, name)
+        };
+    });
+
+    console.log("ABG STORE :", products.length, "produits chargés");
 }
 
 /* =========================================================
@@ -4259,21 +1994,13 @@ function getRealProductImage(name, id) {
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    createProducts();
-
+    createProducts(); // doit être appelé avant loadCart()
     loadCart();
-
     hideCategoryFilter();
-
     setupButtons();
-
     updateCart();
-
     renderProducts();
-
     updateWhatsApp();
-
 });
 
 /* =========================================================
@@ -4281,11 +2008,10 @@ document.addEventListener("DOMContentLoaded", () => {
    ========================================================= */
 
 function hideCategoryFilter() {
-
     const filter = document.getElementById("categoryFilter");
-
     if (filter) {
         filter.style.display = "none";
+        filter.value = "";
     }
 }
 
@@ -4294,235 +2020,67 @@ function hideCategoryFilter() {
    ========================================================= */
 
 function setupButtons() {
-
-    const catalogButton =
-        document.getElementById("catalogButton");
-
-    const cartButton =
-        document.getElementById("cartButton");
-
-    const closeCart =
-        document.getElementById("closeCart");
-
-    const cartOverlay =
-        document.getElementById("cartOverlay");
-
-    const adminButton =
-        document.getElementById("adminButton");
-
-    const closeAdmin =
-        document.getElementById("closeAdmin");
-
-    const loginButton =
-        document.getElementById("loginButton");
-
-    const orderButton =
-        document.getElementById("orderButton");
-
-    const whatsappButton =
-        document.getElementById("whatsappButton");
-
-    const searchInput =
-        document.getElementById("searchInput");
-
-
-    /* =========================
-       CATALOGUE
-    ========================== */
+    const catalogButton = document.getElementById("catalogButton");
+    const cartButton = document.getElementById("cartButton");
+    const closeCartBtn = document.getElementById("closeCart");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const adminButton = document.getElementById("adminButton");
+    const closeAdmin = document.getElementById("closeAdmin");
+    const loginButton = document.getElementById("loginButton");
+    const orderButton = document.getElementById("orderButton");
+    const whatsappButton = document.getElementById("whatsappButton");
+    const searchInput = document.getElementById("searchInput");
 
     if (catalogButton) {
-
-        catalogButton.addEventListener(
-            "click",
-            () => {
-
-                const catalog =
-                    document.getElementById("catalog");
-
-                if (catalog) {
-
-                    catalog.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-                }
-
-            }
-        );
-
+        catalogButton.addEventListener("click", () => {
+            document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth" });
+        });
     }
 
-
-    /* =========================
-       PANIER
-    ========================== */
-
-    if (cartButton) {
-
-        cartButton.addEventListener(
-            "click",
-            openCart
-        );
-
-    }
-
-
-    if (closeCart) {
-
-        closeCart.addEventListener(
-            "click",
-            closeCartPanel
-        );
-
-    }
-
+    if (cartButton) cartButton.addEventListener("click", openCart);
+    if (closeCartBtn) closeCartBtn.addEventListener("click", closeCartPanel);
 
     if (cartOverlay) {
-
-        cartOverlay.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target === cartOverlay
-                ) {
-
-                    closeCartPanel();
-
-                }
-
-            }
-        );
-
+        cartOverlay.addEventListener("click", event => {
+            if (event.target === cartOverlay) closeCartPanel();
+        });
     }
 
-
-    /* =========================
-       ADMIN
-    ========================== */
-
-    if (adminButton) {
-
-        adminButton.addEventListener(
-            "click",
-            openAdmin
-        );
-
-    }
-
-
-    if (closeAdmin) {
-
-        closeAdmin.addEventListener(
-            "click",
-            closeAdminModal
-        );
-
-    }
-
-
-    if (loginButton) {
-
-        loginButton.addEventListener(
-            "click",
-            loginAdmin
-        );
-
-    }
-
-
-    /* =========================
-       COMMANDE WHATSAPP
-    ========================== */
-
-    if (orderButton) {
-
-        orderButton.addEventListener(
-            "click",
-            confirmOrder
-        );
-
-    }
-
-
-    /* =========================
-       WHATSAPP PRINCIPAL
-    ========================== */
+    if (adminButton) adminButton.addEventListener("click", openAdmin);
+    if (closeAdmin) closeAdmin.addEventListener("click", closeAdminModal);
+    if (loginButton) loginButton.addEventListener("click", loginAdmin);
+    if (orderButton) orderButton.addEventListener("click", confirmOrder);
 
     if (whatsappButton) {
-
-        whatsappButton.href =
-            `https://wa.me/${WHATSAPP_NUMBER}`;
-
-        whatsappButton.target =
-            "_blank";
-
-        whatsappButton.rel =
-            "noopener noreferrer";
-
+        const whatsappMessage = "Bonjour ABG Store 👋 Je souhaite avoir des informations sur vos produits.";
+        whatsappButton.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+        whatsappButton.target = "_blank";
+        whatsappButton.rel = "noopener noreferrer";
     }
-
-
-    /* =========================
-       RECHERCHE
-    ========================== */
 
     if (searchInput) {
-
-        searchInput.addEventListener(
-            "input",
-            event => {
-
-                searchTerm =
-                    event.target.value
-                        .trim()
-                        .toLowerCase();
-
-                currentPage = 1;
-
-                renderProducts();
-
-            }
-        );
-
+        searchInput.addEventListener("input", event => {
+            searchTerm = event.target.value.trim().toLowerCase();
+            currentPage = 1;
+            renderProducts();
+        });
     }
 
-
-    /* =========================
-       TOUCHE ÉCHAP
-    ========================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key === "Escape") {
-
-                closeCartPanel();
-
-                closeAdminModal();
-
-            }
-
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            closeCartPanel();
+            closeAdminModal();
         }
-    );
-
+    });
 }
+
 /* =========================================================
    RECHERCHE
    ========================================================= */
 
 function getFilteredProducts() {
-
-    if (!searchTerm) {
-        return products;
-    }
-
-    return products.filter(product =>
-        product.name
-            .toLowerCase()
-            .includes(searchTerm)
-    );
+    if (!searchTerm) return products;
+    return products.filter(product => product.name.toLowerCase().includes(searchTerm));
 }
 
 /* =========================================================
@@ -4530,75 +2088,45 @@ function getFilteredProducts() {
    ========================================================= */
 
 function renderProducts() {
-
-    const grid =
-        document.getElementById("productsGrid");
-
-    const noProducts =
-        document.getElementById("noProducts");
-
-    const productCount =
-        document.getElementById("productCount");
+    const grid = document.getElementById("productsGrid");
+    const noProducts = document.getElementById("noProducts");
+    const productCount = document.getElementById("productCount");
 
     if (!grid) return;
 
-    // Récupération des produits filtrés
-    const filtered =
-        getFilteredProducts();
+    const oldPagination = document.querySelector(".products-pagination");
+    if (oldPagination) oldPagination.remove();
 
-    // Affichage du nombre de produits
+    const filtered = getFilteredProducts();
+
     if (productCount) {
-        productCount.textContent =
-            `${filtered.length} produit${filtered.length > 1 ? "s" : ""}`;
+        productCount.textContent = `${filtered.length} produit${filtered.length > 1 ? "s" : ""}`;
     }
 
-    // Aucun produit trouvé
     if (!filtered.length) {
-
         grid.innerHTML = "";
-
         if (noProducts) {
             noProducts.classList.remove("hidden");
+            noProducts.style.display = "block";
         }
-
         return;
     }
 
-    // Produits trouvés
     if (noProducts) {
         noProducts.classList.add("hidden");
+        noProducts.style.display = "none";
     }
 
-    // Calcul du nombre de pages
-    const totalPages =
-        Math.ceil(filtered.length / PRODUCTS_PER_PAGE);
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PRODUCTS_PER_PAGE));
 
-    // Vérification de la page actuelle
-    if (currentPage > totalPages) {
-        currentPage = totalPages;
-    }
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
 
-    if (currentPage < 1) {
-        currentPage = 1;
-    }
+    const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+    const visible = filtered.slice(start, start + PRODUCTS_PER_PAGE);
 
-    // Position de départ
-    const start =
-        (currentPage - 1) *
-        PRODUCTS_PER_PAGE;
+    grid.innerHTML = visible.map(createProductCard).join("");
 
-    // Produits visibles sur la page
-    const visible =
-        filtered.slice(
-            start,
-            start + PRODUCTS_PER_PAGE
-        );
-
-    // Affichage des cartes
-    grid.innerHTML =
-        visible.map(createProductCard).join("");
-
-    // Pagination
     createPagination(totalPages);
 }
 
@@ -4607,60 +2135,29 @@ function renderProducts() {
    ========================================================= */
 
 function createProductCard(product) {
-
-    const safeName =
-        escapeHtml(product.name);
+    const safeName = escapeHtml(product.name);
 
     return `
         <article class="product-card">
-
-            <div class="product-content">
-
-                <h3 class="product-name">
-                    ${safeName}
-                </h3>
-
-
+            <div class="product-info">
+                <h3 class="product-title">${safeName}</h3>
+                <p class="product-price">${formatPrice(product.price)} FCFA</p>
                 <div class="product-actions">
-
-                    <button
-                        type="button"
-                        class="preview-btn"
-                        onclick="searchProductImage(
-                            '${encodeURIComponent(product.name)}'
-                        )"
-                    >
+                    <button type="button" class="preview-btn" onclick="searchProductImage('${encodeURIComponent(product.name)}')">
                         👁️ Aperçu
                     </button>
-
-
-                    <button
-                        type="button"
-                        class="add-to-cart-btn"
-                        onclick="addToCart(${product.id})"
-                    >
+                    <button type="button" class="add-to-cart-btn" onclick="addToCart(${product.id})">
                         🛒 Ajouter au panier
                     </button>
-
                 </div>
-
             </div>
-
         </article>
     `;
 }
 
-
 function searchProductImage(productName) {
-
-    const url =
-        "https://www.google.com/search?tbm=isch&q=" +
-        productName;
-
-    window.open(
-        url,
-        "_blank"
-    );
+    const url = "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(productName);
+    window.open(url, "_blank", "noopener,noreferrer");
 }
 
 /* =========================================================
@@ -4668,71 +2165,38 @@ function searchProductImage(productName) {
    ========================================================= */
 
 function createPagination(totalPages) {
+    const grid = document.getElementById("productsGrid");
+    if (!grid || totalPages <= 1) return;
 
-    const grid =
-        document.getElementById("productsGrid");
+    const pagination = document.createElement("div");
+    pagination.className = "products-pagination";
 
-    if (!grid || totalPages <= 1) {
-        return;
-    }
-
-    let html =
-        `<div class="products-pagination">`;
+    let html = "";
 
     if (currentPage > 1) {
-
-        html += `
-            <button
-                type="button"
-                onclick="changePage(${currentPage - 1})"
-            >
-                ← Précédent
-            </button>
-        `;
+        html += `<button type="button" onclick="changePage(${currentPage - 1})">← Précédent</button>`;
     }
 
-    html += `
-        <span>
-            Page ${currentPage} / ${totalPages}
-        </span>
-    `;
+    html += `<span>Page ${currentPage} / ${totalPages}</span>`;
 
     if (currentPage < totalPages) {
-
-        html += `
-            <button
-                type="button"
-                onclick="changePage(${currentPage + 1})"
-            >
-                Suivant →
-            </button>
-        `;
+        html += `<button type="button" onclick="changePage(${currentPage + 1})">Suivant →</button>`;
     }
 
-    html += `</div>`;
+    pagination.innerHTML = html;
 
-    grid.insertAdjacentHTML(
-        "beforeend",
-        html
-    );
+    if (grid.parentNode) grid.parentNode.appendChild(pagination);
 }
 
 function changePage(page) {
+    const filtered = getFilteredProducts();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PRODUCTS_PER_PAGE));
 
-    currentPage = page;
+    currentPage = Math.max(1, Math.min(Number(page), totalPages));
 
     renderProducts();
 
-    const catalog =
-        document.getElementById("catalog");
-
-    if (catalog) {
-
-        catalog.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    }
+    document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 /* =========================================================
@@ -4740,74 +2204,53 @@ function changePage(page) {
    ========================================================= */
 
 function addToCart(productId) {
+    const id = Number(productId);
+    const product = products.find(item => item.id === id);
 
-    const product =
-        products.find(
-            item => item.id === productId
-        );
+    if (!product) {
+        console.error("Produit introuvable :", id);
+        return;
+    }
 
-    if (!product) return;
-
-    const existing =
-        cart.find(
-            item => item.id === productId
-        );
+    const existing = cart.find(item => item.id === id);
 
     if (existing) {
-
         existing.quantity += 1;
-
     } else {
-
         cart.push({
             id: product.id,
             name: product.name,
             price: product.price,
-            image: product.image,
             quantity: 1
         });
-
     }
 
     saveCart();
-
     updateCart();
-
     openCart();
 }
 
 function removeFromCart(productId) {
-
-    cart =
-        cart.filter(
-            item => item.id !== productId
-        );
-
+    const id = Number(productId);
+    cart = cart.filter(item => item.id !== id);
     saveCart();
-
     updateCart();
 }
 
 function changeQuantity(productId, amount) {
-
-    const item =
-        cart.find(
-            product => product.id === productId
-        );
+    const id = Number(productId);
+    const item = cart.find(product => product.id === id);
 
     if (!item) return;
 
-    item.quantity += amount;
+    item.quantity += Number(amount);
 
     if (item.quantity <= 0) {
-
-        removeFromCart(productId);
-
+        removeFromCart(id);
         return;
     }
 
     saveCart();
-
     updateCart();
 }
 
@@ -4816,176 +2259,59 @@ function changeQuantity(productId, amount) {
    ========================================================= */
 
 function updateCart() {
+    const cartItems = document.getElementById("cartItems");
+    const emptyCart = document.getElementById("emptyCart");
+    const checkout = document.getElementById("checkout");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
 
-    const cartItems =
-        document.getElementById("cartItems");
-
-    const emptyCart =
-        document.getElementById("emptyCart");
-
-    const checkout =
-        document.getElementById("checkout");
-
-    const cartCount =
-        document.getElementById("cartCount");
-
-
-    // =========================
-    // QUANTITÉ TOTALE
-    // =========================
-
-    const totalQuantity =
-        cart.reduce(
-            (sum, item) =>
-                sum + Number(item.quantity),
-            0
-        );
-
-
-    // =========================
-    // COMPTEUR DU PANIER
-    // =========================
+    const totalQuantity = cart.reduce((sum, item) => sum + Number(item.quantity), 0);
+    const totalPrice = cart.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
 
     if (cartCount) {
-
-        cartCount.textContent =
-            totalQuantity;
-
-        cartCount.style.display =
-            totalQuantity > 0
-                ? "flex"
-                : "none";
+        cartCount.textContent = totalQuantity;
+        cartCount.style.display = totalQuantity > 0 ? "flex" : "none";
     }
 
-
-    // =========================
-    // PANIER VIDE
-    // =========================
+    if (cartTotal) {
+        cartTotal.textContent = `${formatPrice(totalPrice)} FCFA`;
+    }
 
     if (!cart.length) {
-
-        if (cartItems) {
-            cartItems.innerHTML = "";
-        }
-
+        if (cartItems) cartItems.innerHTML = "";
         if (emptyCart) {
-
-            emptyCart.classList.remove(
-                "hidden"
-            );
-
-            emptyCart.style.display =
-                "block";
+            emptyCart.classList.remove("hidden");
+            emptyCart.style.display = "block";
         }
-
-        if (checkout) {
-
-            checkout.classList.add(
-                "hidden"
-            );
-        }
-
+        if (checkout) checkout.classList.add("hidden");
         return;
     }
 
-
-    // =========================
-    // PANIER REMPLI
-    // =========================
-
     if (emptyCart) {
-
-        emptyCart.classList.add(
-            "hidden"
-        );
-
-        emptyCart.style.display =
-            "none";
+        emptyCart.classList.add("hidden");
+        emptyCart.style.display = "none";
     }
 
-
-    if (checkout) {
-
-        checkout.classList.remove(
-            "hidden"
-        );
-    }
-
-
-    // =========================
-    // PRODUITS DU PANIER
-    // =========================
+    if (checkout) checkout.classList.remove("hidden");
 
     if (!cartItems) return;
 
-
-    cartItems.innerHTML =
-        cart.map(
-            function (item) {
-
-                return `
-
-                    <div class="cart-item">
-
-                        <div class="cart-item-info">
-
-                            <h4 class="cart-item-name">
-                                ${escapeHtml(
-                                    item.name
-                                )}
-                            </h4>
-
-
-                            <div class="quantity-controls">
-
-                                <button
-                                    type="button"
-                                    onclick="changeQuantity(
-                                        ${item.id},
-                                        -1
-                                    )"
-                                >
-                                    −
-                                </button>
-
-
-                                <span>
-                                    ${item.quantity}
-                                </span>
-
-
-                                <button
-                                    type="button"
-                                    onclick="changeQuantity(
-                                        ${item.id},
-                                        1
-                                    )"
-                                >
-                                    +
-                                </button>
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                class="remove-button"
-                                onclick="removeFromCart(
-                                    ${item.id}
-                                )"
-                            >
-                                🗑️ Supprimer
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            }
-        ).join("");
-
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <div class="cart-item-info">
+                <h4>${escapeHtml(item.name)}</h4>
+                <p class="cart-item-price">${formatPrice(item.price)} FCFA</p>
+                <div class="quantity-controls">
+                    <button type="button" onclick="changeQuantity(${item.id}, -1)">−</button>
+                    <span>${item.quantity}</span>
+                    <button type="button" onclick="changeQuantity(${item.id}, 1)">+</button>
+                </div>
+                <button type="button" class="remove-cart-button" onclick="removeFromCart(${item.id})">
+                    🗑️ Supprimer
+                </button>
+            </div>
+        </div>
+    `).join("");
 }
 
 /* =========================================================
@@ -4993,265 +2319,232 @@ function updateCart() {
    ========================================================= */
 
 function openCart() {
-
-    const panel =
-        document.getElementById("cartPanel");
-
-    const overlay =
-        document.getElementById("cartOverlay");
+    const panel = document.getElementById("cartPanel");
+    const overlay = document.getElementById("cartOverlay");
 
     if (panel) {
-
-        panel.classList.add("active");
-
-        panel.setAttribute(
-            "aria-hidden",
-            "false"
-        );
-
+        panel.classList.add("open");
+        panel.setAttribute("aria-hidden", "false");
     }
 
     if (overlay) {
-        overlay.classList.add("active");
+        overlay.classList.add("open");
+        overlay.setAttribute("aria-hidden", "false");
     }
 
+    document.body.classList.add("cart-open");
     updateCart();
 }
 
+function closeCartPanel() {
+    const panel = document.getElementById("cartPanel");
+    const overlay = document.getElementById("cartOverlay");
+
+    if (panel) {
+        panel.classList.remove("open");
+        panel.setAttribute("aria-hidden", "true");
+    }
+
+    if (overlay) {
+        overlay.classList.remove("open");
+        overlay.setAttribute("aria-hidden", "true");
+    }
+
+    document.body.classList.remove("cart-open");
+}
+
 /* =========================================================
-   ADMINISTRATION
+   ADMIN
    ========================================================= */
 
 function openAdmin() {
+    const modal = document.getElementById("adminModal");
+    const username = document.getElementById("adminUsername");
 
-    const modal =
-        document.getElementById("adminModal");
+    if (!modal) return;
 
-    if (modal) {
-        modal.classList.add("open");
-    }
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+
+    if (username) setTimeout(() => username.focus(), 100);
 }
 
 function closeAdminModal() {
+    const modal = document.getElementById("adminModal");
+    if (!modal) return;
 
-    const modal =
-        document.getElementById("adminModal");
-
-    if (modal) {
-        modal.classList.remove("open");
-    }
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
 }
 
 function loginAdmin() {
+    const username = document.getElementById("adminUsername");
+    const password = document.getElementById("adminPassword");
+    const error = document.getElementById("adminError");
 
-    const username =
-        document.getElementById("adminUsername");
+    if (!username || !password) return;
 
-    const password =
-        document.getElementById("adminPassword");
-
-    const error =
-        document.getElementById("adminError");
-
-    if (!username || !password) {
-        return;
-    }
-
-    if (
-        username.value.trim() ===
-        ADMIN_USERNAME &&
-        password.value ===
-        ADMIN_PASSWORD
-    ) {
-
-        if (error) {
-            error.textContent = "";
-        }
-
-        localStorage.setItem(
-            "abg_admin_logged",
-            "true"
-        );
-
+    if (username.value.trim() === ADMIN_USERNAME && password.value === ADMIN_PASSWORD) {
+        localStorage.setItem("abg_admin_logged", "true");
+        if (error) error.textContent = "";
         closeAdminModal();
-
-        alert(
-            "Connexion administrateur réussie."
-        );
-
+        alert("Connexion administrateur réussie.");
     } else {
-
-        if (error) {
-
-            error.textContent =
-                "Identifiant ou mot de passe incorrect.";
-
-        }
-
+        if (error) error.textContent = "Identifiant ou mot de passe incorrect.";
     }
 }
 
 /* =========================================================
-   COMMANDE
+   COMMANDE WHATSAPP
    ========================================================= */
 
 function confirmOrder() {
-
     if (!cart.length) {
         alert("Votre panier est vide.");
         return;
     }
 
-    /* =========================
-       INFORMATIONS CLIENT
-    ========================== */
+    const nameInput = document.getElementById("customerName");
+    const phoneInput = document.getElementById("customerPhone");
+    const addressInput = document.getElementById("customerAddress");
+    const paymentInput = document.getElementById("paymentMethod");
 
-    const name =
-        document.getElementById("customerName")?.value.trim() || "";
+    const name = nameInput?.value.trim() || "";
+    const phone = phoneInput?.value.trim() || "";
+    const address = addressInput?.value.trim() || "";
+    const payment = paymentInput?.value || "Non précisé";
 
-    const phone =
-        document.getElementById("customerPhone")?.value.trim() || "";
-
-    const address =
-        document.getElementById("customerAddress")?.value.trim() || "";
-
-    const payment =
-        document.getElementById("paymentMethod")?.value ||
-        "Non précisé";
-
-
-    /* =========================
-       VÉRIFICATION
-    ========================== */
-
-    if (!name || !phone || !address) {
-
-        alert(
-            "Veuillez remplir votre nom, téléphone et adresse."
-        );
-
+    if (!name) {
+        alert("Veuillez entrer votre nom complet.");
+        nameInput?.focus();
         return;
     }
 
+    if (!phone) {
+        alert("Veuillez entrer votre numéro de téléphone.");
+        phoneInput?.focus();
+        return;
+    }
 
-    /* =========================
-       CALCUL DU TOTAL
-    ========================== */
+    if (!address) {
+        alert("Veuillez entrer votre adresse de livraison.");
+        addressInput?.focus();
+        return;
+    }
 
-    const total =
-        cart.reduce(
-            (sum, item) =>
-                sum +
-                Number(item.price) *
-                Number(item.quantity),
-            0
-        );
+    const total = cart.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
+    const totalQuantity = cart.reduce((sum, item) => sum + Number(item.quantity), 0);
 
-
-    /* =========================
-       PRODUITS
-    ========================== */
-
-    let productsMessage = "";
-
-    cart.forEach((item, index) => {
-
-        const price =
-            Number(item.price);
-
-        const quantity =
-            Number(item.quantity);
-
-        const subtotal =
-            price * quantity;
-
-        productsMessage +=
-            `${index + 1}. ${item.name} x ${quantity} = ${formatPrice(subtotal)} FCFA\n`;
-
-    });
-
-
-    /* =========================
-       MESSAGE DE COMMANDE
-    ========================== */
+    const productsMessage = cart.map((item, index) => {
+        const subtotal = Number(item.price) * Number(item.quantity);
+        return `${index + 1}. ${item.name} x ${item.quantity} = ${formatPrice(subtotal)} FCFA`;
+    }).join("\n");
 
     const message =
-`NOUVELLE COMMANDE ABG STORE
+`🛒 NOUVELLE COMMANDE — ABG STORE
+
+━━━━━━━━━━━━━━━━━━
+👤 INFORMATIONS CLIENT
 
 Nom : ${name}
 Téléphone : ${phone}
 Adresse : ${address}
-Paiement : ${payment}
 
-Produits :
+━━━━━━━━━━━━━━━━━━
+📦 DÉTAIL DE LA COMMANDE
 
 ${productsMessage}
 
-Bonjour ABG Store.
-Je souhaite confirmer ma commande.`;
+━━━━━━━━━━━━━━━━━━
+📊 RÉSUMÉ
 
-    /* =========================
-       COPIER LA COMMANDE
-    ========================== */
+Articles : ${totalQuantity}
+Total : ${formatPrice(total)} FCFA
+💳 Paiement : ${payment}
 
+━━━━━━━━━━━━━━━━━━
+Bonjour ABG Store 👋
+Je souhaite confirmer ma commande.
+Merci.`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+}
+
+/* =========================================================
+   WHATSAPP
+   ========================================================= */
+
+function updateWhatsApp() {
+    const button = document.getElementById("whatsappButton");
+    if (!button) return;
+
+    button.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+    button.target = "_blank";
+    button.rel = "noopener noreferrer";
+}
+
+/* =========================================================
+   LOCAL STORAGE
+   ========================================================= */
+
+function saveCart() {
+    localStorage.setItem("abg_cart", JSON.stringify(cart));
+}
+
+function loadCart() {
     try {
+        const saved = localStorage.getItem("abg_cart");
 
-        const textarea =
-            document.createElement("textarea");
+        if (!saved) {
+            cart = [];
+            return;
+        }
 
-        textarea.value = message;
+        const parsed = JSON.parse(saved);
 
-        textarea.style.position = "fixed";
-        textarea.style.left = "-9999px";
-        textarea.style.top = "0";
+        if (!Array.isArray(parsed)) {
+            cart = [];
+            return;
+        }
 
-        document.body.appendChild(textarea);
+        cart = parsed
+            .filter(item => item && Number.isFinite(Number(item.id)) && Number(item.quantity) > 0)
+            .map(item => {
+                const id = Number(item.id);
+                // On revérifie prix/nom/image contre le catalogue courant
+                // (au cas où le catalogue aurait changé depuis la dernière visite)
+                const product = products.find(p => p.id === id);
 
-        textarea.focus();
-        textarea.select();
-
-        document.execCommand("copy");
-
-        document.body.removeChild(textarea);
+                return {
+                    id,
+                    name: product ? product.name : String(item.name || ""),
+                    price: product ? product.price : Number(item.price) || 0,
+                    quantity: Math.max(1, Math.floor(Number(item.quantity)))
+                };
+            });
 
     } catch (error) {
-
-        console.log(
-            "Copie automatique impossible",
-            error
-        );
-
+        console.error("Erreur chargement panier :", error);
+        cart = [];
     }
-
-
-    /* =========================
-       OUVRIR WHATSAPP
-    ========================== */
-
-    const encodedMessage =
-        encodeURIComponent(message);
-
-    const whatsappUrl =
-        `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedMessage}`;
-
-    window.open(
-        whatsappUrl,
-        "_blank"
-    );
-
 }
+
 /* =========================================================
-   OUTILS
+   FORMAT PRIX
    ========================================================= */
 
 function formatPrice(number) {
-
-    return Number(number)
-        .toLocaleString("fr-FR");
+    return Number(number || 0).toLocaleString("fr-FR");
 }
 
-function escapeHtml(text) {
+/* =========================================================
+   SÉCURISATION HTML
+   ========================================================= */
 
+function escapeHtml(text) {
     return String(text)
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
@@ -5261,10 +2554,17 @@ function escapeHtml(text) {
 }
 
 /* =========================================================
-   EXPOSER LES FONCTIONS AUX BOUTONS HTML
+   FONCTIONS ACCESSIBLES DEPUIS HTML
    ========================================================= */
 
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
 window.changeQuantity = changeQuantity;
-window.changePage = changePage;TOTAL
+window.changePage = changePage;
+window.openCart = openCart;
+window.closeCartPanel = closeCartPanel;
+window.openAdmin = openAdmin;
+window.closeAdminModal = closeAdminModal;
+window.loginAdmin = loginAdmin;
+window.confirmOrder = confirmOrder;
+window.searchProductImage = searchProductImage;
