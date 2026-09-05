@@ -2758,17 +2758,9 @@ function renderProducts() {
 function createProductCard(product) {
 
     const safeName =
-        escapeHtml(
-            product.name
-        );
-
-    const safeImage =
-        escapeHtml(
-            product.image
-        );
+        escapeHtml(product.name);
 
     return `
-
         <article class="product-card">
 
             <div class="product-image-wrapper">
@@ -2779,26 +2771,27 @@ function createProductCard(product) {
 
             </div>
 
-
             <div class="product-info">
 
-                <h3>
+                <h3 class="product-title">
                     ${safeName}
                 </h3>
 
-
-                <div class="product-bottom">
-
-                    <strong>
-                        ${formatPrice(
-                            product.price
-                        )} FCFA
-                    </strong>
-
+                <div class="product-actions">
 
                     <button
-                        class="add-to-cart-btn"
                         type="button"
+                        class="preview-btn"
+                        onclick="searchProductImage(
+                            '${encodeURIComponent(product.name)}'
+                        )"
+                    >
+                        👁️ Aperçu
+                    </button>
+
+                    <button
+                        type="button"
+                        class="add-to-cart-btn"
                         onclick="addToCart(${product.id})"
                     >
                         🛒 Ajouter au panier
@@ -2809,8 +2802,20 @@ function createProductCard(product) {
             </div>
 
         </article>
-
     `;
+}
+
+
+function searchProductImage(productName) {
+
+    const url =
+        "https://www.google.com/search?tbm=isch&q=" +
+        productName;
+
+    window.open(
+        url,
+        "_blank"
+    );
 }
 
 /* =========================================================
@@ -4594,25 +4599,55 @@ function createProductCard(product) {
     return `
         <article class="product-card">
 
-            <button
-                type="button"
-                class="product-name-button"
-                onclick="addToCart(${product.id})"
-            >
+            <div class="product-content">
 
-                <span class="product-name">
+                <h3 class="product-name">
                     ${safeName}
-                </span>
+                </h3>
 
-                <span class="product-action">
-                    🛒 Ajouter au panier
-                </span>
 
-            </button>
+                <div class="product-actions">
+
+                    <button
+                        type="button"
+                        class="preview-btn"
+                        onclick="searchProductImage(
+                            '${encodeURIComponent(product.name)}'
+                        )"
+                    >
+                        👁️ Aperçu
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="add-to-cart-btn"
+                        onclick="addToCart(${product.id})"
+                    >
+                        🛒 Ajouter au panier
+                    </button>
+
+                </div>
+
+            </div>
 
         </article>
     `;
 }
+
+
+function searchProductImage(productName) {
+
+    const url =
+        "https://www.google.com/search?tbm=isch&q=" +
+        productName;
+
+    window.open(
+        url,
+        "_blank"
+    );
+}
+
 /* =========================================================
    PAGINATION
    ========================================================= */
