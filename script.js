@@ -5159,8 +5159,11 @@ Je souhaite confirmer ma commande.`;
        OUVRIR WHATSAPP
     ========================== */
 
+    const encodedMessage =
+        encodeURIComponent(message);
+
     const whatsappUrl =
-        `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}`;
+        `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedMessage}`;
 
     window.open(
         whatsappUrl,
