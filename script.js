@@ -3758,8 +3758,6 @@ ${productsMessage}
 
 Articles : ${totalQuantity}
 
-💰 TOTAL : ${formatPrice(total)} FCFA
-
 💳 Paiement : ${payment}
 
 ━━━━━━━━━━━━━━━━━━
@@ -3769,7 +3767,6 @@ Bonjour ABG Store 👋
 Je souhaite confirmer ma commande.
 
 Merci.`;
-
 
     /* =========================
        LIEN WHATSAPP
