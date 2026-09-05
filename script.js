@@ -3136,216 +3136,169 @@ function changeQuantity(
 
 function updateCart() {
 
-const cartItems =  
-    document.getElementById(  
-        "cartItems"  
-    );  
+    const cartItems =
+        document.getElementById("cartItems");
 
-const emptyCart =  
-    document.getElementById(  
-        "emptyCart"  
-    );  
+    const emptyCart =
+        document.getElementById("emptyCart");
 
-const checkout =  
-    document.getElementById(  
-        "checkout"  
-    );  
+    const checkout =
+        document.getElementById("checkout");
 
-const cartCount =  
-    document.getElementById(  
-        "cartCount"  
-    );  
+    const cartCount =
+        document.getElementById("cartCount");
 
-const cartTotal =  
-    document.getElementById(  
-        "cartTotal"  
-    );  
 
+    const totalQuantity =
+        cart.reduce(
+            function (sum, item) {
 
-const totalQuantity =  
-    cart.reduce(  
-        function (sum, item) {  
+                return sum +
+                    Number(item.quantity);
 
-            return sum +  
-                Number(  
-                    item.quantity  
-                );  
+            },
+            0
+        );
 
-        },  
-        0  
-    );  
 
+    if (cartCount) {
 
-const total =  
-    cart.reduce(  
-        function (sum, item) {  
+        cartCount.textContent =
+            totalQuantity;
 
-            return sum +  
-                (  
-                    Number(item.price) *  
-                    Number(item.quantity)  
-                );  
+        cartCount.style.display =
+            totalQuantity > 0
+                ? "flex"
+                : "none";
+    }
 
-        },  
-        0  
-    );  
 
+    if (!cart.length) {
 
-if (cartCount) {  
+        if (cartItems) {
 
-    cartCount.textContent =  
-        totalQuantity;  
+            cartItems.innerHTML =
+                "";
+        }
 
-    cartCount.style.display =  
-        totalQuantity > 0  
-            ? "flex"  
-            : "none";  
+        if (emptyCart) {
 
-}  
+            emptyCart.classList.remove(
+                "hidden"
+            );
 
+            emptyCart.style.display =
+                "block";
+        }
 
-if (cartTotal) {  
+        if (checkout) {
 
-    cartTotal.textContent =  
-        `${formatPrice(total)} FCFA`;  
+            checkout.classList.add(
+                "hidden"
+            );
+        }
 
-}  
+        return;
+    }
 
 
-if (!cart.length) {  
+    if (emptyCart) {
 
-    if (cartItems) {  
+        emptyCart.classList.add(
+            "hidden"
+        );
 
-        cartItems.innerHTML =  
-            "";  
+        emptyCart.style.display =
+            "none";
+    }
 
-    }  
 
-    if (emptyCart) {  
+    if (checkout) {
 
-        emptyCart.classList.remove(  
-            "hidden"  
-        );  
+        checkout.classList.remove(
+            "hidden"
+        );
+    }
 
-        emptyCart.style.display =  
-            "block";  
 
-    }  
+    if (!cartItems) return;
 
-    if (checkout) {  
 
-        checkout.classList.add(  
-            "hidden"  
-        );  
+    cartItems.innerHTML =
+        cart.map(
+            function (item) {
 
-    }  
+                return `
 
-    return;  
+                    <div class="cart-item">
 
-}  
-
-
-if (emptyCart) {  
-
-    emptyCart.classList.add(  
-        "hidden"  
-    );  
-
-    emptyCart.style.display =  
-        "none";  
-
-}  
-
-
-if (checkout) {  
-
-    checkout.classList.remove(  
-        "hidden"  
-    );  
-
-}  
-
-
-if (!cartItems) return;  
-
-
-cartItems.innerHTML =  
-    cart.map(  
-        function (item) {  
-
-            return `  
-
-                <div class="cart-item">  
-
-                    <img  
-                        src="${escapeHtml(  
-                            item.image  
-                        )}"  
-                        alt="${escapeHtml(  
-                            item.name  
-                        )}"  
-                        onerror="productImageError(this)"  
-                    >  
-
-                    <div class="cart-item-info">  
-
-                        <h4>  
-                            ${escapeHtml(  
-                                item.name  
-                            )}  
-                        </h4>  
-
-                        <div  
-                            class="quantity-controls"  
-                        >  
-
-                            <button  
-                                type="button"  
-                                onclick="changeQuantity(  
-                                    ${item.id},  
-                                    -1  
-                                )"  
-                            >  
-                                −  
-                            </button>  
-
-                            <span>  
-                                ${item.quantity}  
-                            </span>  
-
-                            <button  
-                                type="button"  
-                                onclick="changeQuantity(  
-                                    ${item.id},  
-                                    1  
-                                )"  
-                            >  
-                                +  
-                            </button>  
-
-                        </div>  
-
-                        <button  
-                            type="button"  
-                            class="remove-cart-button"  
-                            onclick="removeFromCart(  
-                                ${item.id}  
-                            )"  
-                        >  
-                            Supprimer  
-                        </button>  
-
-                    </div>  
-
-                </div>  
-
-            `;  
-
-        }  
-    ).join("");
-
+                        <img
+                            src="${escapeHtml(
+                                item.image
+                            )}"
+                            alt="${escapeHtml(
+                                item.name
+                            )}"
+                            onerror="productImageError(this)"
+                        >
+
+                        <div class="cart-item-info">
+
+                            <h4>
+                                ${escapeHtml(
+                                    item.name
+                                )}
+                            </h4>
+
+                            <div
+                                class="quantity-controls"
+                            >
+
+                                <button
+                                    type="button"
+                                    onclick="changeQuantity(
+                                        ${item.id},
+                                        -1
+                                    )"
+                                >
+                                    −
+                                </button>
+
+                                <span>
+                                    ${item.quantity}
+                                </span>
+
+                                <button
+                                    type="button"
+                                    onclick="changeQuantity(
+                                        ${item.id},
+                                        1
+                                    )"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="remove-cart-button"
+                                onclick="removeFromCart(
+                                    ${item.id}
+                                )"
+                            >
+                                Supprimer
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
 }
-
 
 /* =========================================================
    OUVRIR PANIER
