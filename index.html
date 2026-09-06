@@ -1,520 +1,170 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="theme-color"
-        content="#0b1220"
-    >
-
-    <title>ABG Store</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABG Store — Quincaillerie & Outillage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<!-- ============ EN-TÊTE ============ -->
+<header class="site-header">
+    <div class="header-inner">
+        <div class="logo">ABG<span>Store</span></div>
 
-    <header class="header">
-
-        <a
-            href="#"
-            class="logo"
-        >
-            <span>ABG</span> STORE
-        </a>
-
-        <div class="header-actions">
-
-            <button
-                id="adminButton"
-                class="admin-button"
-                type="button"
+        <div class="search-wrapper">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Rechercher un produit…"
+                autocomplete="off"
             >
-                ⚙️ Administration
-            </button>
-
-            <button
-                id="cartButton"
-                class="cart-button"
-                type="button"
-            >
-                🛒
-
-                <span>
-                    Panier
-                </span>
-
-                <b id="cartCount">
-                    0
-                </b>
-            </button>
-
         </div>
 
-    </header>
-
-
-    <!-- =========================
-         HERO
-    ========================== -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <p class="eyebrow">
-                ABG STORE
-            </p>
-
-            <h1>
-                Votre boutique
-                <span>en ligne.</span>
-            </h1>
-
-            <p class="hero-text">
-                Découvrez notre catalogue de produits et commandez
-                simplement depuis votre téléphone ou votre ordinateur.
-            </p>
-
-            <button
-                id="catalogButton"
-                class="primary-button"
-                type="button"
-            >
-                Découvrir le catalogue
-                <span>→</span>
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         RECHERCHE
-    ========================== -->
-
-    <section class="search-section">
-
-        <div class="search-container">
-
-            <div class="search-box">
-
-                <span>
-                    🔎
-                </span>
-
-                <input
-                    id="searchInput"
-                    type="search"
-                    placeholder="Rechercher un produit..."
-                    autocomplete="off"
-                >
-
-            </div>
-
-            <select id="categoryFilter">
-
-                <option value="all">
-                    Toutes les catégories
-                </option>
-
-            </select>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         CATALOGUE
-    ========================== -->
-
-    <main
-        id="catalog"
-        class="catalog"
-    >
-
-        <div class="catalog-header">
-
-            <div>
-
-                <p class="eyebrow">
-                    CATALOGUE
-                </p>
-
-                <h2>
-                    Nos produits
-                </h2>
-
-            </div>
-
-            <p id="productCount">
-                0 produit
-            </p>
-
-        </div>
-
-
-        <div
-            id="productsGrid"
-            class="products-grid"
-        ></div>
-
-
-        <div
-            id="noProducts"
-            class="no-products hidden"
-        >
-
-            <div class="no-products-icon">
-                🔎
-            </div>
-
-            <h3>
-                Aucun produit trouvé
-            </h3>
-
-            <p>
-                Essayez une autre recherche ou catégorie.
-            </p>
-
-        </div>
-
-    </main>
-
-
-    <!-- =========================
-         PANIER
-    ========================== -->
-
-    <div
-        id="cartOverlay"
-        class="overlay"
-    >
-
-        <aside
-            id="cartPanel"
-            class="cart-panel"
-            aria-hidden="true"
-        >
-
-            <div class="cart-header">
-
-                <div>
-
-                    <p class="eyebrow">
-                        COMMANDE
-                    </p>
-
-                    <h2>
-                        Mon panier
-                    </h2>
-
-                </div>
-
-                <button
-                    id="closeCart"
-                    class="close-button"
-                    type="button"
-                    aria-label="Fermer le panier"
-                >
-                    ✕
-                </button>
-
-            </div>
-
-
-            <!-- PRODUITS DU PANIER -->
-
-            <div
-                id="cartItems"
-                class="cart-items"
-            ></div>
-
-
-            <!-- PANIER VIDE -->
-
-            <div
-                id="emptyCart"
-                class="empty-cart"
-            >
-
-                <div>
-                    🛒
-                </div>
-
-                <h3>
-                    Votre panier est vide
-                </h3>
-
-                <p>
-                    Ajoutez un produit pour commencer.
-                </p>
-
-            </div>
-
-
-            <!-- =========================
-                 COMMANDE
-            ========================== -->
-
-            <div
-    id="checkout"
-    class="checkout hidden"
->
-
-    <h3>
-        Livraison
-    </h3>
-
-
-    <label>
-
-        Nom complet
-
-        <input
-            id="customerName"
-            type="text"
-            placeholder="Ex : Pape Moussa"
-            autocomplete="name"
-        >
-
-    </label>
-
-
-    <label>
-
-        Téléphone
-
-        <input
-            id="customerPhone"
-            type="tel"
-            placeholder="Ex : 77 000 00 00"
-            autocomplete="tel"
-        >
-
-    </label>
-
-
-    <label>
-
-        Adresse
-
-        <textarea
-            id="customerAddress"
-            placeholder="Adresse de livraison"
-        ></textarea>
-
-    </label>
-
-
-    <label>
-
-        Mode de paiement
-
-        <select id="paymentMethod">
-
-            <option value="Wave">
-                Wave
-            </option>
-
-            <option value="Orange Money">
-                Orange Money
-            </option>
-
-            <option value="Paiement à la livraison">
-                Paiement à la livraison
-            </option>
-
+        <select id="categoryFilter" aria-hidden="true">
+            <option value="">Toutes catégories</option>
         </select>
 
-    </label>
-
-
-    <button
-        id="orderButton"
-        class="order-button"
-        type="button"
-    >
-        Confirmer la commande
-    </button>
-
-</div>
-
-</aside>
-
-</div>
-
-    <!-- =========================
-         ADMINISTRATION
-    ========================== -->
-
-    <div
-        id="adminModal"
-        class="modal"
-    >
-
-        <div class="modal-card">
-
-            <button
-                id="closeAdmin"
-                class="modal-close"
-                type="button"
-                aria-label="Fermer"
-            >
-                ✕
+        <nav class="header-actions">
+            <button type="button" id="catalogButton" class="link-button">
+                Catalogue
             </button>
 
-
-            <p class="eyebrow">
-                ESPACE PRIVÉ
-            </p>
-
-
-            <h2>
-                Administration
-            </h2>
-
-
-            <p class="modal-description">
-                Connectez-vous pour gérer la boutique.
-            </p>
-
-
-            <label>
-
-                Identifiant
-
-                <input
-                    id="adminUsername"
-                    type="text"
-                    autocomplete="username"
-                    placeholder="Identifiant"
-                >
-
-            </label>
-
-
-            <label>
-
-                Mot de passe
-
-                <input
-                    id="adminPassword"
-                    type="password"
-                    autocomplete="current-password"
-                    placeholder="Mot de passe"
-                >
-
-            </label>
-
-
-            <button
-                id="loginButton"
-                class="login-button"
-                type="button"
-            >
-                Se connecter
+            <button type="button" id="adminButton" class="icon-button" aria-label="Espace administrateur">
+                ⚙️
             </button>
 
+            <button type="button" id="cartButton" class="cart-button" aria-label="Ouvrir le panier">
+                🛒
+                <span id="cartCount" class="cart-count">0</span>
+            </button>
+        </nav>
+    </div>
+</header>
 
-            <p
-                id="adminError"
-                class="error-message"
-            ></p>
+<!-- ============ HÉRO ============ -->
+<section class="hero">
+    <h1>Tout pour vos chantiers, en un seul endroit</h1>
+    <p>Quincaillerie, plomberie, électricité, outillage — commandez en quelques clics, on s'occupe du reste.</p>
+</section>
 
-        </div>
+<!-- ============ CATALOGUE ============ -->
+<main id="catalog" class="catalog-section">
+
+    <div class="catalog-header">
+        <h2>Catalogue</h2>
+        <span id="productCount" class="product-count"></span>
+    </div>
+
+    <div id="productsGrid" class="products-grid"></div>
+
+    <p id="noProducts" class="no-products hidden">
+        Aucun produit ne correspond à votre recherche.
+    </p>
+
+</main>
+
+<!-- ============ PANNEAU PANIER ============ -->
+<div id="cartOverlay" class="cart-overlay" aria-hidden="true"></div>
+
+<aside id="cartPanel" class="cart-panel" aria-hidden="true">
+
+    <div class="cart-panel-header">
+        <h2>Votre panier</h2>
+        <button type="button" id="closeCart" class="icon-button" aria-label="Fermer le panier">✕</button>
+    </div>
+
+    <div class="cart-panel-body">
+
+        <p id="emptyCart" class="empty-cart">
+            Votre panier est vide pour le moment.
+        </p>
+
+        <div id="cartItems" class="cart-items"></div>
 
     </div>
 
+    <div id="checkout" class="checkout hidden">
 
-    <!-- =========================
-         WHATSAPP
-    ========================== -->
+        <h3>Vos informations</h3>
 
-    <a
-        id="whatsappButton"
-        class="whatsapp-button"
-        href="#"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        💬
-        <span>
-            WhatsApp
-        </span>
-    </a>
+        <label>
+            Nom complet
+            <input type="text" id="customerName" placeholder="Votre nom">
+        </label>
 
+        <label>
+            Téléphone
+            <input type="tel" id="customerPhone" placeholder="Votre numéro">
+        </label>
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
+        <label>
+            Adresse de livraison
+            <input type="text" id="customerAddress" placeholder="Quartier, ville…">
+        </label>
 
-    <footer class="footer">
+        <label>
+            Mode de paiement
+            <select id="paymentMethod">
+                <option value="Paiement à la livraison">Paiement à la livraison</option>
+                <option value="Wave">Wave</option>
+                <option value="Orange Money">Orange Money</option>
+            </select>
+        </label>
 
-        <div class="footer-logo">
+        <button type="button" id="orderButton" class="order-button">
+            Confirmer sur WhatsApp
+        </button>
 
-            <span>
-                ABG
-            </span>
+    </div>
 
-            STORE
+</aside>
 
+<!-- ============ MODALE ADMIN ============ -->
+<div id="adminModal" class="admin-modal" aria-hidden="true">
+    <div class="admin-modal-content">
+
+        <div class="admin-modal-header">
+            <h2>Espace administrateur</h2>
+            <button type="button" id="closeAdmin" class="icon-button" aria-label="Fermer">✕</button>
         </div>
 
+        <form id="adminForm">
 
-        <p>
-            Votre boutique en ligne.
-        </p>
+            <label>
+                Identifiant
+                <input type="text" id="adminUsername" autocomplete="username">
+            </label>
 
+            <label>
+                Mot de passe
+                <input type="password" id="adminPassword" autocomplete="current-password">
+            </label>
 
-        <small>
-            © 2026 ABG Store — Tous droits réservés.
-        </small>
+            <p id="adminError" class="admin-error"></p>
 
-    </footer>
+            <button type="button" id="loginButton" class="order-button">
+                Se connecter
+            </button>
 
+        </form>
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+    </div>
+</div>
 
-    <script src="script.js"></script>
-
-<a
-    href="https://api.whatsapp.com/send?phone=221775673182"
-    target="_blank"
-    rel="noopener noreferrer"
-    style="
-        display:block;
-        margin:20px;
-        padding:15px;
-        background:#25D366;
-        color:white;
-        text-align:center;
-        text-decoration:none;
-        border-radius:10px;
-        font-weight:bold;
-    "
->
-    TESTER WHATSAPP
+<!-- ============ BOUTON WHATSAPP FLOTTANT ============ -->
+<a id="whatsappButton" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contacter sur WhatsApp">
+    💬
 </a>
 
-</body>
+<footer class="site-footer">
+    <p>ABG Store — Dakar, Sénégal</p>
+</footer>
 
+<script src="script.js" charset="UTF-8"></script>
+</body>
 </html>
