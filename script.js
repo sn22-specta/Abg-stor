@@ -2,19 +2,57 @@
 
 /* =========================================================
    ABG STORE
-   Catalogue produits — version corrigée
+   SCRIPT.JS — VERSION PROFESSIONNELLE
+   PRODUITS :
+   - MAJUSCULES
+   - SANS ACCENTS
+   - SANS CÉDILLE
+   - SANS PRIX
    ========================================================= */
 
-const WHATSAPP_NUMBER = "221775673182"; // À REMPLACER
-const ADMIN_USERNAME = "admin";
-const ADMIN_PASSWORD = "ABG2026";
 
-const PRODUCTS_PER_PAGE = 100;
+/* =========================================================
+   CONFIGURATION
+   ========================================================= */
+
+const CONFIG = Object.freeze({
+
+    whatsappNumber: "221775673182",
+
+    /*
+     * ATTENTION :
+     * Ces identifiants sont visibles dans le navigateur.
+     * Ils ne constituent PAS une vraie sécurité.
+     * Pour une vraie administration, utiliser un backend.
+     */
+
+    adminUsername: "admin",
+    adminPassword: "ABG2026",
+
+    storageCart: "abg_cart",
+    storageAdmin: "abg_admin_logged",
+
+    productsPerPage: 100,
+
+    whatsappDefaultMessage:
+        "Bonjour ABG Store 👋 Je souhaite avoir des informations sur vos produits."
+
+});
+
+
+/* =========================================================
+   ÉTAT DE L'APPLICATION
+   ========================================================= */
 
 let products = [];
 let cart = [];
-let currentPage = 1;
-let searchTerm = "";
+
+const state = {
+    currentPage: 1,
+    searchTerm: "",
+    sortBy: "default"
+};
+
 
 /* =========================================================
    LISTE DES PRODUITS
@@ -475,1970 +513,1735 @@ Lubrificateur pneumatique
 Manomètre pneumatique
 Pistolet pneumatique
 Soufflette pneumatique
-Pédale pneumatique
-Flexible hydraulique
-Raccord hydraulique
-Coupleur hydraulique
-Vérin hydraulique
-Pompe hydraulique
-Distributeur hydraulique
-Valve hydraulique
-Manomètre hydraulique
-Filtre hydraulique
-Joint hydraulique
-Frein-filet
-Pâte d'étanchéité hydraulique
-Pâte de montage
-Pâte anti-grippante
-Produit de nettoyage industriel
-Aérosol galvanisant
-Apprêt antirouille en aérosol
-Lubrifiant chaîne
-Lubrifiant serrure
-Mousse polyuréthane expansive
-Résine époxy
-Durcisseur époxy
-Colle anaérobie
-Colle cyanoacrylate
-Ruban d'étanchéité auto-amalgamant
-Polystyrène expansé
-Polystyrène extrudé
-Laine de verre
-Laine de roche
-Mousse isolante en rouleau
-Bande résiliente
-Bande d'étanchéité à l'air
-Pare-vapeur
-Membrane d'étanchéité
-Géotextile
-Film sous-dalle
-Bande périphérique
-Profilé d'arrêt d'enduit
-Cornière d'angle PVC
-Cornière d'angle métallique
-Profilé de dilatation
-Profilé de jonction
-Treillis de façade
-Trame en fibre de verre
-Bande à joint pour plaque de plâtre
-Plaque de plâtre standard
-Plaque de plâtre hydrofuge
-Plaque de plâtre ignifuge
-Plaque ciment
-Plaque PVC rigide
-Plaque polycarbonate
-Plaque plexiglas
-Plaque ondulée bitumée
-Plaque translucide toiture
-Profilé métallique pour cloison
-Montant métallique
-Rail métallique pour cloison
-Suspente de plafond
-Fourrure métallique
-Cavalier de plafond
-Trappe de visite
-Cornière de plafond
-Bande armée pour angle
-Bande papier pour joint
-Enduit à joint prêt à l'emploi
-Poteau de clôture
-Poteau métallique galvanisé
-Poteau béton
-Piquet de clôture
-Piquet de jardin
-Tendeur de grillage
-Fil de tension
-Fil barbelé
-Fil d'attache galvanisé
-Agrafe de clôture
-Attache de grillage
-Plaque de soubassement
-Portillon métallique
-Panneau de clôture
-Grillage à poules
-Grillage soudé plastifié
-Filet de clôture
-Porte-clôture
-Isolateur de clôture électrique
-Poignée de clôture électrique
-Crochet de faîtière
-Bande de rive
-Bande de solin
-Solin aluminium
-Solin plomb
-Bavette d'étanchéité
-Closoir de toiture
-Ventilation de faîtage
-Tuile de rive
-Tuile faîtière
-Tuile mécanique
-Tuile canal
-Plaque de sous-toiture
-Écran de sous-toiture
-Peigne de toiture
-Crapaudine de gouttière
-Boîte à eau
-Trop-plein
-Naissance de gouttière métallique
-Descente d'eau pluviale métallique
-Collecteur d'eau
-Compteur d'eau
-Joint de compteur
-Robinet d'arrêt compteur
-Clapet antipollution
-Purgeur automatique
-Soupape de sécurité
-Groupe de sécurité chauffe-eau
-Vase d'expansion
-Résistance chauffe-eau
-Anode de chauffe-eau
-Thermostat chauffe-eau
-Flexible chauffe-eau
-Tuyau d'évacuation condensats
-Pompe de relevage
-Bac de récupération
-Regard compteur
-Couvercle de regard
-Grille avaloir
-Siphon de sol
-Cylindre à bouton
-Cylindre double entrée
-Demi-cylindre
-Cylindre à molette
-Serrure à code mécanique
-Serrure à code électronique
-Serrure à crochet
-Serrure à larder
-Serrure de boîte aux lettres
-Serrure de portail coulissant
-Serrure de portail battant
-Serrure de grille métallique
-Serrure de rideau métallique
-Serrure de meuble métallique
-Verrou à combinaison
-Verrou de fenêtre
-Loquet à ressort
-Loquet à bille
-Targette à ressort
-Gâche électrique
-Rail porte-étiquette
-Porte-étiquette adhésif
-Porte-étiquette magnétique
-Crochet pour panneau perforé
-Crochet double pour panneau
-Crochet gondole
-Porte-brochure mural
-Porte-affiche mural
-Cadre porte-affiche
-Présentoir métallique
-Présentoir de comptoir
-Corbeille métallique
-Séparateur de rayonnage
-Butée de rayonnage
-Étiquette de prix
-Porte-étiquette rayon
-Miroir de surveillance
-Barrière de file d'attente
-Poteau de guidage
-Chaînette de balisage
-Corde polypropylène
-Corde polyester
-Corde polyamide
-Corde sisal
-Corde coton
-Ficelle polypropylène
-Ficelle sisal
-Sandow élastique
-Tendeur élastique
-Crochet élastique
-Mousqueton à vis
-Mousqueton automatique
-Anneau en D
-Anneau triangulaire
-Boucle métallique
-Boucle à rouleau
-Boucle rapide
-Serre-corde
-Cosse-cœur
-Émerillon
-Taquet d'amarrage
-Anneau d'amarrage
-Pontet inox
-Charnière inox marine
-Mousqueton inox
-Manille inox
-Câble inox
-Cosse-cœur inox
-Poulie marine
-Cadène inox
-Ridoir inox
-Crochet inox
-Œillet inox
-Fermoir inox
-Loquet inox
-Réchaud de camping
-Lampe de camping
-Matelas isolant
-Sac étanche
-Tente de chantier
-Bâton de marche
-Gourde inox
-Glacière
-Chaise pliante
-Table pliante
-Filet de rangement
-Mousqueton de randonnée
-Cordelette camping
-Piquet de tente
-Maillet de tente
-Escabeau aluminium
-Échelle télescopique
-Échelle pliante
-Marchepied professionnel
-Tabouret d'atelier
-Lampe baladeuse
-Enrouleur de câble
-Coffret de rangement métallique
-Mallette de maintenance
-Organiseur de petites pièces
-Pelle à fumier
-Fourche à fumier
-Fourche à ensilage
-Racloir d'étable
-Brouette à fumier
-Mangeoire métallique
-Abreuvoir automatique
-Abreuvoir à niveau constant
-Seau d'alimentation
-Seau à traire
-Tétine d'allaitement
-Biberon d'élevage
-Brosse pour animaux
-Étrille métallique
-Licol
-Longe agricole
-Mousqueton agricole
-Chaîne d'attache animale
-Anneau d'attache
-Piquet d'attache
-Filet anti-insectes
-Filet de protection des cultures
-Toile de paillage
-Agrafe de toile de paillage
-Clip de serre
-Attache de serre
-Film de serre
-Ficelle de palissage
-Clip de palissage
-Tuteur plastique
-Tuteur bambou
-Tuteur fibre de verre
-Étiquette de plantation
-Plaque de semis
-Godet horticole
-Bac de culture
-Sac de culture
-Terreau horticole
-Perlite horticole
-Vermiculite horticole
-Tuyau goutte-à-goutte
-Ruban goutte-à-goutte
-Goutteur réglable
-Goutteur autorégulant
-Micro-asperseur
-Brumisateur agricole
-Bouchon de ligne d'irrigation
-Départ de ligne goutte-à-goutte
-Raccord cannelé
-Raccord compression irrigation
-Té d'irrigation
-Croix d'irrigation
-Vanne d'irrigation
-Filtre à disque
-Filtre à tamis irrigation
-Injecteur Venturi
-Régulateur de débit
-Débitmètre d'eau
-Programmateur d'irrigation
-Électrovanne d'irrigation
-Torche de soudage MIG
-Torche TIG
-Torche de coupage
-Bouteille de gaz technique
-Détendeur oxygène
-Détendeur argon
-Détendeur CO₂
-Tuyau oxygène
-Tuyau acétylène
-Buse de chalumeau
-Électrode tungstène
-Métal d'apport TIG
-Bobine de fil MIG
-Spray anti-adhérent soudage
-Pierre réfractaire
-Écran de soudage
-Rideau de soudage
-Pince à souder
-Positionneur magnétique
-Équerre magnétique de soudage
-Fraise cylindrique
-Fraise en bout
-Fraise conique
-Fraise boule
-Fraise à rainurer
-Foret à béton SDS Max
-Foret à béton SDS Plus
-Scie cloche bi-métal
-Scie cloche diamant
-Trépan béton
-Trépan carrelage
-Disque abrasif pour pierre
-Disque abrasif pour aluminium
-Disque à tronçonner béton
-Disque à tronçonner carrelage
-Lame diamantée
-Lame carbure
-Lame de scie sabre bois
-Lame de scie sabre métal
-Lame de scie à ruban
-Roue industrielle fixe
-Roue industrielle pivotante
-Roulette haute température
-Patin antivibratoire
-Pied antivibratoire
-Butée mécanique
-Amortisseur industriel
-Ressort à gaz
-Vérin à gaz
-Charnière industrielle
-Fermoir à levier
-Loquet industriel
-Poignée en T
-Poignée rabattable
-Volant de manœuvre
-Manivelle industrielle
-Bouton de commande
-Plaque signalétique machine
-Passe-fil caoutchouc
-Profilé caoutchouc de protection
-Porte-verre mural
-Porte-brosse à dents
-Distributeur de savon mural
-Porte-rouleau WC
-Barre d'appui
-Rideau de douche
-Anneau de rideau de douche
-Tringle de douche
-Joint magnétique de porte de douche
-Profilé de finition douche
-Raclette de douche
-Bonde clic-clac
-Bouchon de lavabo
-Chaînette de bouchon
-Trop-plein lavabo
-Grille de trop-plein
-Cache-siphon
-Flexible de vidange
-Joint de chasse WC
-Robinet temporisé
-Grille de ventilation réglable
-Grille de façade
-Grille de reprise d'air
-Bouche d'extraction
-Bouche d'insufflation
-Extracteur d'air
-Ventilateur mural
-Ventilateur de plafond
-Ventilateur sur pied
-Ventilateur de table
-Gaine souple de ventilation
-Collier de gaine
-Ruban aluminium HVAC
-Mousse isolante pour tuyauterie
-Support mural climatiseur
-Silentbloc climatiseur
-Évacuation condensats climatisation
-Pompe à condensats
-Filtre à air climatiseur
-Skimmer de piscine
-Buse de refoulement
-Bonde de fond piscine
-Prise balai piscine
-Tuyau piscine souple
-Tuyau flottant piscine
-Brosse de paroi piscine
-Épuisette piscine
-Manche télescopique piscine
-Aspirateur manuel piscine
-Thermomètre piscine
-Testeur de pH
-Doseur flottant
-Couverture piscine
-Enrouleur de couverture piscine
-Projecteur piscine
-Coffret électrique piscine
-Pompe à chaleur piscine
-Filtre à sable piscine
-Vanne multivoies
-Patère murale
-Porte-manteau mural
-Porte-serviettes mural
-Étagère d'angle
-Console murale
-Support de tringle à rideau
-Tringle à rideau
-Embout de tringle à rideau
-Anneau de rideau
-Crochet adhésif
-Crochet ventouse
-Crochet mural double
-Miroir mural
-Support mural TV
-Support mural enceinte
-Support mural téléphone
-Support mural tablette
-Porte-clés mural
-Boîte à clés murale
-Coffre à clés à combinaison
-Égouttoir mural
-Porte-couverts mural
-Barre de crédence
-Crochet de crédence
-Porte-ustensiles mural
-Étagère murale cuisine
-Support papier essuie-tout
-Support rouleau aluminium
-Porte-éponge évier
-Panier égouttoir évier
-Bonde d'évier
-Trop-plein d'évier
-Siphon d'évier double
-Siphon d'évier extra-plat
-Flexible de vidange lave-vaisselle
-Raccord lave-vaisselle
-Robinet machine à laver
-Tuyau arrivée d'eau machine
-Tuyau évacuation machine
-Anti-bélier plomberie
-Pelle à grain
-Fourche à foin
-Râteau à feuilles
-Houe maraîchère
-Sarcloir manuel
-Transplantoir
-Griffe de jardin
-Plantoir à bulbes
-Coupe-branches
-Ébrancheur télescopique
-Scie d'élagage
-Scie arboricole
-Pierre d'affûtage agricole
-Lime pour chaîne
-Tendeur de chaîne de tronçonneuse
-Bidon de mélange 2 temps
-Pulvérisateur à dos
-Lance télescopique agricole
-Buse de pulvérisation
-Filtre de pulvérisateur
-Filtre à huile
-Filtre à air moteur
-Filtre à carburant
-Filtre habitacle
-Bougie d'allumage
-Bougie de préchauffage
-Courroie accessoire
-Galet tendeur
-Galet enrouleur
-Pompe à eau automobile
-Thermostat automobile
-Joint de culasse
-Joint de cache-culbuteurs
-Joint de carter
-Durite de radiateur
-Durite carburant
-Collier de durite
-Liquide de refroidissement
-Liquide de frein
-Liquide lave-glace
-Pompe doseuse
-Pompe centrifuge
-Pompe auto-amorçante
-Pompe de transfert
-Pompe à membrane
-Pompe péristaltique
-Pompe manuelle à levier
-Pompe à main pour fût
-Pompe vide-fût
-Moteur électrique monophasé
-Moteur électrique triphasé
-Condensateur moteur
-Ventilateur industriel
-Hélice industrielle
-Grille de protection moteur
-Accouplement à mâchoires
-Joint d'accouplement
-Filtre à huile hydraulique
-Filtre à carburant industriel
-Filtre à air industriel
-Cric hydraulique
-Chandelle automobile
-Clé démonte-roue
-Clé à bougie
-Entonnoir automobile
-Pompe manuelle
-Jerrican homologué
-Grattoir à vitre
-Brosse de lavage automobile
-Raclette de nettoyage
-Compresseur d'air portable
-Manomètre de pression pneus
-Kit réparation pneu
-Valve de pneu
-Collier de serrage métallique
-Ruban adhésif automobile
-Mastic carrosserie
-Roulement à billes
-Roulement à rouleaux
-Palier fonte
-Bague d'arrêt
-Circlip intérieur
-Circlip extérieur
-Joint torique
-Joint SPI
-Courroie trapézoïdale
-Courroie crantée
-Poulie moteur
-Chaîne à rouleaux
-Pignon chaîne
-Graisseur mécanique
-Ressort de compression
-Ressort de traction
-Ressort de torsion
-Silentbloc
-Accouplement élastique
-Moyeu mécanique
-Cornière acier
-Profilé carré acier
-Profilé rectangulaire acier
-Tube carré acier
-Grignoteuse à tôle
-Pince à sertir hydraulique
-Pince à expansion
-Pince à circlips
-Coupe-joint
-Outil de pose de joint
-Extracteur à inertie
-Extracteur à griffes
-Séparateur de roulement
-Presse à roulement manuelle
-Levier démonte-pneu
-Démonte-obus de valve
-Tire-valve
-Testeur de pression
-Testeur de continuité
-Testeur de tension sans contact
-Multimètre numérique
-Pince ampèremétrique
-Testeur de prise
-Détecteur de fuite d'eau
-Mandrin auto-serrant
-Mandrin à clé
-Clé de mandrin
-Adaptateur SDS
-Adaptateur porte-douille
-Rallonge de douille
-Cardan universel de douille
-Douille longue
-Douille à choc
-Douille à bougie
-Coffret de douilles
-Coffret d'embouts
-Porte-outils magnétique
-Aimant de récupération
-Organiseur mural
-Porte-clés d'atelier
-Tapis d'établi antidérapant
-Tapis de découpe
-Plaque de protection d'établi
-Support de perceuse
-Pince à décoffrer
-Arrache-clou
-Lève-plaque
-Lève-panneau
-Griffe de coffrage
-Serre-banche
-Tendeur de coffrage
-Écarteur de coffrage
-Cône de coffrage
-Obturateur de coffrage
-Tige de coffrage
-Écrou de coffrage
-Rondelle de coffrage
-Huile de décoffrage
-Brosse de coffrage
-Piquet métallique de chantier
-Jalonneur de chantier
-Plaque de protection de sol
-Rampe passe-câbles
-Barrière de chantier
-Croisillon de carrelage
-Cale de carrelage
-Système de nivellement
-Pince de nivellement
-Taloche caoutchouc
-Taloche éponge
-Taloche à joints
-Peigne à colle
-Coupe-carreau manuel
-Coupe-carreau électrique
-Molette de coupe-carreau
-Ventouse de carreleur
-Pince perroquet
-Griffe de carreleur
-Mallette de pose
-Profilé nez de marche
-Profilé de séparation
-Profilé de finition
-Joint silicone coloré
-Nettoyant voile de ciment
-Radiateur électrique
-Convecteur électrique
-Thermostat d'ambiance
-Programmateur de chauffage
-Robinet thermostatique
-Tête thermostatique
-Purgeur manuel
-Clé de purge
-Collecteur chauffage
-Tube multicouche isolé
-Isolation tube cuivre
-Support de radiateur
-Console de radiateur
-Kit fixation radiateur
-Détecteur CO
-Détecteur de fumée
-Extincteur à poudre
-Extincteur CO₂
-Support d'extincteur
-Housse d'extincteur
-Coupe-tube PVC
-Coupe-tube multicouche
-Coupe-tube cuivre
-Ébavureur de tube
-Calibreur multicouche
-Ressort cintreur intérieur
-Ressort cintreur extérieur
-Pince à sertir multicouche
-Mâchoire TH
-Mâchoire U
-Mâchoire H
-Mâchoire RF
-Clé lavabo
-Clé à bonde
-Clé de radiateur
-Clé de robinet
-Clé de purge universelle
-Pince pour siphon
-Pince pour raccord PVC
-Déboucheur à pompe
-Furet manuel
-Furet tambour
-Tige de débouchage
-Ventouse professionnelle
-Nettoyeur de canalisation manuel
-Grille de sol inox
-Grille de sol PVC
-Siphon de machine à laver
-Siphon double évier
-Siphon gain de place
-Bonde à grille
-Bonde panier
-Manchon de réparation PVC
-Manchon coulissant PVC
-Bouchon de visite PVC
-Tampon de visite
-Clapet anti-odeur
-Clapet de retenue
-Clapet à battant
-Clapet à ressort
-Clapet de pied
-Crépine d'aspiration
-Filtre à tamis
-Filtre Y
-Filtre lavable
-Filtre à eau domestique
-Porte-filtre transparent
-Cartouche sédiments
-Cartouche charbon actif
-Cartouche polyphosphate
-Cartouche bobinée
-Cartouche plissée
-Clé porte-filtre
-Régulateur de pression
-Pressostat eau
-Contrôleur de débit
-Débitmètre à eau
-Raccord diélectrique
-Raccord union laiton
-Raccord union inox
-Raccord démontable
-Raccord compression
-Raccord à olive
-Raccord instantané
-Raccord push-fit
-Raccord multicouche
-Raccord PER
-Raccord PEX
-Raccord cuivre à sertir
-Raccord cuivre à braser
-Té de réparation
-Té égal
-Té réduit
-Croix hydraulique
-Coude orientable
-Coude mural
-Coude à écrou libre
-Réduction concentrique
-Réduction excentrique
-Bouchon fileté
-Bouchon mâle
-Bouchon femelle
-Capuchon de tube
-Raccord traversée de cloison
-Raccord de réservoir
-Passe-paroi
-Bride pleine
-Bride taraudée
-Bride à collerette
-Joint de bride
-Kit de raccordement hydraulique
-Panneau solaire photovoltaïque
-Micro-onduleur solaire
-Onduleur solaire hybride
-Régulateur solaire PWM
-Régulateur solaire MPPT
-Coffret DC solaire
-Coffret AC solaire
-Parafoudre photovoltaïque
-Connecteur MC4 mâle
-Connecteur MC4 femelle
-Clé de montage MC4
-Câble solaire rouge
-Câble solaire noir
-Passe-câble solaire
-Presse-étoupe solaire
-Rail de fixation solaire
-Crochet de toiture solaire
-Bride intermédiaire solaire
-Bride finale solaire
-Vis de fixation solaire
-Écrou coulissant solaire
-Mise à la terre panneau solaire
-Batterie solaire AGM
-Batterie solaire gel
-Batterie lithium solaire
-Boîtier batterie
-Moniteur de batterie
-Shunt batterie
-Fusible solaire
-Porte-fusible solaire
-Sectionneur DC
-Interrupteur DC
-Connecteur batterie
-Cosse batterie cuivre
-Câble batterie
-Convertisseur 12/24 V
-Convertisseur 24/230 V
-Transformateur d'isolement
-Stabilisateur de tension
-Parasurtenseur domestique
-Bloc parafoudre multiprise
-Prise RJ11
-Prise RJ45 Cat5e
-Prise RJ45 Cat6
-Prise RJ45 Cat6A
-Keystone RJ45
-Panneau de brassage
-Baie réseau murale
-Coffret réseau
-Guide-câble réseau
-Passe-câble bureau
-Cordon réseau Cat6
-Cordon réseau Cat6A
-Testeur RJ45
-Pince à sertir RJ45
-Fiche RJ45
-Capuchon RJ45
-Coupleur RJ45
-Boîtier fibre optique
-Rosace fibre optique
-Raccord fibre optique
-Jarretière fibre
-Convertisseur fibre Ethernet
-Répartiteur coaxial
-Connecteur coaxial F
-Connecteur coaxial BNC
-Prise antenne TV
-Amplificateur d'antenne
-Répartiteur TV
-Câble coaxial
-Gaine annelée télécom
-Collier de câble réseau
-Attache câble adhésive
-Boîte de dérivation réseau
-Mini-rack réseau
-Étagère de rack
-Panneau obturateur rack
-Bandeau électrique rack
-Ventilateur de baie réseau
-Serrure de baie réseau
-Kit mise à la terre rack
-Goulotte réseau
-Gaine textile câble
-Spirale range-câble
-Passe-câble métallique
-Étiquette de câble
-Imprimante d'étiquettes câbles
-Repère de fil
-Numéro de fil
-Manchon thermorétractable
-Gaine thermorétractable
-Gaine tressée
-Gaine spiralée
-Ruban auto-amalgamant
-Ruban isolant haute tension
-Ruban aluminium adhésif
-Ruban cuivre adhésif
-Charnière piano inox
-Charnière à double action
-Charnière de portail
-Charnière réglable portail
-Paumelle à visser
-Paumelle à souder
-Paumelle dégondable
-Gond à sceller
-Gond à visser
-Gond réglable
-Arrêt de portail
-Arrêt de porte au sol
-Arrêt mural de porte
-Butoir magnétique
-Ferme-porte à compas
-Ferme-porte encastrable
-Ferme-portail hydraulique
-Sélecteur de fermeture
-Serrure à appliquer
-Serrure à rouleau
-Serrure multipoint
-Serrure électrique
-Serrure magnétique
-Gâche mécanique
-Cylindre demi
-Cylindre bouton
-Cylindre à bouton moleté
-Cylindre européen
-Cylindre rond
-Cylindre haute sécurité
-Rosace de sécurité
-Poignée bouton
-Poignée béquille
-Poignée palière
-Poignée de fenêtre
-Crémone de fenêtre
-Espagnolette
-Compas de fenêtre
-Loqueteau à bille
-Targette à plat
-Targette verticale
-Verrou à bouton
-Verrou à levier
-Verrou de portail
-Verrou de baie vitrée
-Verrou de garage
-Pêne dormant
-Pêne demi-tour
-Barre de sécurité
-Barre anti-panique
-Judas optique
-Judas numérique
-Entretoise de poignée
-Carré de poignée
-Rosace ronde
-Rosace carrée
-Cache-vis de poignée
-Plaque de serrure
-Plaque de gâche
-Entrée de clé
-Garniture de porte
-Kit serrure portail
-Kit poignée porte
-Kit cylindre serrure
-Kit réparation serrure
-Nettoyant serrure
-Clé vierge profil européen
-Clé vierge à gorge
-Clé vierge automobile
-Coffret à clés
-Armoire à clés
-Porte-clés numéroté
-Étiquette porte-clés
-Crochet mural triple
-Patère simple
-Patère double
-Patère rabattable
-Console d'étagère lourde
-Équerre renforcée
-Équerre décorative
-Support de tablette invisible
-Crémaillère d'étagère
-Rail d'étagère
-Console réglable
-Taquet métallique
-Taquet plastique
-Insert fileté bois
-Écrou à frapper
-Écrou à griffes
-Douille filetée bois
-Vis confirmat
-Boulon de meuble
-Tourillon cannelé
-Lamelle d'assemblage
-Connecteur excentrique
-Goujon d'assemblage
-Patin feutre rond
-Patin feutre carré
-Patin glisseur
-Roulette pivotante
-Roulette fixe
-Roulette freinée
-Roulette double
-Roulette à platine
-Roulette à tige
-Rouleau de meuble
-Pied métallique meuble
-Pied plastique meuble
-Pied inclinable
-Compas à friction
-Charnière de meuble 90°
-Charnière de meuble 110°
-Charnière de meuble 165°
-Charnière à fermeture automatique
-Charnière verre-verre
-Charnière verre-bois
-Support tablette verre
-Profilé porte-verre
-Joint EPDM vitrage
-Ventouse double
-Ventouse triple
-Coupe-verre diamant
-Coupe-verre à molette
-Pince à gruger verre
-Pierre à affûter verre
-Couteau à mastic
-Spatule vitrier
-Ruban de vitrage
-Profilé aluminium vitrage
-Profilé PVC vitrage
-Parclose PVC
-Joint parclose
-Mousse de vitrage
-Ruban double face vitrage
-Film de protection verre
-Film solaire fenêtre
-Film dépoli fenêtre
-Film anti-regard
-Moustiquaire enroulable
-Moustiquaire fixe
-Moustiquaire plissée
-Toile moustiquaire
-Profilé moustiquaire
-Roulette moustiquaire
-Poignée moustiquaire
-Ressort moustiquaire
-Kit moustiquaire fenêtre
-Kit moustiquaire porte
-Rail rideau
-Cordon de store
-Chaînette de store
-Mécanisme de store
-Support de store
-Embout de store
-Tube d'enroulement store
-Treuil de volet
-Manivelle de volet
-Attache tablier volet
-Verrou automatique volet
-Butée de volet
-Sangle de volet
-Enrouleur de sangle
-Échelle articulée
-Escabeau professionnel
-Marchepied pliant
-Plateforme roulante
-Plateforme individuelle
-Échafaudage roulant
-Échafaudage pliant
-Roue d'échafaudage
-Stabilisateur d'échafaudage
-Vérin d'échafaudage
-Collier d'échafaudage
-Rosette d'échafaudage
-Plancher d'échafaudage
-Garde-corps d'échafaudage
-Échelle de toit
-Crochet d'échelle
-Pied d'échelle antidérapant
-Sangle d'échelle
-Porte-échelle mural
-Diable pliant
-Diable à bavette
-Diable monte-escalier
-Chariot plateforme
-Chariot à dossier
-Chariot de manutention
-Chariot porte-panneaux
-Chariot porte-bouteilles
-Transpalette manuel
-Gerbeur manuel
-Roue de manutention
-Roue caoutchouc
-Roue pleine
-Roue pneumatique
-Roue increvable
-Galet de manutention
-Rouleau transporteur
-Tendeur à cliquet
-Crochet d'arrimage
-Anneau d'arrimage
-Filet d'arrimage
-Corde d'arrimage
-Sandow à crochet
-Sandow plat
-Sangle à boucle
-Sangle porte-outils
-Porte-matériaux
-Sac de manutention
-Bac de rangement industriel
-Bac gerbable
-Bac à bec
-Caisse plastique empilable
-Caisse métallique
-Coffre de chantier
-Coffre métallique
-Vestiaire métallique
-Étagère galvanisée
-Étagère modulable
-Étagère à pneus
-Étagère lourde
-Étagère à bacs
-Panneau perforé atelier
-Support tournevis mural
-Support clés plates
-Support pinces
-Support marteaux
-Support perceuse
-Support meuleuse
-Support rouleaux
-Support tuyaux
-Support bobines
-Support bouteilles
-Support aérosols
-Bac à outils
-Plateau magnétique
-Plateau de rangement
-Servante d'atelier
-Établi pliant
-Établi métallique
-Établi bois
-Étau de machine
-Étau à mors doux
-Mors de rechange étau
-Enclume d'atelier
-Bloc d'étau
-Plateau tournant d'établi
-Lampe d'établi
-Loupe d'établi
-Tapis magnétique
-Bac de récupération huile
-Entonnoir industriel
-Pompe manuelle de transfert
-Bidon de stockage
-Marteau de couvreur
-Marteau de charpentier
-Maillet nylon
-Maillet caoutchouc
-Maillet cuivre
-Massette sans rebond
-Massette à manche fibre
-Burin large
-Burin pointu
-Pointeau automatique
-Pointeau de précision
-Chasse-goupille
-Chasse-goupille jeu
-Jeu de limes aiguilles
-Lime plate bâtarde
-Lime ronde bâtarde
-Lime demi-ronde
-Lime carrée
-Lime triangulaire
-Râpe à bois plate
-Râpe à bois ronde
-Râpe demi-ronde
-Râpe de précision
-Grattoir carbure
-Grattoir peinture
-Racloir de sol
-Raclette de chantier
-Spatule rigide
-Spatule flexible
-Spatule crantée
-Couteau à enduire
-Couteau à mastic large
-Couteau à joint
-Cutter à lame trapèze
-Cutter rotatif
-Couteau de chantier
-Lame de rechange cutter
-Lame grattoir
-Scie à métaux mini
-Scie à métaux professionnelle
-Lame bimétal
-Lame carbure métal
-Scie à chantourner
-Scie japonaise
-Scie à dos
-Scie à onglet manuelle
-Boîte à onglet
-Lame scie bois fine
-Lame scie bois grossière
-Lame scie PVC
-Lame scie aluminium
-Lame scie cuivre
-Scie trépan métal
-Scie trépan bois
-Scie trépan PVC
-Mandrin porte-scie cloche
-Arbre de scie cloche
-Foret pilote
-Foret béton long
-Foret béton court
-Foret carrelage
-Foret verre
-Foret diamanté
-Foret bois plat
-Foret bois hélicoïdal
-Foret étagé
-Foret conique
-Foret métal cobalt
-Foret métal titane
-Foret HSS court
-Foret HSS long
-Foret SDS court
-Foret SDS long
-Burin SDS plat
-Burin SDS pointu
-Burin SDS large
-Fraise à lamer
-Meule sur tige
-Roue à lamelles
-Brosse sur tige
-Disque à tronçonner inox
-Disque à tronçonner acier
-Disque à ébarber inox
-Disque à ébarber acier
-Disque à lamelles zirconium
-Disque fibre abrasif
-Disque diamant béton
-Disque diamant carrelage
-Disque diamant marbre
-Disque diamant granit
-Disque diamant coupe à sec
-Disque diamant coupe à eau
-Brosse métallique ronde
-Brosse métallique boisseau
-Brosse métallique pinceau
-Brosse inox
-Brosse laiton
-Brosse nylon abrasive
-Roue abrasive
-Pierre abrasive
-Pierre de rodage
-Pierre à huile
-Papier abrasif gros grain
-Papier abrasif moyen grain
-Papier abrasif fin grain
-Papier abrasif très fin
-Toile émeri
-Rouleau abrasif
-Éponge abrasive
-Disque abrasif velcro
-Disque mousse polissage
-Disque feutre polissage
-Pâte à polir métal
-Pâte à polir inox
-Pâte à polir aluminium
-Pâte à roder
-Brosse de nettoyage moteur
-Brosse de nettoyage tuyau
-Brosse bouteille métallique
-Brosse radiateur
-Brosse cheminée
-Brosse barbecue
-Balayette industrielle
-Balai nylon dur
-Balai à pousser
-Raclette de sol mousse
-Raclette sol caoutchouc
-Pelle à poussière métallique
-Pelle à poussière plastique
-Pelle chantier
-Pelle ronde
-Pelle carrée
-Pelle à neige
-Pioche de terrassement
-Pioche de jardin
-Houe de chantier
-Houe agricole
-Serfouette
-Binette
-Fourche à bêcher
-Râteau métallique
-Râteau plastique
-Croc de jardin
-Sécateur à enclume
-Sécateur à lame franche
-Ébrancheur
-Cisaille à haies
-Cisaille à gazon
-Coupe-tuyau d'arrosage
-Dévidoir de tuyau
-Enrouleur de tuyau
-Tuyau microporeux
-Tuyau d'arrosage renforcé
-Tuyau spiralé d'arrosage
-Raccord rapide femelle
-Raccord rapide mâle
-Répartiteur d'arrosage
-Minuteur d'arrosage
-Asperseur rotatif
-Asperseur oscillant
-Asperseur escamotable
-Brumisateur de jardin
-Ligne goutte-à-goutte
-Filtre d'irrigation à disque
-Filtre d'irrigation à tamis
-Injecteur d'engrais
-Venturi d'irrigation
-Électrovanne d'arrosage
-Coffret irrigation
-Tuyau PE irrigation
-Raccord PE à compression
-Bouchon fin de ligne
-Purgeur d'irrigation
-Manomètre irrigation
-Électrode rutile 2,0 mm
-Électrode rutile 2,5 mm
-Électrode rutile 3,2 mm
-Électrode basique 2,5 mm
-Électrode basique 3,2 mm
-Électrode inox
-Électrode fonte
-Électrode rechargement dur
-Fil MIG acier
-Fil MIG inox
-Fil MIG aluminium
-Fil fourré soudage
-Bobine fil soudage
-Tube contact MIG
-Galet entraîneur MIG
-Gaine torche MIG
-Torche MIG
-Métal d'apport TIG
-Connecteur DINSE
-Débitmètre argon
-Tuyau gaz soudage
-Anti-retour gaz
-Pare-flamme
-Baguette brasure cuivre
-Baguette brasure argent
-Baguette aluminium
-Flux de brasage
-Décapant cuivre
-Pâte décapante soudage
-Brosse inox soudage
-Brosse à souder
-Masque automatique soudage
-Verre de soudage
-Porte-verre masque
-Gants cuir soudage
-Manchettes soudage
-Tablier cuir soudage
-Guêtres soudage
-Couverture anti-projection
-Équerre magnétique soudage
-Pince de positionnement soudage
-Serre-joint de soudage
-Étau de soudage
-Table de soudage
-Support de torche
-Brosse de décapage inox
-Disque à lamelles soudage
-Disque décapage soudure
-Meule d'affûtage
-Meule verte carbure
-Meule blanche affûtage
-Meule boisseau
-Meule droite
-Meule sur tige cylindrique
-Meule sur tige conique
-Fraise carbure cylindre
-Fraise carbure boule
-Fraise carbure ogive
-Fraise carbure flamme
-Huile de coupe
-Fluide de coupe
-Spray de coupe
-Pâte de coupe
-Lubrifiant taraudage
-Taraud machine
-Filière ronde
-Tourne-à-gauche
-Extracteur de goujon
-Jeu d'extracteurs
-Pointeau de centrage
-Centreur de perçage
-Guide de perçage
-Gabarit de perçage
-Gabarit d'assemblage
-Rapporteur d'angle
-Jauge d'épaisseur
-Jauge de filetage
-Jauge de rayon
-Pied à coulisse inox
-Micromètre intérieur
-Comparateur mécanique
-Base magnétique comparateur
-Trusquin de mécanicien
-Niveau laser rotatif
-Niveau laser lignes
-Récepteur laser
-Mire télescopique
-Trépied laser
-Canne télescopique laser
-Télémètre laser professionnel
-Détecteur mural
-Détecteur de montants
-Détecteur de métaux mural
-Humidimètre matériaux
-Thermomètre infrarouge
-Thermomètre à sonde
-Hygromètre
-Anémomètre
-Luxmètre
-Sonomètre
-Tachymètre laser
-Endoscope caméra
-Caméra d'inspection
-Pompe à vide manuelle
-Pompe à vide électrique
-Vacuomètre
-Manifold frigorifique
-Flexible frigorifique bleu
-Flexible frigorifique rouge
-Flexible frigorifique jaune
-Dudgeonnière
-Coupe-tube frigorifique
-Ébavureur frigorifique
-Cintreuse cuivre
-Expandeur cuivre
-Pompe de récupération frigorifique
-Balance frigorifique
-Détecteur électronique de fuite
-Azote technique détendeur
-Tuyau condensats
-Pompe de relevage condensats
-Bac condensats
-Ruban isolant frigorifique
-Mousse isolante climatisation
-Pied support groupe extérieur
-Cache-goulotte climatisation
-Goulotte climatisation
-Angle intérieur goulotte
-Angle extérieur goulotte
-Jonction goulotte
-Embout goulotte
-Grille de ventilation ronde
-Grille de ventilation carrée
-Grille réglable
-Clapet coupe-feu
-Clapet anti-retour ventilation
-Registre de ventilation
-Manchette souple ventilation
-Gaine flexible aluminium
-Gaine flexible PVC
-Gaine isolée ventilation
-Bande perforée ventilation
-Silentbloc ventilateur
-Extracteur mural
-Extracteur de salle de bain
-Extracteur industriel
-Ventilateur axial
-Ventilateur centrifuge
-Ventilateur de gaine
-Hélice ventilateur
-Grille de protection ventilateur
-Moteur ventilateur
-Condensateur moteur ventilateur
-Régulateur de vitesse ventilateur
-Thermostat ventilation
-Pressostat ventilation
-Filtre à air panneau
-Filtre à air plissé
-Filtre à charbon ventilation
-Porte-filtre ventilation
-Préfiltre mousse
-Filtre métallique lavable
-Cadre filtre ventilation
-Joint filtre
-Mastic d'étanchéité ventilation
-Colle isolant thermique
-Bande isolante thermique
-Plaque isolante thermique
-Manchon isolant
-Collier isolant
-Support antivibratoire
-Ressort antivibratoire
-Plot antivibratoire
-Joint antivibratoire
-Kit fixation ventilation
-Kit installation climatisation
 `.trim();
 
+
 /* =========================================================
-   UTILITAIRES TEXTE
+   NORMALISATION DES TEXTES
    ========================================================= */
 
-function stripAccents(str) {
-    return str
-        .toLowerCase()
+/*
+ * Transforme :
+ *
+ * "Écrou à œil"
+ *
+ * en :
+ *
+ * "ECROU A ŒIL"
+ *
+ * puis remplace les caractères spéciaux restants
+ * afin d'obtenir uniquement un nom propre au catalogue.
+ */
+
+function normalizeText(value) {
+
+    return String(value ?? "")
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
+
+        // Suppression des accents
+        .replace(/[\u0300-\u036f]/g, "")
+
+        // Cédille
+        .replace(/[çÇ]/g, "C")
+
+        // Ligatures françaises
+        .replace(/[œŒ]/g, "OE")
+        .replace(/[æÆ]/g, "AE")
+
+        // Apostrophes typographiques
+        .replace(/[’‘`]/g, "'")
+
+        // Majuscules
+        .toUpperCase()
+
+        // Espaces multiples
+        .replace(/\s+/g, " ")
+
+        .trim();
 }
 
+
 /* =========================================================
-   PRIX AUTOMATIQUES
+   PROTECTION HTML
    ========================================================= */
 
-function generatePrice(index, name) {
-    const n = stripAccents(name);
+function escapeHtml(value) {
 
-    if (n.includes("vis") || n.includes("rondelle") || n.includes("ecrou") || n.includes("cheville") || n.includes("rivet")) {
-        return 100 + ((index * 37) % 1900);
-    }
-    if (n.includes("marteau") || n.includes("pince") || n.includes("tournevis") || n.includes("cle ") || n.includes("scie")) {
-        return 1500 + ((index * 113) % 13500);
-    }
-    if (n.includes("pompe") || n.includes("moteur") || n.includes("poste") || n.includes("compresseur") || n.includes("echelle")) {
-        return 15000 + ((index * 733) % 185000);
-    }
-    if (n.includes("perceuse") || n.includes("meuleuse") || n.includes("ponceuse") || n.includes("souffleur")) {
-        return 15000 + ((index * 521) % 150000);
-    }
-    if (n.includes("serrure") || n.includes("cadenas") || n.includes("poignee")) {
-        return 2500 + ((index * 83) % 30000);
-    }
-    if (n.includes("robinet") || n.includes("raccord") || n.includes("vanne") || n.includes("tuyau")) {
-        return 1000 + ((index * 71) % 30000);
-    }
-    if (n.includes("cable") || n.includes("interrupteur") || n.includes("prise") || n.includes("disjoncteur") || n.includes("electrique")) {
-        return 1000 + ((index * 97) % 50000);
-    }
-    if (n.includes("peinture") || n.includes("silicone") || n.includes("colle") || n.includes("mastic") || n.includes("enduit")) {
-        return 1500 + ((index * 107) % 35000);
-    }
-
-    return 1000 + ((index * 97) % 29000);
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
+
 /* =========================================================
-   CRÉATION DES PRODUITS
+   LIMITATION DES VALEURS
+   ========================================================= */
+
+function clamp(value, min, max) {
+
+    return Math.min(
+        Math.max(value, min),
+        max
+    );
+}
+
+
+/* =========================================================
+   CRÉATION DU CATALOGUE
    ========================================================= */
 
 function createProducts() {
+
     if (typeof productNames !== "string") {
-        console.error("ABG STORE : productNames est introuvable ou invalide.");
+
+        console.error(
+            "ABG STORE : productNames invalide."
+        );
+
         products = [];
+
         return;
     }
 
+
+    /*
+     * Chaque nom est automatiquement transformé
+     * en MAJUSCULES et SANS ACCENTS.
+     */
+
     const names = productNames
         .split("\n")
-        .map(name => name.trim())
-        .filter(name => name.length > 0);
+        .map(name => normalizeText(name))
+        .filter(Boolean);
 
-    products = names.map((name, index) => {
-        const id = index + 1;
-        return {
-            id,
-            name,
-            price: generatePrice(index, name)
-        };
+
+    /*
+     * Suppression des doublons.
+     */
+
+    const uniqueNames = [];
+    const seen = new Set();
+
+
+    names.forEach(name => {
+
+        const normalized = normalizeText(name);
+
+        if (!seen.has(normalized)) {
+
+            seen.add(normalized);
+
+            uniqueNames.push(name);
+        }
+
     });
 
-    console.log("ABG STORE :", products.length, "produits chargés");
+
+    /*
+     * Création des produits.
+     */
+
+    products = uniqueNames.map((name, index) => ({
+
+        id: index + 1,
+
+        name: name,
+
+        normalizedName: normalizeText(name),
+
+        stock: 999,
+
+        category: "",
+
+        image: "",
+
+        active: true
+
+    }));
+
+
+    console.log(
+        `ABG STORE : ${products.length} PRODUITS CHARGES.`
+    );
+
 }
+
 
 /* =========================================================
    INITIALISATION
    ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-    createProducts(); // doit être appelé avant loadCart()
+document.addEventListener(
+    "DOMContentLoaded",
+    init
+);
+
+
+function init() {
+
+    createProducts();
+
     loadCart();
-    hideCategoryFilter();
+
     setupButtons();
+
+    hideCategoryFilter();
+
+    restoreAdminSession();
+
     updateCart();
+
     renderProducts();
+
     updateWhatsApp();
-});
+
+    console.log(
+        "ABG STORE : APPLICATION INITIALISEE."
+    );
+
+}
+
 
 /* =========================================================
-   CACHER LA CATÉGORISATION
+   FILTRE CATÉGORIE
    ========================================================= */
 
 function hideCategoryFilter() {
-    const filter = document.getElementById("categoryFilter");
-    if (filter) {
-        filter.style.display = "none";
-        filter.value = "";
-    }
+
+    const filter =
+        document.getElementById("categoryFilter");
+
+    if (!filter) return;
+
+    filter.style.display = "none";
+
+    filter.value = "";
+
 }
+
 
 /* =========================================================
    BOUTONS
    ========================================================= */
 
 function setupButtons() {
-    const catalogButton = document.getElementById("catalogButton");
-    const cartButton = document.getElementById("cartButton");
-    const closeCartBtn = document.getElementById("closeCart");
-    const cartOverlay = document.getElementById("cartOverlay");
-    const adminButton = document.getElementById("adminButton");
-    const closeAdmin = document.getElementById("closeAdmin");
-    const loginButton = document.getElementById("loginButton");
-    const orderButton = document.getElementById("orderButton");
-    const whatsappButton = document.getElementById("whatsappButton");
-    const searchInput = document.getElementById("searchInput");
 
-    if (catalogButton) {
-        catalogButton.addEventListener("click", () => {
-            document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth" });
-        });
-    }
+    const catalogButton =
+        document.getElementById("catalogButton");
 
-    if (cartButton) cartButton.addEventListener("click", openCart);
-    if (closeCartBtn) closeCartBtn.addEventListener("click", closeCartPanel);
+    const cartButton =
+        document.getElementById("cartButton");
 
-    if (cartOverlay) {
-        cartOverlay.addEventListener("click", event => {
-            if (event.target === cartOverlay) closeCartPanel();
-        });
-    }
+    const closeCartButton =
+        document.getElementById("closeCart");
 
-    if (adminButton) adminButton.addEventListener("click", openAdmin);
-    if (closeAdmin) closeAdmin.addEventListener("click", closeAdminModal);
-    if (loginButton) loginButton.addEventListener("click", loginAdmin);
-    if (orderButton) orderButton.addEventListener("click", confirmOrder);
+    const cartOverlay =
+        document.getElementById("cartOverlay");
 
-    if (whatsappButton) {
-        const whatsappMessage = "Bonjour ABG Store 👋 Je souhaite avoir des informations sur vos produits.";
-        whatsappButton.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
-        whatsappButton.target = "_blank";
-        whatsappButton.rel = "noopener noreferrer";
-    }
+    const adminButton =
+        document.getElementById("adminButton");
 
-    if (searchInput) {
-        searchInput.addEventListener("input", event => {
-            searchTerm = event.target.value.trim().toLowerCase();
-            currentPage = 1;
-            renderProducts();
-        });
-    }
+    const closeAdmin =
+        document.getElementById("closeAdmin");
 
-    document.addEventListener("keydown", event => {
-        if (event.key === "Escape") {
-            closeCartPanel();
-            closeAdminModal();
+    const loginButton =
+        document.getElementById("loginButton");
+
+    const orderButton =
+        document.getElementById("orderButton");
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+
+    catalogButton?.addEventListener(
+        "click",
+        () => {
+
+            document
+                .getElementById("catalog")
+                ?.scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
         }
-    });
+    );
+
+
+    cartButton?.addEventListener(
+        "click",
+        openCart
+    );
+
+
+    closeCartButton?.addEventListener(
+        "click",
+        closeCartPanel
+    );
+
+
+    cartOverlay?.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target === cartOverlay
+            ) {
+
+                closeCartPanel();
+
+            }
+
+        }
+    );
+
+
+    adminButton?.addEventListener(
+        "click",
+        openAdmin
+    );
+
+
+    closeAdmin?.addEventListener(
+        "click",
+        closeAdminModal
+    );
+
+
+    loginButton?.addEventListener(
+        "click",
+        loginAdmin
+    );
+
+
+    orderButton?.addEventListener(
+        "click",
+        confirmOrder
+    );
+
+
+    searchInput?.addEventListener(
+        "input",
+        event => {
+
+            state.searchTerm =
+                normalizeText(event.target.value);
+
+            state.currentPage = 1;
+
+            renderProducts();
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key !== "Escape") return;
+
+            closeCartPanel();
+
+            closeAdminModal();
+
+        }
+    );
+
+
+    document.addEventListener(
+        "submit",
+        event => {
+
+            const form = event.target;
+
+            if (
+                form &&
+                form.id === "adminForm"
+            ) {
+
+                event.preventDefault();
+
+                loginAdmin();
+
+            }
+
+        }
+    );
+
 }
 
+
 /* =========================================================
-   RECHERCHE
+   RECHERCHE ET TRI
    ========================================================= */
 
 function getFilteredProducts() {
-    if (!searchTerm) return products;
-    return products.filter(product => product.name.toLowerCase().includes(searchTerm));
+
+    const result = products.filter(
+        product => {
+
+            if (!product.active) {
+                return false;
+            }
+
+            if (!state.searchTerm) {
+                return true;
+            }
+
+            return product.normalizedName.includes(
+                state.searchTerm
+            );
+
+        }
+    );
+
+
+    switch (state.sortBy) {
+
+        case "name-asc":
+
+            result.sort(
+                (a, b) =>
+                    a.name.localeCompare(
+                        b.name,
+                        "fr"
+                    )
+            );
+
+            break;
+
+
+        case "name-desc":
+
+            result.sort(
+                (a, b) =>
+                    b.name.localeCompare(
+                        a.name,
+                        "fr"
+                    )
+            );
+
+            break;
+
+
+        default:
+
+            break;
+
+    }
+
+
+    return result;
+
 }
 
+
 /* =========================================================
-   AFFICHAGE PRODUITS
+   AFFICHAGE DES PRODUITS
    ========================================================= */
 
 function renderProducts() {
-    const grid = document.getElementById("productsGrid");
-    const noProducts = document.getElementById("noProducts");
-    const productCount = document.getElementById("productCount");
+
+    const grid =
+        document.getElementById(
+            "productsGrid"
+        );
+
+    const noProducts =
+        document.getElementById(
+            "noProducts"
+        );
+
+    const productCount =
+        document.getElementById(
+            "productCount"
+        );
+
 
     if (!grid) return;
 
-    const oldPagination = document.querySelector(".products-pagination");
-    if (oldPagination) oldPagination.remove();
 
-    const filtered = getFilteredProducts();
+    document
+        .querySelector(
+            ".products-pagination"
+        )
+        ?.remove();
+
+
+    const filtered =
+        getFilteredProducts();
+
 
     if (productCount) {
-        productCount.textContent = `${filtered.length} produit${filtered.length > 1 ? "s" : ""}`;
+
+        productCount.textContent =
+            `${filtered.length} PRODUIT${filtered.length > 1 ? "S" : ""}`;
+
     }
+
 
     if (!filtered.length) {
+
         grid.innerHTML = "";
+
+
         if (noProducts) {
-            noProducts.classList.remove("hidden");
-            noProducts.style.display = "block";
+
+            noProducts.classList.remove(
+                "hidden"
+            );
+
+            noProducts.style.display =
+                "block";
+
         }
+
+
         return;
+
     }
+
 
     if (noProducts) {
-        noProducts.classList.add("hidden");
-        noProducts.style.display = "none";
+
+        noProducts.classList.add(
+            "hidden"
+        );
+
+        noProducts.style.display =
+            "none";
+
     }
 
-    const totalPages = Math.max(1, Math.ceil(filtered.length / PRODUCTS_PER_PAGE));
 
-    if (currentPage > totalPages) currentPage = totalPages;
-    if (currentPage < 1) currentPage = 1;
+    const totalPages =
+        Math.max(
+            1,
+            Math.ceil(
+                filtered.length /
+                CONFIG.productsPerPage
+            )
+        );
 
-    const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
-    const visible = filtered.slice(start, start + PRODUCTS_PER_PAGE);
 
-    grid.innerHTML = visible.map(createProductCard).join("");
+    state.currentPage =
+        clamp(
+            state.currentPage,
+            1,
+            totalPages
+        );
 
-    createPagination(totalPages);
+
+    const start =
+        (state.currentPage - 1) *
+        CONFIG.productsPerPage;
+
+
+    const visible =
+        filtered.slice(
+            start,
+            start + CONFIG.productsPerPage
+        );
+
+
+    grid.innerHTML =
+        visible
+            .map(createProductCard)
+            .join("");
+
+
+    createPagination(
+        totalPages
+    );
+
 }
+
 
 /* =========================================================
    CARTE PRODUIT
    ========================================================= */
 
 function createProductCard(product) {
-    const safeName = escapeHtml(product.name);
+
+    const name =
+        escapeHtml(product.name);
+
 
     return `
-        <article class="product-card">
-            <div class="product-info">
-                <h3 class="product-title">${safeName}</h3>
-                <p class="product-price">${formatPrice(product.price)} FCFA</p>
-                <div class="product-actions">
-                    <button type="button" class="preview-btn" onclick="searchProductImage('${encodeURIComponent(product.name)}')">
-                        👁️ Aperçu
-                    </button>
-                    <button type="button" class="add-to-cart-btn" onclick="addToCart(${product.id})">
-                        🛒 Ajouter au panier
-                    </button>
-                </div>
+
+        <article
+            class="product-card"
+            data-product-id="${product.id}"
+        >
+
+            <div class="product-name-area">
+
+                <h3 class="product-title">
+                    ${name}
+                </h3>
+
             </div>
+
+
+            <div class="product-actions">
+
+                <button
+                    type="button"
+                    class="preview-btn"
+                    data-action="preview"
+                    data-product-id="${product.id}"
+                    aria-label="Aperçu de ${name}"
+                >
+                    👁️ APERCU
+                </button>
+
+
+                <button
+                    type="button"
+                    class="add-to-cart-btn"
+                    data-action="add"
+                    data-product-id="${product.id}"
+                >
+                    🛒 AJOUTER
+                </button>
+
+            </div>
+
         </article>
+
     `;
+
 }
 
-function searchProductImage(productName) {
-    const url = "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(productName);
-    window.open(url, "_blank", "noopener,noreferrer");
+
+/* =========================================================
+   ÉVÉNEMENTS PRODUITS
+   ========================================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                "[data-action]"
+            );
+
+        if (!button) return;
+
+
+        const action =
+            button.dataset.action;
+
+
+        const productId =
+            Number(
+                button.dataset.productId
+            );
+
+
+        if (!Number.isFinite(productId)) {
+            return;
+        }
+
+
+        if (action === "add") {
+
+            addToCart(productId);
+
+        }
+
+
+        if (action === "preview") {
+
+            previewProduct(productId);
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   APERÇU PRODUIT
+   ========================================================= */
+
+function previewProduct(productId) {
+
+    const product =
+        products.find(
+            item =>
+                item.id ===
+                Number(productId)
+        );
+
+
+    if (!product) return;
+
+
+    const url =
+        "https://www.google.com/search?tbm=isch&q=" +
+        encodeURIComponent(
+            product.name
+        );
+
+
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
 }
+
+
+function searchProductImage(productName) {
+
+    const name =
+        String(productName ?? "");
+
+
+    if (!name.trim()) return;
+
+
+    const url =
+        "https://www.google.com/search?tbm=isch&q=" +
+        encodeURIComponent(
+            normalizeText(name)
+        );
+
+
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
 
 /* =========================================================
    PAGINATION
    ========================================================= */
 
 function createPagination(totalPages) {
-    const grid = document.getElementById("productsGrid");
-    if (!grid || totalPages <= 1) return;
 
-    const pagination = document.createElement("div");
-    pagination.className = "products-pagination";
+    const grid =
+        document.getElementById(
+            "productsGrid"
+        );
 
-    let html = "";
 
-    if (currentPage > 1) {
-        html += `<button type="button" onclick="changePage(${currentPage - 1})">← Précédent</button>`;
+    if (
+        !grid ||
+        totalPages <= 1
+    ) {
+        return;
     }
 
-    html += `<span>Page ${currentPage} / ${totalPages}</span>`;
 
-    if (currentPage < totalPages) {
-        html += `<button type="button" onclick="changePage(${currentPage + 1})">Suivant →</button>`;
-    }
+    const pagination =
+        document.createElement(
+            "div"
+        );
 
-    pagination.innerHTML = html;
 
-    if (grid.parentNode) grid.parentNode.appendChild(pagination);
+    pagination.className =
+        "products-pagination";
+
+
+    const previousDisabled =
+        state.currentPage <= 1
+            ? "disabled"
+            : "";
+
+
+    const nextDisabled =
+        state.currentPage >= totalPages
+            ? "disabled"
+            : "";
+
+
+    pagination.innerHTML = `
+
+        <button
+            type="button"
+            data-page-action="previous"
+            ${previousDisabled}
+        >
+            ← PRECEDENT
+        </button>
+
+
+        <span>
+            PAGE ${state.currentPage} / ${totalPages}
+        </span>
+
+
+        <button
+            type="button"
+            data-page-action="next"
+            ${nextDisabled}
+        >
+            SUIVANT →
+        </button>
+
+    `;
+
+
+    grid.insertAdjacentElement(
+        "afterend",
+        pagination
+    );
+
 }
 
-function changePage(page) {
-    const filtered = getFilteredProducts();
-    const totalPages = Math.max(1, Math.ceil(filtered.length / PRODUCTS_PER_PAGE));
 
-    currentPage = Math.max(1, Math.min(Number(page), totalPages));
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                "[data-page-action]"
+            );
+
+
+        if (!button) return;
+
+
+        const action =
+            button.dataset.pageAction;
+
+
+        if (
+            action === "previous"
+        ) {
+
+            changePage(
+                state.currentPage - 1
+            );
+
+        }
+
+
+        if (
+            action === "next"
+        ) {
+
+            changePage(
+                state.currentPage + 1
+            );
+
+        }
+
+    }
+);
+
+
+function changePage(page) {
+
+    const filtered =
+        getFilteredProducts();
+
+
+    const totalPages =
+        Math.max(
+            1,
+            Math.ceil(
+                filtered.length /
+                CONFIG.productsPerPage
+            )
+        );
+
+
+    state.currentPage =
+        clamp(
+            Number(page) || 1,
+            1,
+            totalPages
+        );
+
 
     renderProducts();
 
-    document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    document
+        .getElementById("catalog")
+        ?.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
 }
+
 
 /* =========================================================
    PANIER
    ========================================================= */
 
 function addToCart(productId) {
-    const id = Number(productId);
-    const product = products.find(item => item.id === id);
+
+    const id =
+        Number(productId);
+
+
+    const product =
+        products.find(
+            item => item.id === id
+        );
+
 
     if (!product) {
-        console.error("Produit introuvable :", id);
+
+        showNotification(
+            "PRODUIT INTROUVABLE.",
+            "error"
+        );
+
         return;
+
     }
 
-    const existing = cart.find(item => item.id === id);
+
+    if (product.stock <= 0) {
+
+        showNotification(
+            "PRODUIT ACTUELLEMENT INDISPONIBLE.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const existing =
+        cart.find(
+            item => item.id === id
+        );
+
 
     if (existing) {
+
         existing.quantity += 1;
+
     } else {
+
         cart.push({
+
             id: product.id,
+
             name: product.name,
-            price: product.price,
+
             quantity: 1
+
         });
+
     }
 
+
     saveCart();
+
     updateCart();
-    openCart();
+
+
+    showNotification(
+        `${product.name} AJOUTE AU PANIER.`,
+        "success"
+    );
+
 }
+
 
 function removeFromCart(productId) {
-    const id = Number(productId);
-    cart = cart.filter(item => item.id !== id);
+
+    const id =
+        Number(productId);
+
+
+    cart =
+        cart.filter(
+            item => item.id !== id
+        );
+
+
     saveCart();
+
     updateCart();
+
 }
 
-function changeQuantity(productId, amount) {
-    const id = Number(productId);
-    const item = cart.find(product => product.id === id);
+
+function changeQuantity(
+    productId,
+    amount
+) {
+
+    const id =
+        Number(productId);
+
+
+    const item =
+        cart.find(
+            product => product.id === id
+        );
+
 
     if (!item) return;
 
-    item.quantity += Number(amount);
 
-    if (item.quantity <= 0) {
+    const quantity =
+        Math.floor(
+            Number(item.quantity)
+        ) +
+        Number(amount);
+
+
+    if (quantity <= 0) {
+
         removeFromCart(id);
+
         return;
+
     }
 
+
+    item.quantity =
+        Math.min(
+            quantity,
+            999
+        );
+
+
     saveCart();
+
     updateCart();
+
 }
 
+
 /* =========================================================
-   AFFICHAGE PANIER
+   RÉSUMÉ PANIER
+   ========================================================= */
+
+function getCartSummary() {
+
+    const totalQuantity =
+        cart.reduce(
+            (sum, item) =>
+                sum +
+                Number(item.quantity),
+            0
+        );
+
+
+    return {
+        totalQuantity
+    };
+
+}
+
+
+/* =========================================================
+   MISE À JOUR PANIER
    ========================================================= */
 
 function updateCart() {
-    const cartItems = document.getElementById("cartItems");
-    const emptyCart = document.getElementById("emptyCart");
-    const checkout = document.getElementById("checkout");
-    const cartCount = document.getElementById("cartCount");
-    const cartTotal = document.getElementById("cartTotal");
 
-    const totalQuantity = cart.reduce((sum, item) => sum + Number(item.quantity), 0);
-    const totalPrice = cart.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
+    const cartItems =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    const emptyCart =
+        document.getElementById(
+            "emptyCart"
+        );
+
+
+    const checkout =
+        document.getElementById(
+            "checkout"
+        );
+
+
+    const cartCount =
+        document.getElementById(
+            "cartCount"
+        );
+
+
+    const summary =
+        getCartSummary();
+
 
     if (cartCount) {
-        cartCount.textContent = totalQuantity;
-        cartCount.style.display = totalQuantity > 0 ? "flex" : "none";
+
+        cartCount.textContent =
+            summary.totalQuantity;
+
+
+        cartCount.style.display =
+            summary.totalQuantity > 0
+                ? "flex"
+                : "none";
+
     }
 
-    if (cartTotal) {
-        cartTotal.textContent = `${formatPrice(totalPrice)} FCFA`;
-    }
 
     if (!cart.length) {
-        if (cartItems) cartItems.innerHTML = "";
-        if (emptyCart) {
-            emptyCart.classList.remove("hidden");
-            emptyCart.style.display = "block";
+
+        if (cartItems) {
+
+            cartItems.innerHTML = "";
+
         }
-        if (checkout) checkout.classList.add("hidden");
+
+
+        if (emptyCart) {
+
+            emptyCart.classList.remove(
+                "hidden"
+            );
+
+            emptyCart.style.display =
+                "block";
+
+        }
+
+
+        if (checkout) {
+
+            checkout.classList.add(
+                "hidden"
+            );
+
+        }
+
+
         return;
+
     }
+
 
     if (emptyCart) {
-        emptyCart.classList.add("hidden");
-        emptyCart.style.display = "none";
+
+        emptyCart.classList.add(
+            "hidden"
+        );
+
+        emptyCart.style.display =
+            "none";
+
     }
 
-    if (checkout) checkout.classList.remove("hidden");
+
+    if (checkout) {
+
+        checkout.classList.remove(
+            "hidden"
+        );
+
+    }
+
 
     if (!cartItems) return;
 
-    cartItems.innerHTML = cart.map(item => `
-        <div class="cart-item">
-            <div class="cart-item-info">
-                <h4>${escapeHtml(item.name)}</h4>
-                <p class="cart-item-price">${formatPrice(item.price)} FCFA</p>
-                <div class="quantity-controls">
-                    <button type="button" onclick="changeQuantity(${item.id}, -1)">−</button>
-                    <span>${item.quantity}</span>
-                    <button type="button" onclick="changeQuantity(${item.id}, 1)">+</button>
-                </div>
-                <button type="button" class="remove-cart-button" onclick="removeFromCart(${item.id})">
-                    🗑️ Supprimer
-                </button>
-            </div>
-        </div>
-    `).join("");
+
+    cartItems.innerHTML =
+        cart
+            .map(createCartItem)
+            .join("");
+
 }
 
+
 /* =========================================================
-   OUVRIR / FERMER PANIER
+   ARTICLE PANIER
+   ========================================================= */
+
+function createCartItem(item) {
+
+    const name =
+        escapeHtml(item.name);
+
+
+    return `
+
+        <div
+            class="cart-item"
+            data-cart-id="${item.id}"
+        >
+
+            <div class="cart-item-info">
+
+                <h4>
+                    ${name}
+                </h4>
+
+
+                <div class="quantity-controls">
+
+                    <button
+                        type="button"
+                        data-cart-action="decrease"
+                        data-product-id="${item.id}"
+                        aria-label="Diminuer la quantité"
+                    >
+                        −
+                    </button>
+
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+
+                    <button
+                        type="button"
+                        data-cart-action="increase"
+                        data-product-id="${item.id}"
+                        aria-label="Augmenter la quantité"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="remove-cart-button"
+                    data-cart-action="remove"
+                    data-product-id="${item.id}"
+                >
+                    🗑️ SUPPRIMER
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   ACTIONS PANIER
+   ========================================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                "[data-cart-action]"
+            );
+
+
+        if (!button) return;
+
+
+        const action =
+            button.dataset.cartAction;
+
+
+        const productId =
+            Number(
+                button.dataset.productId
+            );
+
+
+        if (!Number.isFinite(productId)) {
+            return;
+        }
+
+
+        switch (action) {
+
+            case "increase":
+
+                changeQuantity(
+                    productId,
+                    1
+                );
+
+                break;
+
+
+            case "decrease":
+
+                changeQuantity(
+                    productId,
+                    -1
+                );
+
+                break;
+
+
+            case "remove":
+
+                removeFromCart(
+                    productId
+                );
+
+                break;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   OUVERTURE DU PANIER
    ========================================================= */
 
 function openCart() {
-    const panel = document.getElementById("cartPanel");
-    const overlay = document.getElementById("cartOverlay");
 
-    if (panel) {
-        panel.classList.add("open");
-        panel.setAttribute("aria-hidden", "false");
+    const panel =
+        document.getElementById(
+            "cartPanel"
+        );
+
+
+    const overlay =
+        document.getElementById(
+            "cartOverlay"
+        );
+
+
+    if (!panel) {
+
+        console.error(
+            "ABG STORE : #cartPanel INTROUVABLE."
+        );
+
+        return;
+
     }
+
+
+    panel.classList.add(
+        "open"
+    );
+
+
+    panel.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
 
     if (overlay) {
-        overlay.classList.add("open");
-        overlay.setAttribute("aria-hidden", "false");
+
+        overlay.classList.add(
+            "open"
+        );
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
     }
 
-    document.body.classList.add("cart-open");
+
+    document.body.classList.add(
+        "cart-open"
+    );
+
+
     updateCart();
+
 }
+
 
 function closeCartPanel() {
-    const panel = document.getElementById("cartPanel");
-    const overlay = document.getElementById("cartOverlay");
 
-    if (panel) {
-        panel.classList.remove("open");
-        panel.setAttribute("aria-hidden", "true");
-    }
+    const panel =
+        document.getElementById(
+            "cartPanel"
+        );
 
-    if (overlay) {
-        overlay.classList.remove("open");
-        overlay.setAttribute("aria-hidden", "true");
-    }
 
-    document.body.classList.remove("cart-open");
+    const overlay =
+        document.getElementById(
+            "cartOverlay"
+        );
+
+
+    panel?.classList.remove(
+        "open"
+    );
+
+
+    overlay?.classList.remove(
+        "open"
+    );
+
+
+    panel?.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    overlay?.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.classList.remove(
+        "cart-open"
+    );
+
 }
 
+
 /* =========================================================
-   ADMIN
+   ADMINISTRATION
    ========================================================= */
 
 function openAdmin() {
-    const modal = document.getElementById("adminModal");
-    const username = document.getElementById("adminUsername");
+
+    const modal =
+        document.getElementById(
+            "adminModal"
+        );
+
+
+    const username =
+        document.getElementById(
+            "adminUsername"
+        );
+
 
     if (!modal) return;
 
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
 
-    if (username) setTimeout(() => username.focus(), 100);
+    modal.classList.add(
+        "open"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    setTimeout(
+        () => {
+            username?.focus();
+        },
+        100
+    );
+
 }
+
 
 function closeAdminModal() {
-    const modal = document.getElementById("adminModal");
+
+    const modal =
+        document.getElementById(
+            "adminModal"
+        );
+
+
     if (!modal) return;
 
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
+
+    modal.classList.remove(
+        "open"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
 }
+
+
+/* =========================================================
+   CONNEXION ADMIN
+   ========================================================= */
 
 function loginAdmin() {
-    const username = document.getElementById("adminUsername");
-    const password = document.getElementById("adminPassword");
-    const error = document.getElementById("adminError");
 
-    if (!username || !password) return;
+    const username =
+        document.getElementById(
+            "adminUsername"
+        );
 
-    if (username.value.trim() === ADMIN_USERNAME && password.value === ADMIN_PASSWORD) {
-        localStorage.setItem("abg_admin_logged", "true");
-        if (error) error.textContent = "";
-        closeAdminModal();
-        alert("Connexion administrateur réussie.");
-    } else {
-        if (error) error.textContent = "Identifiant ou mot de passe incorrect.";
+
+    const password =
+        document.getElementById(
+            "adminPassword"
+        );
+
+
+    const error =
+        document.getElementById(
+            "adminError"
+        );
+
+
+    if (!username || !password) {
+        return;
     }
+
+
+    const enteredUsername =
+        username.value.trim();
+
+
+    const enteredPassword =
+        password.value;
+
+
+    if (
+
+        enteredUsername ===
+            CONFIG.adminUsername &&
+
+        enteredPassword ===
+            CONFIG.adminPassword
+
+    ) {
+
+        localStorage.setItem(
+            CONFIG.storageAdmin,
+            "true"
+        );
+
+
+        if (error) {
+
+            error.textContent = "";
+
+        }
+
+
+        closeAdminModal();
+
+
+        document.body.classList.add(
+            "admin-authenticated"
+        );
+
+
+        password.value = "";
+
+
+        showNotification(
+            "CONNEXION ADMINISTRATEUR REUSSIE.",
+            "success"
+        );
+
+
+        return;
+
+    }
+
+
+    if (error) {
+
+        error.textContent =
+            "IDENTIFIANT OU MOT DE PASSE INCORRECT.";
+
+    }
+
+
+    password.value = "";
+
+    password.focus();
+
 }
+
+
+/* =========================================================
+   SESSION ADMIN
+   ========================================================= */
+
+function restoreAdminSession() {
+
+    const logged =
+        localStorage.getItem(
+            CONFIG.storageAdmin
+        );
+
+
+    if (logged === "true") {
+
+        document.body.classList.add(
+            "admin-authenticated"
+        );
+
+    }
+
+}
+
+
+function logoutAdmin() {
+
+    localStorage.removeItem(
+        CONFIG.storageAdmin
+    );
+
+
+    document.body.classList.remove(
+        "admin-authenticated"
+    );
+
+
+    showNotification(
+        "VOUS ETES DECONNECTE.",
+        "success"
+    );
+
+}
+
 
 /* =========================================================
    COMMANDE WHATSAPP
    ========================================================= */
 
 function confirmOrder() {
+
     if (!cart.length) {
-        alert("Votre panier est vide.");
+
+        showNotification(
+            "VOTRE PANIER EST VIDE.",
+            "error"
+        );
+
         return;
+
     }
 
-    const nameInput = document.getElementById("customerName");
-    const phoneInput = document.getElementById("customerPhone");
-    const addressInput = document.getElementById("customerAddress");
-    const paymentInput = document.getElementById("paymentMethod");
 
-    const name = nameInput?.value.trim() || "";
-    const phone = phoneInput?.value.trim() || "";
-    const address = addressInput?.value.trim() || "";
-    const payment = paymentInput?.value || "Non précisé";
+    const nameInput =
+        document.getElementById(
+            "customerName"
+        );
+
+
+    const phoneInput =
+        document.getElementById(
+            "customerPhone"
+        );
+
+
+    const addressInput =
+        document.getElementById(
+            "customerAddress"
+        );
+
+
+    const paymentInput =
+        document.getElementById(
+            "paymentMethod"
+        );
+
+
+    const name =
+        nameInput?.value.trim() || "";
+
+
+    const phone =
+        phoneInput?.value.trim() || "";
+
+
+    const address =
+        addressInput?.value.trim() || "";
+
+
+    const payment =
+        paymentInput?.value ||
+        "NON PRECISE";
+
 
     if (!name) {
-        alert("Veuillez entrer votre nom complet.");
+
+        showNotification(
+            "VEUILLEZ ENTRER VOTRE NOM COMPLET.",
+            "error"
+        );
+
         nameInput?.focus();
+
         return;
+
     }
+
 
     if (!phone) {
-        alert("Veuillez entrer votre numéro de téléphone.");
+
+        showNotification(
+            "VEUILLEZ ENTRER VOTRE NUMERO DE TELEPHONE.",
+            "error"
+        );
+
         phoneInput?.focus();
+
         return;
+
     }
+
 
     if (!address) {
-        alert("Veuillez entrer votre adresse de livraison.");
+
+        showNotification(
+            "VEUILLEZ ENTRER VOTRE ADRESSE.",
+            "error"
+        );
+
         addressInput?.focus();
+
         return;
+
     }
 
-    const total = cart.reduce((sum, item) => sum + Number(item.price) * Number(item.quantity), 0);
-    const totalQuantity = cart.reduce((sum, item) => sum + Number(item.quantity), 0);
 
-    const productsMessage = cart.map((item, index) => {
-        const subtotal = Number(item.price) * Number(item.quantity);
-        return `${index + 1}. ${item.name} x ${item.quantity} = ${formatPrice(subtotal)} FCFA`;
-    }).join("\n");
+    const summary =
+        getCartSummary();
+
+
+    const productsMessage =
+        cart
+            .map(
+                (item, index) => {
+
+                    return (
+                        `${index + 1}. ` +
+                        `${item.name} ` +
+                        `x${item.quantity}`
+                    );
+
+                }
+            )
+            .join("\n");
+
 
     const message =
 `🛒 NOUVELLE COMMANDE — ABG STORE
@@ -2451,120 +2254,351 @@ Téléphone : ${phone}
 Adresse : ${address}
 
 ━━━━━━━━━━━━━━━━━━
-📦 DÉTAIL DE LA COMMANDE
+📦 COMMANDE
 
 ${productsMessage}
 
 ━━━━━━━━━━━━━━━━━━
-📊 RÉSUMÉ
+📊 RESUME
 
-Articles : ${totalQuantity}
-Total : ${formatPrice(total)} FCFA
-💳 Paiement : ${payment}
+Nombre total d'articles : ${summary.totalQuantity}
+Paiement : ${payment}
 
 ━━━━━━━━━━━━━━━━━━
+
 Bonjour ABG Store 👋
+
 Je souhaite confirmer ma commande.
+
 Merci.`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedMessage}`;
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    const url =
+        `https://wa.me/${CONFIG.whatsappNumber}` +
+        `?text=${encodeURIComponent(
+            message
+        )}`;
+
+
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
 }
 
+
 /* =========================================================
-   WHATSAPP
+   BOUTON WHATSAPP
    ========================================================= */
 
 function updateWhatsApp() {
-    const button = document.getElementById("whatsappButton");
+
+    const button =
+        document.getElementById(
+            "whatsappButton"
+        );
+
+
     if (!button) return;
 
-    button.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+    button.href =
+        `https://wa.me/${CONFIG.whatsappNumber}` +
+        `?text=${encodeURIComponent(
+            CONFIG.whatsappDefaultMessage
+        )}`;
+
+
     button.target = "_blank";
-    button.rel = "noopener noreferrer";
+
+    button.rel =
+        "noopener noreferrer";
+
 }
 
+
 /* =========================================================
-   LOCAL STORAGE
+   LOCAL STORAGE — PANIER
    ========================================================= */
 
 function saveCart() {
-    localStorage.setItem("abg_cart", JSON.stringify(cart));
-}
 
-function loadCart() {
     try {
-        const saved = localStorage.getItem("abg_cart");
 
-        if (!saved) {
-            cart = [];
-            return;
-        }
-
-        const parsed = JSON.parse(saved);
-
-        if (!Array.isArray(parsed)) {
-            cart = [];
-            return;
-        }
-
-        cart = parsed
-            .filter(item => item && Number.isFinite(Number(item.id)) && Number(item.quantity) > 0)
-            .map(item => {
-                const id = Number(item.id);
-                // On revérifie prix/nom/image contre le catalogue courant
-                // (au cas où le catalogue aurait changé depuis la dernière visite)
-                const product = products.find(p => p.id === id);
-
-                return {
-                    id,
-                    name: product ? product.name : String(item.name || ""),
-                    price: product ? product.price : Number(item.price) || 0,
-                    quantity: Math.max(1, Math.floor(Number(item.quantity)))
-                };
-            });
+        localStorage.setItem(
+            CONFIG.storageCart,
+            JSON.stringify(cart)
+        );
 
     } catch (error) {
-        console.error("Erreur chargement panier :", error);
-        cart = [];
+
+        console.error(
+            "IMPOSSIBLE DE SAUVEGARDER LE PANIER :",
+            error
+        );
+
     }
+
 }
 
-/* =========================================================
-   FORMAT PRIX
-   ========================================================= */
 
-function formatPrice(number) {
-    return Number(number || 0).toLocaleString("fr-FR");
+function loadCart() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                CONFIG.storageCart
+            );
+
+
+        if (!saved) {
+
+            cart = [];
+
+            return;
+
+        }
+
+
+        const parsed =
+            JSON.parse(saved);
+
+
+        if (!Array.isArray(parsed)) {
+
+            cart = [];
+
+            return;
+
+        }
+
+
+        cart =
+            parsed
+
+                .filter(
+                    item => {
+
+                        return (
+
+                            item &&
+
+                            Number.isFinite(
+                                Number(item.id)
+                            ) &&
+
+                            Number(item.quantity) > 0
+
+                        );
+
+                    }
+                )
+
+
+                .map(
+                    item => {
+
+                        const id =
+                            Number(item.id);
+
+
+                        const product =
+                            products.find(
+                                p =>
+                                    p.id === id
+                            );
+
+
+                        if (!product) {
+                            return null;
+                        }
+
+
+                        return {
+
+                            id,
+
+                            name:
+                                product.name,
+
+                            quantity:
+                                clamp(
+
+                                    Math.floor(
+                                        Number(
+                                            item.quantity
+                                        )
+                                    ),
+
+                                    1,
+
+                                    999
+
+                                )
+
+                        };
+
+                    }
+                )
+
+
+                .filter(Boolean);
+
+
+        saveCart();
+
+
+    } catch (error) {
+
+        console.error(
+            "ERREUR CHARGEMENT PANIER :",
+            error
+        );
+
+
+        cart = [];
+
+        saveCart();
+
+    }
+
 }
 
+
 /* =========================================================
-   SÉCURISATION HTML
+   NOTIFICATIONS
    ========================================================= */
 
-function escapeHtml(text) {
-    return String(text)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+function showNotification(
+    message,
+    type = "success"
+) {
+
+    let container =
+        document.getElementById(
+            "abgNotifications"
+        );
+
+
+    if (!container) {
+
+        container =
+            document.createElement(
+                "div"
+            );
+
+
+        container.id =
+            "abgNotifications";
+
+
+        container.setAttribute(
+            "aria-live",
+            "polite"
+        );
+
+
+        document.body.appendChild(
+            container
+        );
+
+    }
+
+
+    const notification =
+        document.createElement(
+            "div"
+        );
+
+
+    notification.className =
+        `abg-notification ${type}`;
+
+
+    notification.textContent =
+        message;
+
+
+    container.appendChild(
+        notification
+    );
+
+
+    setTimeout(
+        () => {
+
+            notification.classList.add(
+                "hide"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    notification.remove();
+
+                },
+                300
+            );
+
+        },
+        3000
+    );
+
 }
 
+
 /* =========================================================
-   FONCTIONS ACCESSIBLES DEPUIS HTML
+   API PUBLIQUE
    ========================================================= */
 
-window.addToCart = addToCart;
-window.removeFromCart = removeFromCart;
-window.changeQuantity = changeQuantity;
-window.changePage = changePage;
-window.openCart = openCart;
-window.closeCartPanel = closeCartPanel;
-window.openAdmin = openAdmin;
-window.closeAdminModal = closeAdminModal;
-window.loginAdmin = loginAdmin;
-window.confirmOrder = confirmOrder;
-window.searchProductImage = searchProductImage;
+window.addToCart =
+    addToCart;
+
+window.removeFromCart =
+    removeFromCart;
+
+window.changeQuantity =
+    changeQuantity;
+
+window.changePage =
+    changePage;
+
+window.openCart =
+    openCart;
+
+window.closeCartPanel =
+    closeCartPanel;
+
+window.openAdmin =
+    openAdmin;
+
+window.closeAdminModal =
+    closeAdminModal;
+
+window.loginAdmin =
+    loginAdmin;
+
+window.logoutAdmin =
+    logoutAdmin;
+
+window.confirmOrder =
+    confirmOrder;
+
+window.searchProductImage =
+    searchProductImage;
+
+window.previewProduct =
+    previewProduct;
+
+
+/* =========================================================
+   DEBUG
+   ========================================================= */
+
+console.log(
+    "ABG STORE — SCRIPT CHARGE AVEC SUCCES."
+);
